@@ -7,20 +7,17 @@
 </head>
 <body>
 
+	<!--Navbar-->
 	@include('template.partials.nav')
+	<!--End Navbar-->
 
-	<div class="panel panel-primary">
-		<div class="panel-heading bg-primary">
-			<h3 class="panel-title">@yield('title', 'Default')</h3>
-		</div>
-		<div class="panel-body">
-			@include('flash::message')
-			@include('template.partials.errors')
-			<section class="container">
-				@yield('content')
-			</section>
-		</div>
-	</div>
+	<!--Page-Container-->
+	@include('flash::message')
+	@include('template.partials.errors')
+	<section class="container">
+		@yield('content')
+	</section>
+	<!--End Page Container-->
 
 	@include('template.partials.foot')
 
