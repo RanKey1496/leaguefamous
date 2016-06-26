@@ -14,18 +14,39 @@
 	  </div>
 
 	<!--Search-->
-	<div class="btn-group" role="group" aria-label="">
-	  <button type="button" class="btn btn-primary">NA</button>
-	  <button type="button" class="btn btn-default">EUW</button>
-	  <button type="button" class="btn btn-default">EUNE</button>
-	  <button type="button" class="btn btn-default">BR</button>
-	  <button type="button" class="btn btn-default">TR</button>
-	  <button type="button" class="btn btn-default">RU</button>
-	  <button type="button" class="btn btn-default">LAN</button>
-	  <button type="button" class="btn btn-default">LAS</button>
-	  <button type="button" class="btn btn-default">OCE</button>
-	  <button type="button" class="btn btn-default">KR</button>
-	  <button type="button" class="btn btn-default">JP</button>
+	<div class="dropdown">
+	  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+	    NA
+	    <span class="caret"></span>
+	  </button>
+	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+	    <li class="dropdown-header">THE AMERICAS</li>
+	    <li>
+	    	<div class="btn-group" role="group" aria-label="">
+			  <button type="button" class="btn btn-default">NA</button>
+			  <button type="button" class="btn btn-default">LAN</button>
+			  <button type="button" class="btn btn-default">LAS</button>
+			  <button type="button" class="btn btn-default">BR</button>
+			</div>
+	    </li>
+	  <li class="dropdown-header">EUROPE</li>
+	    <li>
+	    	<div class="btn-group" role="group" aria-label="">
+			  <button type="button" class="btn btn-default">EUW</button>
+			  <button type="button" class="btn btn-default">EUNE</button>
+			  <button type="button" class="btn btn-default">TR</button>
+			  <button type="button" class="btn btn-default">RU</button>
+			</div>
+	    </li>
+	  <li class="dropdown-header">ASIA</li>
+	    <li>
+	    	<div class="btn-group" role="group" aria-label="">
+			  <button type="button" class="btn btn-default">KR</button>
+			  <button type="button" class="btn btn-default">JP</button>
+			  <button type="button" class="btn btn-default">OCE</button>
+			</div>
+	    </li>
+	  </ul>
 	</div>
 	<hr/>
 	<div class="row">
