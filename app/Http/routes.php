@@ -11,6 +11,12 @@
 |
 */
 
+//Main Routes
 Route::get('/', function () {
     return view('home.index');
 });
+
+//Summoner Routes
+Route::get('/{region}/{summonerName}', [
+		'uses'	=>	'SummonersController@create',
+		'as'	=>	'summoners.create']);
