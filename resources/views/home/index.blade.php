@@ -12,8 +12,36 @@
 	    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> 
 	  </div>
-	  <p>Alguna mierda</p>
+
+	<!--Search-->
+	<div class="btn-group" role="group" aria-label="">
+	  <button type="button" class="btn btn-primary">NA</button>
+	  <button type="button" class="btn btn-default">EUW</button>
+	  <button type="button" class="btn btn-default">EUNE</button>
+	  <button type="button" class="btn btn-default">BR</button>
+	  <button type="button" class="btn btn-default">TR</button>
+	  <button type="button" class="btn btn-default">RU</button>
+	  <button type="button" class="btn btn-default">LAN</button>
+	  <button type="button" class="btn btn-default">LAS</button>
+	  <button type="button" class="btn btn-default">OCE</button>
+	  <button type="button" class="btn btn-default">KR</button>
+	  <button type="button" class="btn btn-default">JP</button>
 	</div>
+	<hr/>
+	<div class="row">
+	  <div class="col-lg-6">
+	    <div class="input-group">
+	      <input type="text" class="form-control" placeholder="Search for...">
+	      <span class="input-group-btn">
+	        <button class="btn btn-default" type="button">Go!</button>
+	      </span>
+	    </div><!-- /input-group -->
+	  </div><!-- /.col-lg-6 -->
+	</div><!-- /.row -->
+	<!--End Search-->
+
+	</div>
+	<hr/>
 	<!--End Header-->
 
 	<!--Lists-->
@@ -26,7 +54,7 @@
 			<th>Likes</th>
 		</thead>
 		<tbody>
-			<tr class="table-row" data-href="efukt.com">
+			<tr class="table-row" data-href="http://efukt.com">
 				<td>
 					<a href="#" class="pull-left">
 						<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
@@ -97,9 +125,9 @@
 
 	<script type="text/javascript">
 		$(document).ready(function($) {
-		    $(".table-row").click(function() {
-		        window.document.location = $(this).data("href");
-		    });
+			$(".table-row").click(function() {
+				window.document.location = $(this).data("href");
+			});
 		});
 	</script>
 

@@ -4,6 +4,8 @@
 	<title>@yield('title', 'Welcome') | League Famous</title>
 	<link rel="stylesheet" href="{{ asset('plugins\bootstrap\css\bootstrap.css')}}">
 	<link rel="stylesheet" href="{{ asset('plugins\css\general.css')}}">
+	<script src="{{ asset('plugins/jquery/js/jquery-2.1.4.js') }}"></script>
+	<script src="{{ asset('plugins/bootstrap/js/bootstrap.js') }}"></script>
 </head>
 <body>
 
@@ -21,7 +23,5 @@
 
 	@include('template.partials.foot')
 
-	<script src="{{ asset('plugins/jquery/js/jquery-2.1.4.js') }}"></script>
-	<script src="{{ asset('plugins/bootstrap/js/bootstrap.js') }}"></script>
 </body>
 </html>
