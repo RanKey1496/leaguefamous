@@ -5,57 +5,36 @@
 	<div class="container">
 	  <div class="jumbotron">
 	    <h1>League Famous</h1> 
-	    <p>.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> 
+	    <p>.Wombats are short-legged, muscular quadrupedal marsupials that are native to Australia. They are about 1 m (40 in) in length with small, stubby tails. There are three extant species and they are all members of the family Vombatidae. They are adaptable and habitat tolerant, and are found in forested, mountainous, and heathland areas of south-eastern Australia, including Tasmania, as well as an isolated patch of about 300 ha (740 acres) in Epping Forest National Park[2] in central Queensland.</p> 
 	  </div>
 
 	<!--Search-->
-	<div class="dropdown">
+	<div class="dropdown pull-right">
 	  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-	    NA
+	    North America
 	    <span class="caret"></span>
 	  </button>
 	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-	    <li class="dropdown-header">THE AMERICAS</li>
-	    <li>
-	    	<div class="btn-group" role="group" aria-label="">
-			  <button type="button" class="btn btn-default">NA</button>
-			  <button type="button" class="btn btn-default">LAN</button>
-			  <button type="button" class="btn btn-default">LAS</button>
-			  <button type="button" class="btn btn-default">BR</button>
-			</div>
-	    </li>
-	  <li class="dropdown-header">EUROPE</li>
-	    <li>
-	    	<div class="btn-group" role="group" aria-label="">
-			  <button type="button" class="btn btn-default">EUW</button>
-			  <button type="button" class="btn btn-default">EUNE</button>
-			  <button type="button" class="btn btn-default">TR</button>
-			  <button type="button" class="btn btn-default">RU</button>
-			</div>
-	    </li>
-	  <li class="dropdown-header">ASIA</li>
-	    <li>
-	    	<div class="btn-group" role="group" aria-label="">
-			  <button type="button" class="btn btn-default">KR</button>
-			  <button type="button" class="btn btn-default">JP</button>
-			  <button type="button" class="btn btn-default">OCE</button>
-			</div>
-	    </li>
+	    <li><a href="#">North America</a></li>
+	    <li><a href="#">Latin America North</a></li>
+	    <li><a href="#">Latin America South</a></li>
+	    <li><a href="#">Brazil</a></li>
+	    <li role="separator" class="divider"></li>
+	    <li><a href="#">Europe West</a></li>
+	    <li><a href="#">Europe Nordic &amp; East</a></li>
+	    <li><a href="#">Russia</a></li>
+	    <li><a href="#">Turkey</a></li>
+	    <li role="separator" class="divider"></li>
+	    <li><a href="#">South Korea</a></li>
+	    <li><a href="#">Oceania</a></li>
+	    <li role="separator" class="divider"></li>
+	    <li><a href="#">All</a></li>
 	  </ul>
 	</div>
-	<hr/>
 	<div class="row">
-	  <div class="col-lg-6">
+	  <div class="col-md-4">
 	    <div class="input-group">
-	      <input type="text" class="form-control" placeholder="Search for...">
-	      <span class="input-group-btn">
-	        <button class="btn btn-default" type="button">Go!</button>
-	      </span>
+	      <input type="text" class="form-control" placeholder="Search summoners...">
 	    </div><!-- /input-group -->
 	  </div><!-- /.col-lg-6 -->
 	</div><!-- /.row -->
