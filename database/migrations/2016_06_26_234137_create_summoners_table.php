@@ -24,8 +24,8 @@ class CreateSummonersTable extends Migration
             $table->integer('wins');
             $table->integer('losses');
             $table->integer('likes');
-            $table->string('maxLeagueName');
-            $table->string('maxLeagueDivision');
+            $table->string('maxTier');
+            $table->string('maxDivision');
             $table->integer('user_id')->nulleable();
 
             $table->timestamps();

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Summoner;
+use App\SummonersController;
 
 class SummonersController extends Controller
 {
@@ -24,12 +25,9 @@ class SummonersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($region, $summonerName)
+    public function search($region, $summonerName)
     {
         $api_key = '42a8caaa-9b4f-4fa6-b26d-a59494d6b76d';
-
-        //https://lan.api.pvp.net/api/lol/lan/v1.4/summoner/by-name/sensual%20rankey?api_key=42a8caaa-9b4f-4fa6-b26d-a59494d6b76d
-        //https://lan.api.pvp.net/api/lol/lan/v2.5/league/by-summoner/91615/entry?api_key=42a8caaa-9b4f-4fa6-b26d-a59494d6b76d
 
         $client = new \GuzzleHttp\Client();
 
@@ -45,39 +43,12 @@ class SummonersController extends Controller
 
         $summoner = Summoner::where($matchThese)->get();
         if (count($summoner) > 0){
-            echo "Lo encuentra";
+            $this->update($region, $summonerId);
         } else {
-            echo "No lo encuentra";
+            $this->store($region, $summonerId);
         }
-        /*
-        $res = $client->request('GET', 'https://'.$region.'.api.pvp.net/api/lol/'.$region.'/v2.5/league/'.$league.'?type=RANKED_SOLO_5x5&api_key='.$api_key);
-        $data = $res->getBody();
-        $data = json_decode($data, true);
-        $leagueName = $data['name'];
-        $leagueTier = $data['tier'];
-        $leagueQueue = $data['queue'];
-        $entries = $data['entries'];
 
-        for($i = 0; $i < count($entries); $i++){
-            $user = new Summoner;
-            $user->region = $region;
-            $user->leagueName = $leagueName;
-            $user->tier = $leagueTier;
-            $user->queue = $leagueQueue;
-            $user->playerId = $playerOrTeamId = $entries[$i]['playerOrTeamId'];
-            $user->playerName = $playerOrTeamName = $entries[$i]['playerOrTeamName'];
-            $user->division = $division = $entries[$i]['division'];
-            $user->leaguePoints = $leaguePoints = $entries[$i]['leaguePoints'];
-            $user->wins = $wins = $entries[$i]['wins'];
-            $user->losses = $losses = $entries[$i]['losses'];
-            $user->division = $division = $entries[$i]['division'];
-            $user->leaguePoints = $leaguePoints = $entries[$i]['leaguePoints'];
-            $user->user_id = 0;
-            $user->save();
-            echo "\r\n".$playerOrTeamName;
-        }*/
-
-        //dd($summonerId);
+        return [$region, $summonerId];
     }
 
     /**
@@ -86,9 +57,37 @@ class SummonersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    function store($region, $summonerId)
     {
-        //
+        $api_key = '42a8caaa-9b4f-4fa6-b26d-a59494d6b76d';
+
+        $client = new \GuzzleHttp\Client();
+
+        $res = $client->request('GET', 'https://'.$region.'.api.pvp.net/api/lol/'.$region.'/v2.5/league/by-summoner/'.$summonerId.'/entry?api_key='.$api_key);
+        $data = $res->getBody();
+        $data = json_decode($data, true);
+
+        $leagueName = $data[$summonerId][0]['name'];
+        $leagueTier = $data[$summonerId][0]['tier'];
+        $leagueQueue = $data[$summonerId][0]['queue'];
+        $entries = $data[$summonerId][0]['entries'];
+        $summoner = new Summoner;
+        $summoner->region = $region;
+        $summoner->leagueName = $leagueName;
+        $summoner->tier = $leagueTier;
+        $summoner->queue = $leagueQueue;
+        $summoner->playerId = $playerOrTeamId = $entries[0]['playerOrTeamId'];
+        $summoner->playerName = $playerOrTeamName = $entries[0]['playerOrTeamName'];
+        $summoner->division = $division = $entries[0]['division'];
+        $summoner->leaguePoints = $leaguePoints = $entries[0]['leaguePoints'];
+        $summoner->wins = $wins = $entries[0]['wins'];
+        $summoner->losses = $losses = $entries[0]['losses'];
+        $summoner->division = $division = $entries[0]['division'];
+        $summoner->leaguePoints = $leaguePoints = $entries[0]['leaguePoints'];
+        $summoner->user_id = -1;
+        $summoner->maxTier = $leagueTier;
+        $summoner->maxDivision = $entries[0]['division'];
+        $summoner->save();
     }
 
     /**
@@ -97,9 +96,12 @@ class SummonersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($region, $summonerName)
     {
-        //
+        $data = $this->search($region, $summonerName);
+        $matchThese = ['playerId' => $data[1], 'region' => $data[0]];
+        $summoner = Summoner::where($matchThese)->get();
+        return View('summoners.index')->with('summoner', $summoner);
     }
 
     /**
@@ -120,7 +122,7 @@ class SummonersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($region, $summonerId)
     {
         //
     }

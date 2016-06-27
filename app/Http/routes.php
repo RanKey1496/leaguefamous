@@ -18,5 +18,5 @@ Route::get('/', function () {
 
 //Summoner Routes
 Route::get('/{region}/{summonerName}', [
-		'uses'	=>	'SummonersController@create',
-		'as'	=>	'summoners.create']);
+		'uses'	=>	'SummonersController@show',
+		'as'	=>	'summoners.show']);
