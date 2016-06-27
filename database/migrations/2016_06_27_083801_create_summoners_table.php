@@ -16,7 +16,7 @@ class CreateSummonersTable extends Migration
             
             $table->string('region');
             $table->integer('playerId')->unsigned();
-            $table->integer('user_id')->unsigned()->nulleable();
+            $table->integer('user_id')->unsigned()->default(1);
             $table->string('playerName');
             $table->string('leagueName');
             $table->string('tier');

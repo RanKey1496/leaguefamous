@@ -21,7 +21,6 @@ class SummonersController extends Controller
             $matchThese = ['playerId' => $data[1], 'region' => $data[0]];
             $summoner = Summoner::where($matchThese)->get();
             $profileIconId = $summoner[0]['profileIconId'];
-            //http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/1.png
             $profileIconId = 'http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/'.$profileIconId.'.png';
             return View('summoner.summoner')->with('summoner', $summoner)->with('iconURL', $profileIconId);
         } else {
@@ -86,7 +85,6 @@ class SummonersController extends Controller
                 $summoner->leaguePoints = $leaguePoints = $entries[0]['leaguePoints'];
                 $summoner->wins = $wins = $entries[0]['wins'];
                 $summoner->losses = $losses = $entries[0]['losses'];
-                $summoner->user_id = -1;
                 $summoner->maxTier = $leagueTier;
                 $summoner->maxDivision = $entries[0]['division'];
                 $summoner->profileIconId = $summonerProfileIconId;
