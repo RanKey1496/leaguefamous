@@ -3,11 +3,6 @@
 @section('title', 'Password reset')
 
 @section('content')
-  @if (Session::has('status'))
-    <div class="text-succes">
-      {{Session::get('status')}}
-    </div>
-  @endif
 
   {!! Form::open(['route' => 'users.password.email', 'method' => 'POST']) !!}
     {{csrf_field()}}

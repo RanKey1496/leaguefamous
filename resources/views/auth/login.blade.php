@@ -4,12 +4,6 @@
 
 @section('content')
 
-	<div class="container text-danger">
-		@if (Session::has('message'))
-			{{Session::get('message')}}
-		@endif
-	</div>
-
     {!! Form::open(['route' => 'users.login', 'method' => 'POST']) !!}
 
         <div class="form-group">

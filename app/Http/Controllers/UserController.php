@@ -32,7 +32,8 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()){
-            return redirect()->route('users.edit.profile')->withErrors($validator);
+            Flash::success($validator);
+            return redirect()->route('users.edit.profile');
         } else {
             $name = str_random(30) . '-' . $request->file('image')->getClientOriginalName();
             $request->file('image')->move('profiles', $name);
@@ -56,7 +57,8 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()){
-            return redirect()->route('users.edit.password')->withErrors($validator);
+            Flash::success($validator);
+            return redirect()->route('users.edit.password');
         } else {
             if (Hash::check($request->mypassword, Auth::user()->password)){
                 $user = new User;
