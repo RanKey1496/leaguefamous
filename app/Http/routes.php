@@ -91,3 +91,12 @@ Route::post('user/updatepassword', [
 Route::get('/{region}/{summonerName}', [
 		'uses'	=>	'SummonersController@show',
 		'as'	=>	'summoners.show']);
+
+//Comment Routes
+Route::post('comment/add', [
+		'uses'	=>	'CommentController@store',
+		'as'	=>	'comments.store']);
+
+Route::post('comment/delete/{id}',[
+		'uses'	=>	'CommentController@destroy',
+		'as'	=>	'comments.destroy']);

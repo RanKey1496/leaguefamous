@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use DB;
 use App\Summoner;
+use App\Comment;
 use App\SummonersController;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Exception\RequestException;
@@ -22,7 +24,13 @@ class SummonersController extends Controller
             $summoner = Summoner::where($matchThese)->get();
             $profileIconId = $summoner[0]['profileIconId'];
             $profileIconId = 'http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/'.$profileIconId.'.png';
-            return View('summoner.summoner')->with('summoner', $summoner)->with('iconURL', $profileIconId);
+            $comments = DB::select("SELECT * FROM comments WHERE summoner_id = ? AND summoner_region = ? ORDER BY created_at DESC", [$summoner[0]['playerId'], $summoner[0]['region']]);
+            
+            foreach ($comments as $comment) {
+                $data = DB::select("SELECT username FROM users WHERE id = ?", [$comment->user_id]);
+                $comment->username = $data[0]->username;
+            }
+            return View('summoner.summoner')->with('summoner', $summoner)->with('iconURL', $profileIconId)->with('comments', $comments);
         } else {
             return View('errors.main')->with('error', $data);
         }

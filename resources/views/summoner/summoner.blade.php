@@ -21,4 +21,50 @@
 	</div>
 	<!--End Summoner Data-->
 
+	@if($summoner[0])
+		<div>
+			{!! $summoner[0]->playerName !!}
+		</div>    
+		<div>
+			<h2>Leave a comment</h2>
+		</div>
+		@if(Auth::guest())
+			<a href="{{ route('users.login') }}">Login to Comment</a>
+		@else
+			<div class="panel-body">
+				<form method="post" action="{{ route('comments.store') }}">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					<input type="hidden" name="summonerId" value="{{ $summoner[0]->playerId }}">
+					<input type="hidden" name="region" value="{{ $summoner[0]->region }}">
+					<div class="form-group">
+						<textarea required="required" placeholder="Enter comment here" name="body" class="form-control"></textarea>
+					</div>
+					<input type="submit" name='post_comment' class="btn btn-success" value="Post"/>
+				</form>
+			</div>
+		@endif
+		<div>
+			@if($comments)
+				<ul style="list-style: none; padding: 0">
+					@foreach($comments as $comment)
+					<div class="panel panel-primary">
+					  <div class="panel-heading">
+						    <strong>{{ $comment->username }}</strong> 
+						    <span class="text-default">{{ date("d-m-Y", strtotime($comment->created_at)) }}</span>
+						    @if($comment->user_id == Auth::user()->id)
+							  		<span class="glyphicon glyphicon-remove text-danger pull-right"></span>
+							@endif
+						</div>
+					  <div class="panel-body">
+					    <p>{{ $comment->body }}</p>
+					  </div>
+					</div>
+					@endforeach
+				</ul>
+    		@endif
+		</div>
+	@else
+		404 error
+	@endif
+
 @endsection

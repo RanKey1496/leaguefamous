@@ -24,7 +24,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function summoner(){
-        return $this->hasMany('App\Summoner');
+    public function summoners()
+    {
+        return $this->hasMany('App\Summoner','user_id');
     }
 }
