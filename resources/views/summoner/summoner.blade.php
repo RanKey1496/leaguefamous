@@ -4,9 +4,9 @@
 
 	<!--Summoner Data-->
 	<div class="container">
-		<img src="{{ $iconURL }}">
+		<img class="img-rounded" src="{{ $iconURL }}">
 		<p>{{ $summoner[0]->playerId }}</p>
-		<p>{{ $summoner[0]->playerName }}</p>
+		<h1>{{ $summoner[0]->playerName }}</h1>
 		<p>{{ $summoner[0]->region }}</p>
 		<p>{{ $summoner[0]->leagueName }}</p>
 		<p>{{ $summoner[0]->tier }}</p>

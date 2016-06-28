@@ -75,7 +75,7 @@
 					</td>
 					<td>
 						<a href="" class="star">
-							<h2 class="glyphicon glyphicon-star" aria-hidden="true"></h2>
+							<h2 class="glyphicon glyphicon-heart text-danger" aria-hidden="true"></h2>
 						</a>
 					</td>
 				</tr>
