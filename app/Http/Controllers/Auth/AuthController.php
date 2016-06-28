@@ -7,6 +7,10 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
+use Mail;
+use Auth;
 
 class AuthController extends Controller
 {
@@ -29,6 +33,7 @@ class AuthController extends Controller
      * @var string
      */
     protected $redirectTo = '/';
+    protected $redirectPath = 'user';
 
     /**
      * Create a new authentication controller instance.
@@ -37,7 +42,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->middleware($this->guestMiddleware(), ['except' => 'getLogout']);
     }
 
     /**
@@ -46,27 +51,84 @@ class AuthController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
+
+    public function postRegister(Request $request){
+
+        $rules = [
+            'username' => 'required|min:3|max:16|unique:users,username',
+            'email' => 'required|email|max:255|unique:users,email',
+            'password' => 'required|min:6|max:18|confirmed',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()){
+            return redirect()->route('users.register')->withErrors($validator)->withInput();
+        } else {
+            $user = new User;
+            $data['username'] = $user->username = $request->username;
+            $data['email'] = $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+            $user->remember_token = str_random(100);
+            $data['confirm_token'] = $user->confirm_token = str_random(100);
+
+            Mail::send('auth.emails.register', ['data' => $data], function($mail) use($data){
+                $mail->subject('Confirm your account');
+                $mail->to($data['email'], $data['username']);
+            });
+
+            Flash::success("We have sent a confirmation e-mail to " .$user->email);
+            $user->save();
+            return redirect()->route('users.register');
+        }
+
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+    public function confirmRegister($email, $confirm_token){
+         $user = new User;
+         $the_user = $user->select()->where('email', '=', $email)
+           ->where('confirm_token', '=', $confirm_token)->get();
+         
+         if (count($the_user) > 0){
+              $active = 1;
+              $confirm_token = str_random(100);
+              $user->where('email', '=', $email)->update(['active' => $active, 'confirm_token' => $confirm_token]);
+              Flash::success('Good one ' . $the_user[0]['username'] . ' you can sign now');
+              return redirect()->route('users.register');
+         }
+         else
+         {
+            return redirect('');
+         }
     }
+
+    public function postLogin(Request $request){
+        if (Auth::attempt(
+            [
+            'email' => $request->email,
+            'password' => $request->password,
+            'active' => 1
+            ]
+            , $request->has('remember')
+            )){
+            return redirect()->intended($this->redirectPath());
+        }else{
+            $rules = [
+            'email' => 'required|email',
+            'password'  => 'required',
+            ];
+
+            $validator = Validator::make($request->all(), $rules);
+
+            Flash::error("The e-mail/password is invalid");
+            return redirect()->route('users.login')->withErrors($validator)->withInput();
+        }
+    }
+
+    public function getLogout()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
+
 }

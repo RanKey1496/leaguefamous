@@ -49,76 +49,37 @@
 	  <table class="table table-hover">
 	    <thead>
 			<th>Imagen</th>
-			<th>Region</th>
-			<th>Tier</th>
+			<th>Summoner</th>
+			<th>Rank</th>
+			<th>Wins</th>
+			<th>Losses</th>
 			<th>Likes</th>
 		</thead>
 		<tbody>
-			<tr class="table-row" data-href="http://efukt.com">
-				<td>
-					<a href="#" class="pull-left">
-						<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
-					</a>
-				</td>
-				<td>
-					<span class="media-meta pull-right">Febrero 13, 2016</span>
-				</td>
-				<td>
-					<span class="media-meta pull-middle">Pagado</span>
-				</td>
-				<td>
-					<p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
-				</td>
-				<td>
-					<a href="javascript:;" class="star">
-						<i class="glyphicon glyphicon-star"></i>
-					</a>
-				</td>
-			</tr>
-
-			<tr class="table-row" data-href="facebook.com">
-				<td>
-					<a href="#" class="pull-left">
-						<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
-					</a>
-				</td>
-				<td>
-					<span class="media-meta pull-right">Febrero 13, 2016</span>
-				</td>
-				<td>
-					<span class="media-meta pull-middle">Pagado</span>
-				</td>
-				<td>
-					<p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
-				</td>
-				<td>
-					<a href="javascript:;" class="star">
-						<i class="glyphicon glyphicon-star"></i>
-					</a>
-				</td>
-			</tr>
-
-			<tr class="table-row" data-href="google.com">
-				<td>
-					<a href="#" class="pull-left">
-						<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
-					</a>
-				</td>
-				<td>
-					<span class="media-meta pull-right">Febrero 13, 2016</span>
-				</td>
-				<td>
-					<span class="media-meta pull-middle">Pagado</span>
-				</td>
-				<td>
-					<p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
-				</td>
-				<td>
-					<a href="javascript:;" class="star">
-						<i class="glyphicon glyphicon-star"></i>
-					</a>
-				</td>
-			</tr>
+			@foreach($summoners as $summoner)
+				<tr class="table-row" data-href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">
+					<td class="text-center"> 
+						<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/{{ $summoner->profileIconId }}.png" class="media-photo">
+					</td>
+					<td>
+						<h2 class="media-meta">{{ $summoner->playerName }}</h2>
+					</td>
+					<td>
+						<h2 class="media-meta">{{ $summoner->tier }} {{ $summoner->division }}</h2>
+					</td>
+					<td>
+						<h2 style="color: #00ff00;" class="summary">{{ $summoner->wins }}</h2>
+					</td>
+					<td>
+						<h2 style="color: #ff0000;" class="summary">{{ $summoner->losses }}</h2>
+					</td>
+					<td>
+						<a href="" class="star">
+							<h2 class="glyphicon glyphicon-star" aria-hidden="true"></h2>
+						</a>
+					</td>
+				</tr>
+			@endforeach
 		</tbody>
 	  </table>
 	</div>
@@ -133,8 +94,10 @@
 
 	<style type="text/css">
 		.table-row{
-		cursor:pointer;
+			cursor:pointer;
 		}
 	</style>
 	<!--End Lists-->
+
+	{!! $summoners->render() !!}
 @endsection
