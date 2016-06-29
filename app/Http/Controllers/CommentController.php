@@ -17,18 +17,18 @@ class CommentController extends Controller
 
     public function store(Request $request)
     {
-    	DB::select("INSERT INTO comments (user_id, summoner_id, summoner_region, body) VALUES(?,?,?,?)", [$request->user()->id, $request->input('summonerId'), $request->input('region'), $request->input('body')]);
+    	DB::insert("INSERT INTO comments (user_id, summoner_id, summoner_region, body) VALUES(?,?,?,?)", [$request->user()->id, $request->input('summonerId'), $request->input('region'), $request->input('body')]);
     	return redirect()->back();     
     }
 
     public function storeReply(Request $request)
     {
-        DB::select("INSERT INTO comments (parentId, user_id, summoner_id, summoner_region, body) VALUES(?,?,?,?,?)", [$request->input('commentId'), $request->user()->id, $request->input('summonerId'), $request->input('region'), $request->input('body')]);
+        DB::insert("INSERT INTO comments (parentId, user_id, summoner_id, summoner_region, body) VALUES(?,?,?,?,?)", [$request->input('commentId'), $request->user()->id, $request->input('summonerId'), $request->input('region'), $request->input('body')]);
         return redirect()->back();     
     }
 
-    public function destroy(Request $request, $id){
-        DB::select("DELETE FROM comments WHERE id=?", [$id]);
+    public function destroy(Request $request){
+        DB::update("UPDATE comments SET deleted_at=NOW() WHERE id=?", [$request->input('id')]);
         Flash::success("Your comment was deleted");
         return redirect()->back();
     }

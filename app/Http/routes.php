@@ -106,10 +106,10 @@ Route::post('comment/delete/{id}',[
 		'as'	=>	'comments.destroy']);
 
 //Likes
-Route::post('summoner/like', [
-	'uses' => 'LikeController@likeSummoner', 
+Route::post('/like', [
+	'uses' => 'LikeController@like', 
 	'as' => 'summoners.like']);
 
-Route::post('comment/like/{id}', [
-	'uses' => 'LikeController@likeComment', 
-	'as' => 'comments.like']);
+Route::post('/unlike',[
+		'uses'	=>	'LikeController@unlike',
+		'as'	=>	'summoners.unlike']);

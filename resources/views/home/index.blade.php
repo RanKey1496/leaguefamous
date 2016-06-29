@@ -74,9 +74,18 @@
 						<h2 style="color: #ff0000;" class="summary">{{ $summoner->losses }}</h2>
 					</td>
 					<td>
-						<a href="" class="star">
-							<h2 class="glyphicon glyphicon-heart text-danger" aria-hidden="true"></h2>
-						</a>
+						@if(!Auth::guest())
+							@if(!$summoner->liked)
+								<a href="#" id="{{ $summoner->playerId }}_{{ $summoner->region }}" class=" glyphicon glyphicon-heart text-danger ajax-like" style="font-size: 50px; text-decoration: none;">
+								</a>
+							@else
+								<a href="#" id="{{ $summoner->playerId }}_{{ $summoner->region }}" class=" glyphicon glyphicon-heart text-primary ajax-unlike" style="font-size: 50px; text-decoration: none;">
+								</a>
+							@endif
+						@else
+							<a href="{{ route('users.login') }}" class=" glyphicon glyphicon-heart text-danger" style="font-size: 50px; text-decoration: none;">
+							</a>
+						@endif
 					</td>
 				</tr>
 			@endforeach
@@ -90,6 +99,62 @@
 				window.document.location = $(this).data("href");
 			});
 		});
+	
+		$.ajaxSetup({
+		    headers: {
+		        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    }
+		})
+
+		$(function() {
+                $('.ajax-like').click(function(e) {
+                    e.preventDefault();
+                    var id=$(this).attr("id");
+                    $.post('{{ route('summoners.like') }}', {
+                        "summonerId_region" : $(this).attr("id")
+                    }, function(response) {
+                        if(response.result != null && response.result == '1'){
+                            if(response.isunlike=='1'){
+                                $("#"+id).removeClass('text-danger');
+                                $("#"+id).addClass('text-primary');
+                            }else{
+                                $("#"+id).removeClass('text-primary');
+                                $("#"+id).addClass('text-danger');
+                            }
+                        }else{
+                            alert("Server Error");
+                        }
+                    }, "json").always(function() {
+                        //l.stop();
+                    });
+                    return false;
+                });
+            });
+
+		$(function() {
+                $('.ajax-unlike').click(function(e) {
+                    e.preventDefault();
+                    var id=$(this).attr("id");
+                    $.post('{{ route('summoners.unlike') }}', {
+                        "summonerId_region" : $(this).attr("id")
+                    }, function(response) {
+                        if(response.result != null && response.result == '1'){
+                            if(response.isunlike=='1'){
+                                $("#"+id).removeClass('text-danger');
+                                $("#"+id).addClass('text-success');
+                            }else{
+                                $("#"+id).removeClass('text-success');
+                                $("#"+id).addClass('text-danger');
+                            }
+                        }else{
+                            alert("Server Error");
+                        }
+                    }, "json").always(function() {
+                        //l.stop();
+                    });
+                    return false;
+                });
+            });
 	</script>
 
 	<style type="text/css">
