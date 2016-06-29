@@ -97,6 +97,19 @@ Route::post('comment/add', [
 		'uses'	=>	'CommentController@store',
 		'as'	=>	'comments.store']);
 
+Route::post('commentReply/add', [
+		'uses'	=>	'CommentController@storeReply',
+		'as'	=>	'comments.storeReply']);
+
 Route::post('comment/delete/{id}',[
 		'uses'	=>	'CommentController@destroy',
 		'as'	=>	'comments.destroy']);
+
+//Likes
+Route::post('summoner/like', [
+	'uses' => 'LikeController@likeSummoner', 
+	'as' => 'summoners.like']);
+
+Route::post('comment/like/{id}', [
+	'uses' => 'LikeController@likeComment', 
+	'as' => 'comments.like']);

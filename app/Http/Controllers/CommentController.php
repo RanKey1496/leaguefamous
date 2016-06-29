@@ -21,6 +21,12 @@ class CommentController extends Controller
     	return redirect()->back();     
     }
 
+    public function storeReply(Request $request)
+    {
+        DB::select("INSERT INTO comments (parentId, user_id, summoner_id, summoner_region, body) VALUES(?,?,?,?,?)", [$request->input('commentId'), $request->user()->id, $request->input('summonerId'), $request->input('region'), $request->input('body')]);
+        return redirect()->back();     
+    }
+
     public function destroy(Request $request, $id){
         DB::select("DELETE FROM comments WHERE id=?", [$id]);
         Flash::success("Your comment was deleted");

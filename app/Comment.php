@@ -11,6 +11,6 @@ class Comment
     }
 
     public function getComments($summonerId, $region) { 
-        return DB::select('SELECT * FROM comments WHERE summoner_id = ? AND summoner_region = "?"', [$summonerId, $region]);
+        return DB::select("SELECT * FROM comments WHERE summoner_id = ? AND summoner_region = ? ORDER BY created_at DESC", [$summonerId, $region]);
     }
 }

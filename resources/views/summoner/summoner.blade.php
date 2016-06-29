@@ -43,22 +43,59 @@
 				</form>
 			</div>
 		@endif
+		<hr/>
 		<div>
 			@if($comments)
 				<ul style="list-style: none; padding: 0">
 					@foreach($comments as $comment)
-					<div class="panel panel-primary">
-					  <div class="panel-heading">
-						    <strong>{{ $comment->username }}</strong> 
-						    <span class="text-default">{{ date("d-m-Y", strtotime($comment->created_at)) }}</span>
-						    @if($comment->user_id == Auth::user()->id)
-							  		<span class="glyphicon glyphicon-remove text-danger pull-right"></span>
-							@endif
-						</div>
-					  <div class="panel-body">
-					    <p>{{ $comment->body }}</p>
-					  </div>
-					</div>
+						@if($comment->parentId == NULL)
+							<div class="panel panel-primary">
+							  	<div class="panel-heading">
+								    <strong>{{ $comment->username }}</strong> 
+								    <span class="text-default">{{ $comment->created_at }}</span>
+								    @if(!Auth::guest())
+										@if(Auth::user()->id == $comment->user_id)
+										  		<span class="glyphicon glyphicon-remove text-danger pull-right"></span>
+										@endif
+									@endif
+								</div>
+								<div class="panel-body">
+							    	<p>{{ $comment->body }}</p>
+							    		<div class="list-group">
+								    		@foreach($comments as $commentReply)
+								    			@if($commentReply->parentId == $comment->id)
+								    				<div class="list-group-item">
+								    					<strong>{{ $commentReply->username }}</strong> 
+													    <span class="text-default">{{ $commentReply->created_at }}</span>
+													    @if(!Auth::guest())
+															@if(Auth::user()->id == $commentReply->user_id)
+															  		<span class="glyphicon glyphicon-remove text-danger pull-right"></span>
+															@endif
+														@endif
+														<p>{{ $commentReply->body }}</p>
+								    				</div>
+								    			@endif
+								    		@endforeach
+								    	</div>
+							    	<div>
+							    		@if(!Auth::guest())
+											<div class="panel-body">
+												<form method="post" action="{{ route('comments.storeReply') }}">
+													<input type="hidden" name="_token" value="{{ csrf_token() }}">
+													<input type="hidden" name="commentId" value="{{ $comment->id }}">
+													<input type="hidden" name="summonerId" value="{{ $summoner[0]->playerId }}">
+													<input type="hidden" name="region" value="{{ $summoner[0]->region }}">
+													<div class="form-group">
+														<textarea required="required" placeholder="Enter comment here" name="body" class="form-control"></textarea>
+													</div>
+													<input type="submit" name='post_comment' class="btn btn-success" value="Post"/>
+												</form>
+											</div>
+										@endif
+							    	</div>
+								</div>
+							</div>
+						@endif
 					@endforeach
 				</ul>
     		@endif

@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use DB;
 use App\Summoner;
+use App\User;
 use App\Comment;
 use App\SummonersController;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Exception\RequestException;
+use Carbon\Carbon;
 
 class SummonersController extends Controller
 {
@@ -24,11 +26,13 @@ class SummonersController extends Controller
             $summoner = Summoner::where($matchThese)->get();
             $profileIconId = $summoner[0]['profileIconId'];
             $profileIconId = 'http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/'.$profileIconId.'.png';
-            $comments = DB::select("SELECT * FROM comments WHERE summoner_id = ? AND summoner_region = ? ORDER BY created_at DESC", [$summoner[0]['playerId'], $summoner[0]['region']]);
+            $comments = new Comment();
+            $comments = $comments->getComments($summoner[0]['playerId'], $summoner[0]['region']);
             
             foreach ($comments as $comment) {
-                $data = DB::select("SELECT username FROM users WHERE id = ?", [$comment->user_id]);
-                $comment->username = $data[0]->username;
+                $data = User::find($comment->user_id);
+                $comment->username = $data->username;
+                $comment->created_at = Carbon::parse($comment->created_at)->diffForHumans();
             }
             return View('summoner.summoner')->with('summoner', $summoner)->with('iconURL', $profileIconId)->with('comments', $comments);
         } else {

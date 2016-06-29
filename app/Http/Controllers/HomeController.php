@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Summoner;
+use App\Like;
 
 class HomeController extends Controller
 {
