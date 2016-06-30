@@ -6,6 +6,8 @@
 	<link rel="stylesheet" href="{{ asset('plugins\css\general.css')}}">
 	<script src="{{ asset('plugins/jquery/js/jquery-2.1.4.js') }}"></script>
 	<script src="{{ asset('plugins/bootstrap/js/bootstrap.js') }}"></script>
+  	<script src="{{ asset("plugins/typeahead/typeahead.bundle.js") }}"></script>
+  	
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<script type="text/javascript">
 		$.ajaxSetup({

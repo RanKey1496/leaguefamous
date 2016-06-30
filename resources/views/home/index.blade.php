@@ -39,8 +39,15 @@
 	  </div><!-- /.col-lg-6 -->
 	</div><!-- /.row -->
 	<!--End Search-->
-
+	<hr/>
+	<div id="remote">
+	  <input class="typeahead" type="text" placeholder="Search summoners...">
 	</div>
+	<div class="container">
+	    <p class="example-description">Search summoners: </p>
+		<input id="my-input" class="typeahead" type="text" placeholder="input a country name">
+	</div>
+	<hr/>
 	<hr/>
 	<!--End Header-->
 
@@ -131,6 +138,32 @@
 			cursor:pointer;
 		}
 	</style>
+
+	<script type="text/javascript">
+		var summoners = new Bloodhound({
+		  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+		  queryTokenizer: Bloodhound.tokenizers.whitespace,
+		  prefetch: 'http://localhost/leaguefamous-html/public/all',
+		  remote: {
+		    url: 'http://localhost/leaguefamous-html/public/search/summoner/%QUERY'
+		    wildcard: '%QUERY'
+		  }
+		});
+
+		$('#remote .typeahead').typeahead(null, {
+		  name: 'summoners',
+		  display: 'value',
+		  source: summoners
+		});
+
+		$(document).ready(function(){
+		    $('input.typeahead').typeahead({
+		        name: 'summoners',
+		        prefetch: 'http://localhost/leaguefamous-html/public/all',
+		        limit: 10
+		    });
+		}); 
+	</script>
 	<!--End Lists-->
 
 	{!! $summoners->render() !!}
