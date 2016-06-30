@@ -4,23 +4,31 @@
 
 	<!--Summoner Data-->
 	<div class="container">
-		<img class="img-rounded" src="{{ $iconURL }}">
+	    <div class="row">
+	        <div class="col-md-2">
+		<img class="img-rounded" src="{{ 
+			$iconURL }}">
+			</div>
+			<div class="col-md-5">
 		<p>{{ $summoner[0]->playerId }}</p>
-		<h1>{{ $summoner[0]->playerName }}</h1>
+		<p>{{ $summoner[0]->playerName }}</p>
 		<p>{{ $summoner[0]->region }}</p>
-		<p>{{ $summoner[0]->leagueName }}</p>
-		<p>{{ $summoner[0]->tier }}</p>
-		<p>{{ $summoner[0]->division }}</p>
-		<p>{{ $summoner[0]->queue }}</p>
-		<p>{{ $summoner[0]->leaguePoints }}</p>
-		<p>{{ $summoner[0]->wins }}</p>
-		<p>{{ $summoner[0]->losses }}</p>
-		<p>{{ $summoner[0]->likes }}</p>
-		<p>Max Tier Obtenido - {{ $summoner[0]->maxTier }}</p>
-		<p>Max Division Obtenido - {{ $summoner[0]->maxDivision }}</p>
+			</div>
+			<div class="col-md-5">
+		<p>{{ $summoner[0]->tier }} {{ $summoner[0]->division }} - {{ $summoner[0]->leaguePoints }} LP</p>
+		<p>Max Rank - {{ $summoner[0]->maxTier }} {{ $summoner[0]->maxDivision }}</p>
+		<p>{{ $summoner[0]->wins }}/{{ $summoner[0]->losses }}</p>
+		    </div>
+		    <div class="col-md-12">
+		<p>{{ $summoner[0]->likes }} 200 Likes</p>
+		<p>100 Comments</p>
+
+			</div>
+		</div>
 	</div>
 	<!--End Summoner Data-->
 
+		
 	@if($summoner[0])
 		<div>
 			{!! $summoner[0]->playerName !!}
@@ -103,7 +111,8 @@
 	@else
 		404 error
 	@endif
-
+<p>{{ $summoner[0]->leagueName }}</p>
+		<p>{{ $summoner[0]->queue }}</p>
 	<script type="text/javascript">
 		$(function() {
 			$('.ajax-remove').click(function(e) {

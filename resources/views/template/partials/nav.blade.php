@@ -25,7 +25,7 @@
             </ul>
           </li>
         @else
-          <li><a href="{{route('users.login')}}">Log In or Sign Up</a></li>
+          <li><a href="{{route('users.register')}}">Log In or Sign Up</a></li>
         @endif
       </ul>
       </div>
