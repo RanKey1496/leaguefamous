@@ -8,7 +8,7 @@
                     </li>
                     <li class="footer-menu-divider">&sdot;</li>
                     <li>
-                        <a href="#about" class="third after">About League Famous</a>
+                        <a href="#about" class="third after">About</a>
                     </li>
                     <li class="footer-menu-divider">&sdot;</li>
                     <li>
