@@ -9,34 +9,35 @@
 	  </div>
 
 	<!--Search-->
-	<div class="dropdown pull-right">
-	  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-	    North America
-	    <span class="caret"></span>
-	  </button>
-	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-	    <li><a href="#">North America</a></li>
-	    <li><a href="#">Latin America North</a></li>
-	    <li><a href="#">Latin America South</a></li>
-	    <li><a href="#">Brazil</a></li>
-	    <li role="separator" class="divider"></li>
-	    <li><a href="#">Europe West</a></li>
-	    <li><a href="#">Europe Nordic &amp; East</a></li>
-	    <li><a href="#">Russia</a></li>
-	    <li><a href="#">Turkey</a></li>
-	    <li role="separator" class="divider"></li>
-	    <li><a href="#">South Korea</a></li>
-	    <li><a href="#">Oceania</a></li>
-	    <li role="separator" class="divider"></li>
-	    <li><a href="#">All</a></li>
-	  </ul>
-	</div>
+	
 	<div class="row">
-	  <div class="col-md-4">
-	    <div class="input-group">
+	  <div class="col-xs-6 col-sm-4">
 	      <input type="text" class="form-control" placeholder="Search summoners...">
-	    </div><!-- /input-group -->
-	  </div><!-- /.col-lg-6 -->
+	  </div>
+	  <div class="col-xs-6 col-sm-offset-2">
+		  <div class="dropdown pull-right">
+		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    North America
+		    <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		    <li><a href="#">North America</a></li>
+		    <li><a href="#">Latin America North</a></li>
+		    <li><a href="#">Latin America South</a></li>
+		    <li><a href="#">Brazil</a></li>
+		    <li role="separator" class="divider"></li>
+		    <li><a href="#">Europe West</a></li>
+		    <li><a href="#">Europe Nordic &amp; East</a></li>
+		    <li><a href="#">Russia</a></li>
+		    <li><a href="#">Turkey</a></li>
+		    <li role="separator" class="divider"></li>
+		    <li><a href="#">South Korea</a></li>
+		    <li><a href="#">Oceania</a></li>
+		    <li role="separator" class="divider"></li>
+		    <li><a href="#">All</a></li>
+		  </ul>
+			</div>
+		</div>
 	</div><!-- /.row -->
 	<!--End Search-->
 
