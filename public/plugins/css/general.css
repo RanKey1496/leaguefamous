@@ -11,6 +11,23 @@ footer {
    text-align: center;   
 }
 
+.summoner-avatar{
+	padding-bottom:1em;
+}
+
+div.summoner-data{
+	padding-bottom:0.5em;
+	font-size:2em;
+	color:#aaaaaa;
+	margin:0em;
+}
+
+.summoner-data h6{
+	color:black;
+	margin:0em;
+	font-weight:bold;
+}
+
 @-moz-document url-prefix() {
   fieldset { display: table-cell; }
 }

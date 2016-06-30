@@ -6,29 +6,29 @@
 	<div class="container">
 	    <div class="row">
 	        <div class="col-md-2">
-		<img class="img-rounded" src="{{ 
+				<div class="summoner-avatar"><img class="img-rounded" src="{{ 
 			$iconURL }}">
+				</div>
 			</div>
-			<div class="col-md-5">
-		<p>{{ $summoner[0]->playerId }}</p>
-		<p>{{ $summoner[0]->playerName }}</p>
-		<p>{{ $summoner[0]->region }}</p>
+			<div class="col-md-3">
+				<div class="summoner-data"><h6>NAME</h6>{{ $summoner[0]->playerName }}</div>
+				<div class="summoner-data"><h6>RANK</h6>{{ $summoner[0]->playerId }}</div>
+				<div class="summoner-data"><h6>REGION</h6>{{ $summoner[0]->region }}</div>
 			</div>
-			<div class="col-md-5">
-		<p>{{ $summoner[0]->tier }} {{ $summoner[0]->division }} - {{ $summoner[0]->leaguePoints }} LP</p>
-		<p>Max Rank - {{ $summoner[0]->maxTier }} {{ $summoner[0]->maxDivision }}</p>
-		<p>{{ $summoner[0]->wins }}/{{ $summoner[0]->losses }}</p>
+			<div class="col-md-3">
+				<div class="summoner-data"><h6>CURRENT LEAGUE</h6>{{ $summoner[0]->tier }} {{ $summoner[0]->division }}</div>
+				<div class="summoner-data"><h6>MAX LEAGUE</h6>{{ $summoner[0]->maxTier }} {{ $summoner[0]->maxDivision }}</div>
+				<div class="summoner-data"><h6>WIN/LOSS</h6>{{ $summoner[0]->wins }}/{{ $summoner[0]->losses }}</div>
 		    </div>
-		    <div class="col-md-12">
-		<p>{{ $summoner[0]->likes }} 200 Likes</p>
-		<p>100 Comments</p>
-
+		    <div class="col-md-3">
+				<p>{{ $summoner[0]->likes }} 200 Likes</p>
+				<p>100 Comments</p>
 			</div>
 		</div>
 	</div>
 	<!--End Summoner Data-->
 
-		
+		<div class="container">
 	@if($summoner[0])
 		<div>
 			{!! $summoner[0]->playerName !!}
@@ -51,8 +51,8 @@
 				</form>
 			</div>
 		@endif
-		<hr/>
-		<div>
+		</div>
+		<div class="container">
 			@if($comments)
 				<ul style="list-style: none; padding: 0">
 					@foreach($comments as $comment)
