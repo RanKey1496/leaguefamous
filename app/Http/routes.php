@@ -92,14 +92,6 @@ Route::get('/{region}/{summonerName}', [
 		'uses'	=>	'SummonersController@show',
 		'as'	=>	'summoners.show']);
 
-Route::get('/search/summoner/{name}', [
-		'uses'	=>	'SearchController@index',
-		'as'	=>	'summoners.search']);
-
-Route::get('/all', [
-		'uses'	=>	'SearchController@all',
-		'as'	=>	'summoners.all']);
-
 //Comment Routes
 Route::post('comment/add', [
 		'uses'	=>	'CommentController@store',
