@@ -8,6 +8,9 @@ use App\Http\Requests;
 use App\Comment;
 use Laracasts\Flash\Flash;
 use DB;
+use Auth;
+use Illuminate\Support\Facades\Input;
+use Response;
 
 class CommentController extends Controller
 {
@@ -28,8 +31,17 @@ class CommentController extends Controller
     }
 
     public function destroy(Request $request){
-        DB::update("UPDATE comments SET deleted_at=NOW() WHERE id=?", [$request->input('id')]);
-        Flash::success("Your comment was deleted");
-        return redirect()->back();
+        if(Input::has("comment")){
+            $comment = new Comment();
+            $commented = $comment->getComment(Auth::user()->id, Input::get('comment'));
+
+            if(count($commented) > 0){
+                $comment->delete(Auth::user()->id, Input::get('comment'));
+                Flash::success("Your comment was deleted");
+                return Response::json(array('result'=>'1','isdeleted'=>'1','text'=>'Deleted'));
+            }
+        }else{
+            return Response::json(array('result' => '0'));
+        }
     }
 }

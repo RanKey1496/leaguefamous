@@ -18,26 +18,6 @@ class LikeController extends Controller
         $this->middleware('auth');
     }
 
-    /*public function like(Request $request)
-    {
-        DB::insert("INSERT INTO likes (user_id, summoner_id, summoner_region) VALUES(?,?,?)", [$request->user()->id, $request->input('summonerId'), $request->input('region')]);
-        return redirect()->back();     
-    }
-
-    public function unlike(Request $request){
-        DB::update("UPDATE likes SET deleted_at=NOW() WHERE id=?", [$request->input('id')]);
-        return redirect()->back();
-    }
-
-    public function likedByMe($summonerId, $region, $userId){
-        $data = DB::select("SELECT * FROM likes WHERE user_id=? AND summoner_id=? AND summoner_region=?", [$userId, $summonerId, $region]);
-        dd($data);
-        if($data > 0 ){
-            return true;
-        }
-        return false;
-    }*/
-
     public function like(Request $request){
         if(Input::has("summonerId_region")){
 
@@ -49,11 +29,8 @@ class LikeController extends Controller
             $like = new Like();
             $likes = $like->getLike($summonerId, $region, Auth::user()->id);
 
-            //$like = DB::select("SELECT * FROM likes WHERE summonerId=? AND region =? AND user_id=?");
-            //Find if user already liked the post
             if(count($likes) > 0){
                 $likes = $like->liked($summonerId, $region, Auth::user()->id);
-                //Likes::where("post_id",$post_id[1])->where("user_id","1")->delete();
                 return Response::json(array('result'=>'1','isunlike'=>'0','text'=>'Like'));
             }else{
                 $likes = $like->getLiked($summonerId, $region, Auth::user()->id);
@@ -66,7 +43,6 @@ class LikeController extends Controller
                 return Response::json(array('result'=>'1','isunlike'=>'1','text'=>'Unlike'));
             }
         }else{
-            //No post id no access sorry
             return Response::json(array('result' => '0'));
         }        
     }

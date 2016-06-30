@@ -79,7 +79,7 @@
 								<a href="#" id="{{ $summoner->playerId }}_{{ $summoner->region }}" class=" glyphicon glyphicon-heart text-danger ajax-like" style="font-size: 50px; text-decoration: none;">
 								</a>
 							@else
-								<a href="#" id="{{ $summoner->playerId }}_{{ $summoner->region }}" class=" glyphicon glyphicon-heart text-primary ajax-unlike" style="font-size: 50px; text-decoration: none;">
+								<a href="#" id="{{ $summoner->playerId }}_{{ $summoner->region }}" class=" glyphicon glyphicon-heart text-primary ajax-like" style="font-size: 50px; text-decoration: none;">
 								</a>
 							@endif
 						@else
@@ -99,12 +99,6 @@
 				window.document.location = $(this).data("href");
 			});
 		});
-	
-		$.ajaxSetup({
-		    headers: {
-		        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-		    }
-		})
 
 		$(function() {
                 $('.ajax-like').click(function(e) {
@@ -129,32 +123,7 @@
                     });
                     return false;
                 });
-            });
-
-		$(function() {
-                $('.ajax-unlike').click(function(e) {
-                    e.preventDefault();
-                    var id=$(this).attr("id");
-                    $.post('{{ route('summoners.unlike') }}', {
-                        "summonerId_region" : $(this).attr("id")
-                    }, function(response) {
-                        if(response.result != null && response.result == '1'){
-                            if(response.isunlike=='1'){
-                                $("#"+id).removeClass('text-danger');
-                                $("#"+id).addClass('text-success');
-                            }else{
-                                $("#"+id).removeClass('text-success');
-                                $("#"+id).addClass('text-danger');
-                            }
-                        }else{
-                            alert("Server Error");
-                        }
-                    }, "json").always(function() {
-                        //l.stop();
-                    });
-                    return false;
-                });
-            });
+            });		
 	</script>
 
 	<style type="text/css">

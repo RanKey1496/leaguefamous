@@ -49,13 +49,13 @@
 				<ul style="list-style: none; padding: 0">
 					@foreach($comments as $comment)
 						@if($comment->parentId == NULL)
-							<div class="panel panel-primary">
+							<div id="comment_{{ $comment->id }}" class="panel panel-primary">
 							  	<div class="panel-heading">
 								    <strong>{{ $comment->username }}</strong> 
 								    <span class="text-default">{{ $comment->created_at }}</span>
 								    @if(!Auth::guest())
 										@if(Auth::user()->id == $comment->user_id)
-										  		<span class="glyphicon glyphicon-remove text-danger pull-right"></span>
+										  		<a href="#" id="{{ $comment->id }}" class="glyphicon glyphicon-remove text-danger pull-right ajax-remove" style="font-size: 20px; text-decoration: none;"></a>
 										@endif
 									@endif
 								</div>
@@ -64,12 +64,12 @@
 							    		<div class="list-group">
 								    		@foreach($comments as $commentReply)
 								    			@if($commentReply->parentId == $comment->id)
-								    				<div class="list-group-item">
+								    				<div id="comment_{{ $commentReply->id }}" class="list-group-item">
 								    					<strong>{{ $commentReply->username }}</strong> 
 													    <span class="text-default">{{ $commentReply->created_at }}</span>
 													    @if(!Auth::guest())
 															@if(Auth::user()->id == $commentReply->user_id)
-															  		<span class="glyphicon glyphicon-remove text-danger pull-right"></span>
+															  		<a href="#" id="{{ $commentReply->id }}" class="glyphicon glyphicon-remove text-danger pull-right ajax-remove" style="font-size: 20px; text-decoration: none;"></a>
 															@endif
 														@endif
 														<p>{{ $commentReply->body }}</p>
@@ -103,5 +103,27 @@
 	@else
 		404 error
 	@endif
+
+	<script type="text/javascript">
+		$(function() {
+			$('.ajax-remove').click(function(e) {
+				e.preventDefault();
+				var id = $(this).attr("id");
+				$.post('{{ route('comments.destroy') }}', {
+					"comment" : $(this).attr("id")
+				}, function(response) {
+					if(response.result != null && response.result == '1'){
+						if(response.isdeleted=='1'){
+							$("#comment_"+id).remove();
+						}
+					}else{
+						alert("Server Error");
+					}
+				}, "json").always(function() {
+                    });
+				return false;
+			});
+		});
+	</script>
 
 @endsection
