@@ -1,5 +1,6 @@
 body {
-	background: #edeff0;
+	background:#343740;
+	color:#949ba2;
 	padding-top: 70px;
 }
 
@@ -11,21 +12,117 @@ footer {
    text-align: center;   
 }
 
-.summoner-avatar{
-	padding-bottom:1em;
+/* nav */
+
+.navbar-woodtier{
+	background:rgba(52, 55, 64, 0.95);
 }
 
-div.summoner-data{
-	padding-bottom:0.5em;
+.navbar-brand{
+	font-family:Lobster;
 	font-size:2em;
-	color:#aaaaaa;
-	margin:0em;
+}
+
+/* home page */
+
+.avatar{
+	width:64px;
+	height:64px;
+}
+
+/* summoner profile top */
+
+.summoner-avatar{
+}
+
+.summoner-profile-bg{
+	border-radius:5px;
+	background-color:#44464f;
+}
+
+.summoner-profile-left{
+	padding-top:15px;
+	padding-bottom:15px;
+	height:300px;
+}
+
+.summoner-name{
+	font-family:Dosis;
+	font-weight:200;
+	color:white;
+    font-size:3.5em;
+}
+
+.summoner-region{
+	font-family:Dosis;
+	color:#949ba2;
+	font-size:1.5em;
+	text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+
+.summoner-button-container{
+	height:100px;
+	width:100%;
+	background-color:#2f2f2f;
+	color:white;
+}
+
+.summoner-button{
+	float:left;
+	width:100px;
+	color:#949ba2;
+}
+
+.summoner-profile-right{
+	padding-top:15px;
+	padding-bottom:15px;
+}
+
+.summoner-data{
+	padding:0px;
 }
 
 .summoner-data h6{
-	color:black;
-	margin:0em;
+	margin:0;
+	color:white;
 	font-weight:bold;
+	text-transform:uppercase;
+}
+.summoner-data p{
+	font-family:Dosis;
+	font-size:1.5em;
+}
+
+
+.comment-panel{
+	background-color:#44464f;
+}
+
+.jumbotron-dark{
+	background:rgba(0,0,0,0.4);
+}
+
+/* comment section */
+
+.comment-username{
+	font-weight:bold;
+	color:white;
+}
+
+.padding15{
+	padding-left:15px;
+	padding-right:15px;
+}
+
+.nopadding{
+	padding:0;
+}
+
+anti-row-margin{
+    margin-right:0px;
+    margin-left:0px;
 }
 
 @-moz-document url-prefix() {

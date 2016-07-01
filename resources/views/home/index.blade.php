@@ -3,7 +3,7 @@
 @section('content')
 	<!--Header-->
 	<div class="container">
-	  <div class="jumbotron">
+	  <div class="jumbotron jumbotron-dark">
 	    <h1>Welcome</h1> 
 	    <p>.Wombats are short-legged, muscular quadrupedal marsupials that are native to Australia. They are about 1 m (40 in) in length with small, stubby tails. There are three extant species and they are all members of the family Vombatidae. They are adaptable and habitat tolerant, and are found in forested, mountainous, and heathland areas of south-eastern Australia, including Tasmania, as well as an isolated patch of about 300 ha (740 acres) in Epping Forest National Park[2] in central Queensland.</p> 
 	  </div>
@@ -42,10 +42,10 @@
 	<!--End Search-->
 
 	</div>
-	<hr/>
 	<!--End Header-->
 
 	<!--Lists-->
+	<div class="container">
 	<div class="table-responsive">
 	  <table class="table table-hover">
 	    <thead>
@@ -60,7 +60,7 @@
 			@foreach($summoners as $summoner)
 				<tr class="table-row" data-href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">
 					<td class="text-center"> 
-						<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/{{ $summoner->profileIconId }}.png" class="media-photo">
+						<img class="img-rounded avatar" src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/{{ $summoner->profileIconId }}.png" class="media-photo">
 					</td>
 					<td>
 						<h2 class="media-meta">{{ $summoner->playerName }}</h2>
@@ -93,7 +93,7 @@
 		</tbody>
 	  </table>
 	</div>
-
+	</div>
 	<script type="text/javascript">
 		$(document).ready(function($) {
 			$(".table-row").click(function() {
