@@ -5,16 +5,14 @@
 	<!--Summoner Data-->
 	<div class="container">
 	    <div class="row">
-	        <div class="col-xs-6 summoner-profile-left">
+	        <div class="col-xs-12 summoner-profile-left">
 				<div class="summoner-avatar"><img class="img-rounded" src="{{ 
 			$iconURL }}">
 				</div>
 				<div class="summoner-name">
 					{{ $summoner[0]->playerName }}
 				</div>
-			</div>
-			<div class="col-xs-6 summoner-profile-right">
-				<span style="float:right;">
+				<span>
 					<div class="summoner-button">
 						<a href="#" class="glyphicon glyphicon-heart"></a>
 						{{ $summoner[0]->likes }} 200
@@ -24,7 +22,7 @@
 						100
 					</div>
 				</span>
-		    </div>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-12">

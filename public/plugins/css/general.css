@@ -38,6 +38,7 @@ footer {
 
 .list-plate-inner{
 	overflow:hidden;
+	background:linear-gradient(135deg, #545660 0%,#44464f 100%);
 	background-color:#44464f;
 	border-radius:5px;
 	padding-top:15px;
@@ -95,7 +96,7 @@ footer {
 }
 
 .summoner-profile-left{
-	height:230px;
+	height:250px;
 }
 
 .summoner-name{
@@ -123,7 +124,7 @@ footer {
 
 .summoner-button{
 	float:left;
-	padding-left:20px;
+	padding-right:20px;
 	font-family:dosis;
 	font-size:1.5em;
 	color:#949ba2;

@@ -2,12 +2,13 @@
 
 @section('content')
 	<!--Header-->
+	<!--
 	<div class="container">
 		<div class="jumbotron jumbotron-dark">
 		  <h1>Welcome</h1> 
 		  <p>Wombats are short-legged, muscular quadrupedal marsupials that are native to Australia.</p> 
 		</div>
-	</div>
+	</div> -->
 	<!--Search-->
 	
 	<div class="container">
@@ -50,7 +51,7 @@
 	<div class="container">
 		<div class="row">
 			@foreach($summoners as $summoner)
-				<div class="col-sm-6 col-md-4 col-lg-3 list-plate-outer">
+				<div class="col-sm-6 col-md-4 col-lg-4 list-plate-outer">
 					<div class="col-md-12 list-plate-inner">
 						<div class="list-plate-region">{{ $summoner->region }}</div>
 						<a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">
