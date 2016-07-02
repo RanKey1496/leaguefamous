@@ -5,41 +5,54 @@
 	<!--Summoner Data-->
 	<div class="container">
 	    <div class="row">
-		        <div class="col-md-6 summoner-profile-left">
-					<div class="summoner-avatar"><img class="img-rounded" src="{{ 
-				$iconURL }}">
-					</div>
-					<div class="summoner-name">
-						{{ $summoner[0]->playerName }}
-					</div>
-					<div id="region" class="summoner-region">
-						{{ $summoner[0]->region }}
-					</div>
-					<div class="summoner-button">
-						{{ $summoner[0]->likes }} 200 Likes
-					</div>
-					<div class="summoner-button">
-						100 Comments
-					</div>
+	        <div class="col-xs-6 summoner-profile-left">
+				<div class="summoner-avatar"><img class="img-rounded" src="{{ 
+			$iconURL }}">
 				</div>
-				<div class="col-md-6 summoner-profile-right">
-					<div class="col-xs-3 col-md-6 summoner-data">
-						<h6>Current League</h6>
-						<p>{{ $summoner[0]->tier }} {{ $summoner[0]->division }}</p>
+				<div class="summoner-name">
+					{{ $summoner[0]->playerName }}
+				</div>
+			</div>
+			<div class="col-xs-6 summoner-profile-right">
+				<span style="float:right;">
+					<div class="summoner-button">
+						<a href="#" class="glyphicon glyphicon-heart"></a>
+						{{ $summoner[0]->likes }} 200
 					</div>
-					<div class="col-xs-3 col-md-6 summoner-data">
-						<h6>Max League</h6>
-						<p>{{ $summoner[0]->maxTier }} {{ $summoner[0]->maxDivision }}</p>
+					<div class="summoner-button">
+						<span class="glyphicon glyphicon-comment"></span>
+						100
 					</div>
-					<div class="col-xs-3 col-md-6 summoner-data">
-						<h6>Win / Loss</h6>
-						<p>{{ $summoner[0]->wins }} / {{ $summoner[0]->losses }}</p>
-					</div>
-					<div class="col-xs-3 col-md-6 summoner-data">
-						<h6>Popularity</h6>
-						<p>{{ $summoner[0]->playerId }}</p>
-					</div>
-			    </div>
+				</span>
+		    </div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-xs-6 col-sm-4 col-md-2 summoner-data">
+					<h6>Region</h6>
+					<p>{{ $summoner[0]->region }}</p>
+				</div>
+				<div class="col-xs-6 col-sm-4 col-md-2 summoner-data">
+					<h6>Popularity</h6>
+					<p>{{ $summoner[0]->playerId }}</p>
+				</div>
+				<div class="col-xs-6 col-sm-4 col-md-2 summoner-data">
+					<h6>Current League</h6>
+					<p>{{ $summoner[0]->tier }} {{ $summoner[0]->division }}</p>
+				</div>
+				<div class="col-xs-6 col-sm-4 col-md-2 summoner-data">
+					<h6>League Points</h6>
+					<p>{{ $summoner[0]->leaguePoints }}</p>
+				</div>
+				<div class="col-xs-6 col-sm-4 col-md-2 summoner-data">
+					<h6>Max League</h6>
+					<p>{{ $summoner[0]->maxTier }} {{ $summoner[0]->maxDivision }}</p>
+				</div>
+				<div class="col-xs-6 col-sm-4 col-md-2 summoner-data">
+					<h6>Win / Loss</h6>
+					<p>{{ $summoner[0]->wins }} / {{ $summoner[0]->losses }}</p>
+				</div>
+		    </div>
 		</div>
 	</div>
 	<!--End Summoner Data-->
@@ -71,9 +84,12 @@
 					@if($comment->parentId == NULL)
 					<div class="container">
 						<div class="row">
-							<div class="col-md-8">
-								<div id="comment_{{ $comment->id }}" class="panel comment-panel">
-								  	<div class="panel-heading">
+							<div class="col-md-8 comment-panel">
+								<div id="comment_{{ $comment->id }}">
+								  	<div class="">
+								  		<div class=""><img class="img-circle comment-profile-md" src="{{ 
+										$iconURL }}">
+										</div>
 									    <span class="comment-username">{{ $comment->username }}</span>
 									    <span class="text-default">{{ $comment->created_at }}</span>
 									    @if(!Auth::guest())
@@ -82,7 +98,7 @@
 											@endif
 										@endif
 									</div>
-									<div class="panel-body">
+									<div class="">
 								    	<p>{{ $comment->body }}</p>
 								    		<div class="list-group">
 									    		@foreach($comments as $commentReply)

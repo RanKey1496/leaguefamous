@@ -19,7 +19,7 @@
                         <a href="#terms" class="third after">Terms & Conditions</a>
                     </li>
                 </ul>
-                <p class="copyright text-muted small">Copyright &copy; League Famous 2016. All Rights Reserved</p>
+                <p class="copyright small">Copyright &copy; League Famous 2016. All Rights Reserved</p>
             </div>
         </div>
     </div>
