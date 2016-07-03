@@ -21,4 +21,8 @@ class Comment
     public function delete($user_id, $id) {
         return DB::update("UPDATE comments SET deleted_at = NOW() WHERE user_id=? AND id=?", [$user_id, $id]);
     }
+
+    public function comments($summonerId, $region){
+        return DB::select("SELECT COUNT(*) AS cont FROM comments WHERE summoner_id=? AND summoner_region=?", [$summonerId, $region]);
+    }
 }

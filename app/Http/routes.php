@@ -100,6 +100,12 @@ Route::get('/all', [
 		'uses'	=>	'SearchController@all',
 		'as'	=>	'summoners.all']);
 
+Route::post('executeSearch', ['uses' => 'SearchController@search', 'as'	=> 'executeSearch']);
+
+Route::get('search', function(){
+	return View('search');
+});
+
 //Comment Routes
 Route::post('comment/add', [
 		'uses'	=>	'CommentController@store',

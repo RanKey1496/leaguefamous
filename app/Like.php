@@ -29,4 +29,8 @@ class Like
     public function updateSave($summonerId, $region, $user_id) {
         return DB::insert("UPDATE likes SET deleted_at = NULL WHERE summoner_id = ? AND summoner_region = ? AND user_id=?", [$summonerId, $region, $user_id]);
     }
+
+    public function likes($summonerId, $region){
+        return DB::select("SELECT COUNT(*) AS cont FROM likes WHERE summoner_id=? AND summoner_region=?", [$summonerId, $region]);
+    }
 }

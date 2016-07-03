@@ -27,7 +27,7 @@ class UserController extends Controller
     }
 
     public function updateProfile(Request $request){
-        $rules = ['image' => 'required|image|max:1024*1024*1',];
+        $rules = ['image' => 'required|image|max:256*256*1',];
 
         $validator = Validator::make($request->all(), $rules);
 

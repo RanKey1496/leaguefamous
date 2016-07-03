@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Summoner;
 use Illuminate\Support\Facades\Input;
 use Response;
+use View;
 
 class SearchController extends Controller
 {
@@ -46,4 +47,13 @@ class SearchController extends Controller
 
 		return Response::json(array('data'=>$summoners));
 	}
+
+	public function search(Request $keyword)
+    {
+
+        //$searchUsers = Summoner::where("name", "iLIKE", "%{$keyword->get('keywords')}%");
+        $summoners = Summoner::where('playerName','like','%'.$keyword->input('keywords').'%')->orderBy('playerName','asc')->take(5)->get(array('playerName','region','profileIconId'));
+        return View::make('template.searchSummoner')->with('summoners', $summoners);
+
+    }
 }

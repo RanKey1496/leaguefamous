@@ -9,6 +9,7 @@ use DB;
 use App\Summoner;
 use App\User;
 use App\Comment;
+use App\Like;
 use App\SummonersController;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Exception\RequestException;
@@ -26,14 +27,23 @@ class SummonersController extends Controller
             $summoner = Summoner::where($matchThese)->get();
             $profileIconId = $summoner[0]['profileIconId'];
             $profileIconId = 'http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/'.$profileIconId.'.png';
-            $comments = new Comment();
-            $comments = $comments->getComments($summoner[0]['playerId'], $summoner[0]['region']);
+            $comment = new Comment();
+            $like = new Like();
+            $comments = $comment->getComments($summoner[0]['playerId'], $summoner[0]['region']);
             
             foreach ($comments as $comment) {
                 $data = User::find($comment->user_id);
                 $comment->username = $data->username;
+                $comment->icon = $data->profileImage;
                 $comment->created_at = Carbon::parse($comment->created_at)->diffForHumans();
             }
+
+            $cntcomment = new Comment();
+            $likes = $like->likes($summoner[0]['playerId'], $summoner[0]['region']);
+            $cntcomments = $cntcomment->comments($summoner[0]['playerId'], $summoner[0]['region']);
+            $summoner[0]->likes = $likes[0]->cont;
+            $summoner[0]->comments = $cntcomments[0]->cont;
+
             return View('summoner.summoner')->with('summoner', $summoner)->with('iconURL', $profileIconId)->with('comments', $comments);
         } else {
             return View('errors.main')->with('error', $data);

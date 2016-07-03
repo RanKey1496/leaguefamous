@@ -15,11 +15,11 @@
 				<span>
 					<div class="summoner-button">
 						<a href="#" class="glyphicon glyphicon-heart"></a>
-						{{ $summoner[0]->likes }} 200
+						{{ $summoner[0]->likes }}
 					</div>
 					<div class="summoner-button">
 						<span class="glyphicon glyphicon-comment"></span>
-						100
+						{{ $summoner[0]->comments }}
 					</div>
 				</span>
 			</div>
@@ -62,6 +62,7 @@
 		</div>
 		@if(Auth::guest())
 			<a href="{{ route('users.login') }}">Login to Comment</a>
+			<h1/>
 		@else
 			<div class="panel-body">
 				<form method="post" action="{{ route('comments.store') }}">
@@ -84,9 +85,8 @@
 						<div class="row">
 							<div class="col-md-8 comment-panel">
 								<div id="comment_{{ $comment->id }}">
-								  	<div class="">
-								  		<div class=""><img class="img-circle comment-profile-md" src="{{ 
-										$iconURL }}">
+								  	<div class="" style="margin-bottom:20px;">
+								  		<div class=""><img class="img-responsive img-circle comment-profile-md" style="width:56px; height: 56px; margin-right:20px;" src="{{ url('/') }}/{{ $comment->icon }}">
 										</div>
 									    <span class="comment-username">{{ $comment->username }}</span>
 									    <span class="text-default">{{ $comment->created_at }}</span>
@@ -116,7 +116,8 @@
 									    	</div>
 								    	<div>
 								    		@if(!Auth::guest())
-												<div class="panel-body">
+								    			<a href="" id="make_{{ $comment->id }}" class="make-reply-a">Reply</a>
+												<div id="reply_{{ $comment->id }}" class="panel-body" style="display:none;">
 													<form method="post" action="{{ route('comments.storeReply') }}">
 														<input type="hidden" name="_token" value="{{ csrf_token() }}">
 														<input type="hidden" name="commentId" value="{{ $comment->id }}">
@@ -126,6 +127,7 @@
 															<textarea required="required" placeholder="Enter comment here" name="body" class="form-control"></textarea>
 														</div>
 														<input type="submit" name='post_comment' class="btn btn-success" value="Post"/>
+														<a href="" id="cancel_{{ $comment->id }}" class="cancel-reply-a btn btn-default">Cancel</a>
 													</form>
 												</div>
 											@endif
@@ -162,6 +164,16 @@
 				return false;
 			});
 		});
+
+		$(function(){
+			$('.make-reply-a').click(function(e){
+				e.preventDefault();
+				var id = $(this).attr("id");
+				$('#'+id).css('{display:none;}');
+				$('#reply_'+id).css('{display:block;}');
+			});
+		});
+
 		switch("{{ $summoner[0]->region }}") {
 			case "na":
 				document.getElementById("region").innerHTML = "North America";
@@ -198,7 +210,7 @@
 				break;
 			default:
 				document.getElementById("region").innerHTML = "{{ $summoner[0]->region }}";
-		}
+		};
 	</script>
 
 @endsection

@@ -75,11 +75,11 @@
 									<a href="{{ route('users.login') }}" class=" glyphicon glyphicon-heart heart-unliked">
 									</a>
 								@endif
-								{{ $summoner->likes }} 200
+								{{ $summoner->likes }}
 							</span>
 							<span class="list-plate-button">
 								<span class="glyphicon glyphicon-comment"></span>
-								100
+								{{ $summoner->comments }}
 							</span>
 						</div>
 					</div>
