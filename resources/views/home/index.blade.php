@@ -10,16 +10,30 @@
 		</div>
 	</div> -->
 	<!--Search-->
-	
+	<div class="big-search">
+		<div class="container">
+			<span class="glyphicon glyphicon-search"></span>
+			<input type="text" class="form-control big-search-input" placeholder="Search summoners...">
+		</div>
+	</div>
 	<div class="container">
 		<div class="row">
-		  	<div class="col-xs-6 col-sm-4">
-		      	<input type="text" class="form-control" placeholder="Search summoners...">
-		 	</div>
-		 	<div class="col-xs-6 col-sm-offset-2">
-				<div class="dropdown pull-right">
+		 	
+		</div>
+	</div>
+	<!--End Search-->
+	<br>
+	</div>
+	<!--End Header-->
+
+	<!--Lists-->
+
+	<div class="container">
+		<div calss="row"">
+			<h1 class="section-header">Popular Summoners</h1><br>
+				<div class="dropdown">
 				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-				North America
+				All Regions
 				<span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -36,55 +50,48 @@
 				<li><a href="#">South Korea</a></li>
 				<li><a href="#">Oceania</a></li>
 				<li role="separator" class="divider"></li>
-				<li><a href="#">All</a></li>
+				<li><a href="#">All Regions</a></li>
 				</ul>
-			</div>
+				</div>
 		</div>
-	</div>
-	<!--End Search-->
-	<br>
-	</div>
-	<!--End Header-->
-
-	<!--Lists-->
-
-	<div class="container">
 		<div class="row">
-			@foreach($summoners as $summoner)
-				<div class="col-sm-6 col-md-4 col-lg-4 list-plate-outer">
-					<div class="col-md-12 list-plate-inner">
-						<div class="list-plate-region">{{ $summoner->region }}</div>
-						<a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">
-							<img class="img-rounded avatar" src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/{{ $summoner->profileIconId }}.png" class="media-photo">
-						</a>
-						<span class="list-plate-name"><a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">{{ $summoner->playerName }}</a></span>
-						<br>
-							{{ $summoner->tier }} {{ $summoner->division }}
-						<br>
-						<div class="list-plate-button-outer">
-							<span class="list-plate-button">
-								@if(!Auth::guest())
-									@if(!$summoner->liked)
-										<a href="#" id="{{ $summoner->playerId }}_{{ $summoner->region }}" class=" glyphicon glyphicon-heart heart-liked ajax-like">
-										</a>
+			<div class="list-plate-wrapper">
+				@foreach($summoners as $summoner)
+					<div class="col-sm-6 col-md-4 col-lg-4 list-plate-outer">
+						<div class="col-md-12 list-plate-inner">
+							<div class="list-plate-region">{{ $summoner->region }}</div>
+							<a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">
+								<img class="img-rounded avatar" src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/{{ $summoner->profileIconId }}.png" class="media-photo">
+							</a>
+							<span class="list-plate-name"><a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">{{ $summoner->playerName }}</a></span>
+							<br>
+								{{ $summoner->tier }} {{ $summoner->division }}
+							<br>
+							<div class="list-plate-button-outer">
+								<span class="list-plate-button">
+									@if(!Auth::guest())
+										@if(!$summoner->liked)
+											<a href="#" id="{{ $summoner->playerId }}_{{ $summoner->region }}" class=" glyphicon glyphicon-heart heart-liked ajax-like">
+											</a>
+										@else
+											<a href="#" id="{{ $summoner->playerId }}_{{ $summoner->region }}" class=" glyphicon glyphicon-heart heart-unliked ajax-like">
+											</a>
+										@endif
 									@else
-										<a href="#" id="{{ $summoner->playerId }}_{{ $summoner->region }}" class=" glyphicon glyphicon-heart heart-unliked ajax-like">
+										<a href="{{ route('users.login') }}" class=" glyphicon glyphicon-heart heart-unliked">
 										</a>
 									@endif
-								@else
-									<a href="{{ route('users.login') }}" class=" glyphicon glyphicon-heart heart-unliked">
-									</a>
-								@endif
-								{{ $summoner->likes }}
-							</span>
-							<span class="list-plate-button">
-								<span class="glyphicon glyphicon-comment"></span>
-								{{ $summoner->comments }}
-							</span>
+									{{ $summoner->likes }}
+								</span>
+								<span class="list-plate-button">
+									<span class="glyphicon glyphicon-comment"></span>
+									{{ $summoner->comments }}
+								</span>
+							</div>
 						</div>
 					</div>
-				</div>
-			@endforeach
+				@endforeach
+			</div>
 		</div>
 	</div>
 
@@ -171,6 +178,15 @@
                     return false;
                 });
             });		
+	 $(function(){
+
+$(".dropdown-menu li a").click(function(){
+  $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+  $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+});
+
+});
+
 	</script>
 
 	<!--End Lists-->
