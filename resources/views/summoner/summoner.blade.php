@@ -55,92 +55,110 @@
 	</div>
 	<!--End Summoner Data-->
 
-		<div class="container">
 	@if($summoner[0])
-		<div>
-			<h2>Leave a comment</h2>
-		</div>
+		<div class="container-flexible member-warning">
 		@if(Auth::guest())
-			<a href="{{ route('users.login') }}">Login to Comment</a>
-			<h1/>
-		@else
-			<div class="panel-body">
-				<form method="post" action="{{ route('comments.store') }}">
-					<input type="hidden" name="_token" value="{{ csrf_token() }}">
-					<input type="hidden" name="summonerId" value="{{ $summoner[0]->playerId }}">
-					<input type="hidden" name="region" value="{{ $summoner[0]->region }}">
-					<div class="form-group">
-						<textarea required="required" placeholder="Enter comment here" name="body" class="form-control"></textarea>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<p class="text-center">This area is for Wood Tier members only. If you are a member, please <a href="{{ route('users.login') }}">Login</a> to comment. Otherwise, please exit this page.</p>
 					</div>
-					<input type="submit" name='post_comment' class="btn btn-success" value="Post"/>
-				</form>
+				</div>
+			</div>
+		@else
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<form method="post" action="{{ route('comments.store') }}">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							<input type="hidden" name="summonerId" value="{{ $summoner[0]->playerId }}">
+							<input type="hidden" name="region" value="{{ $summoner[0]->region }}">
+							<div class="form-group">
+								<textarea required="required" placeholder="Enter comment here" name="body" class="form-control"></textarea>
+							</div>
+							<input type="submit" name='post_comment' class="btn btn-success" value="Post"/>
+						</form>
+					</div>
+				</div>
 			</div>
 		@endif
 		</div>
+		<div class="section comment-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h1 class="section-header">Comments</h1>
+					</div>
+				</div>
 		@if($comments)
-			<ul style="list-style: none; padding: 0">
+				<div class="row">
+
 				@foreach($comments as $comment)
+
 					@if($comment->parentId == NULL)
-					<div class="container">
-						<div class="row">
-							<div class="col-md-8 comment-panel">
-								<div id="comment_{{ $comment->id }}">
-								  	<div class="" style="margin-bottom:20px;">
-								  		<div class=""><img class="img-responsive img-circle comment-profile-md" style="width:56px; height: 56px; margin-right:20px;" src="{{ url('/') }}/{{ $comment->icon }}">
-										</div>
-									    <span class="comment-username">{{ $comment->username }}</span>
-									    <span class="text-default">{{ $comment->created_at }}</span>
-									    @if(!Auth::guest())
-											@if(Auth::user()->id == $comment->user_id)
-											  		<a href="#" id="{{ $comment->id }}" class="glyphicon glyphicon-remove text-danger pull-right ajax-remove" style="font-size: 20px; text-decoration: none;"></a>
-											@endif
-										@endif
+					<div class="col-sm-6 col-lg-4">
+						<div id="comment_{{ $comment->id }}" class="comment-panel">
+							<div class="row">
+								<div class="col-md-12 comment-header">
+							  		<div class=""><img class="img-responsive img-circle comment-profile-md" style="width:56px; height: 56px; margin-right:20px;" src="{{ url('/') }}/{{ $comment->icon }}">
 									</div>
-									<div class="">
-								    	<p>{{ $comment->body }}</p>
-								    		<div class="list-group">
-									    		@foreach($comments as $commentReply)
-									    			@if($commentReply->parentId == $comment->id)
-									    				<div id="comment_{{ $commentReply->id }}" class="list-group-item">
-									    					<strong>{{ $commentReply->username }}</strong> 
-														    <span class="text-default">{{ $commentReply->created_at }}</span>
-														    @if(!Auth::guest())
-																@if(Auth::user()->id == $commentReply->user_id)
-																  		<a href="#" id="{{ $commentReply->id }}" class="glyphicon glyphicon-remove text-danger pull-right ajax-remove" style="font-size: 20px; text-decoration: none;"></a>
-																@endif
-															@endif
-															<p>{{ $commentReply->body }}</p>
-									    				</div>
-									    			@endif
-									    		@endforeach
-									    	</div>
-								    	<div>
-								    		@if(!Auth::guest())
-								    			<a href="" id="make_{{ $comment->id }}" class="make-reply-a">Reply</a>
-												<div id="reply_{{ $comment->id }}" class="panel-body" style="display:none;">
-													<form method="post" action="{{ route('comments.storeReply') }}">
-														<input type="hidden" name="_token" value="{{ csrf_token() }}">
-														<input type="hidden" name="commentId" value="{{ $comment->id }}">
-														<input type="hidden" name="summonerId" value="{{ $summoner[0]->playerId }}">
-														<input type="hidden" name="region" value="{{ $summoner[0]->region }}">
-														<div class="form-group">
-															<textarea required="required" placeholder="Enter comment here" name="body" class="form-control"></textarea>
-														</div>
-														<input type="submit" name='post_comment' class="btn btn-success" value="Post"/>
-														<a href="" id="cancel_{{ $comment->id }}" class="cancel-reply-a btn btn-default">Cancel</a>
-													</form>
-												</div>
-											@endif
-								    	</div>
+								    <span class="comment-username">{{ $comment->username }}</span>
+								    <span>{{ $comment->created_at }}</span>
+								    @if(!Auth::guest())
+										@if(Auth::user()->id == $comment->user_id)
+										  		<a href="#" id="{{ $comment->id }}" class="glyphicon glyphicon-remove text-danger pull-right ajax-remove" style="font-size: 20px; text-decoration: none;"></a>
+										@endif
+									@endif
+								</div>
+
+								<div class="col-md-12">
+							    	<p>{{ $comment->body }}</p>
+						    		<div class="list-group">
+							    		@foreach($comments as $commentReply)
+							    			@if($commentReply->parentId == $comment->id)
+							    				<div id="comment_{{ $commentReply->id }}" class="list-group-item">
+							    					<strong>{{ $commentReply->username }}</strong> 
+												    <span class="text-default">{{ $commentReply->created_at }}</span>
+												    @if(!Auth::guest())
+														@if(Auth::user()->id == $commentReply->user_id)
+														  		<a href="#" id="{{ $commentReply->id }}" class="glyphicon glyphicon-remove text-danger pull-right ajax-remove" style="font-size: 20px; text-decoration: none;"></a>
+														@endif
+													@endif
+													<p>{{ $commentReply->body }}</p>
+							    				</div>
+							    			@endif
+							    		@endforeach
+							    	</div>
+							    </div>
+<!--comment reply-->
+					    		@if(!Auth::guest())
+					    		<div class="col-md-12">
+					    			<a href="" id="make_{{ $comment->id }}" class="make-reply-a">Reply</a>
+									<div id="reply_{{ $comment->id }}" class="panel-body" style="display:none;">
+										<form method="post" action="{{ route('comments.storeReply') }}">
+											<input type="hidden" name="_token" value="{{ csrf_token() }}">
+											<input type="hidden" name="commentId" value="{{ $comment->id }}">
+											<input type="hidden" name="summonerId" value="{{ $summoner[0]->playerId }}">
+											<input type="hidden" name="region" value="{{ $summoner[0]->region }}">
+											<div class="form-group">
+												<textarea required="required" placeholder="Enter comment here" name="body" class="form-control"></textarea>
+											</div>
+											<input type="submit" name='post_comment' class="btn btn-success" value="Post"/>
+											<a href="" id="cancel_{{ $comment->id }}" class="cancel-reply-a btn btn-default">Cancel</a>
+										</form>
 									</div>
 								</div>
+								@endif
 							</div>
 						</div>
 					</div>
 					@endif
 				@endforeach
-			</ul>
+				</div>
+			</div>
 		@endif
+			</div>
+		</div>
 	@else
 		404 error
 	@endif
