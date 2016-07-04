@@ -95,23 +95,28 @@
 				</div>
 		@if($comments)
 				<div class="row">
-
+					<div class="comment-grid">
 				@foreach($comments as $comment)
 
 					@if($comment->parentId == NULL)
-					<div class="col-sm-6 col-lg-4">
+					<div class="col-sm-6 col-lg-4 comment-tile">
 						<div id="comment_{{ $comment->id }}" class="comment-panel">
 							<div class="row">
 								<div class="col-md-12 comment-header">
-							  		<div class=""><img class="img-responsive img-circle comment-profile-md" style="width:56px; height: 56px; margin-right:20px;" src="{{ url('/') }}/{{ $comment->icon }}">
+									<div class="comment-cog">
+										    @if(!Auth::guest())
+												@if(Auth::user()->id == $comment->user_id)
+												  		<a href="#" id="{{ $comment->id }}" class="glyphicon glyphicon-cog ajax-remove"></a>
+												@endif
+											@endif
 									</div>
-								    <span class="comment-username">{{ $comment->username }}</span>
-								    <span>{{ $comment->created_at }}</span>
-								    @if(!Auth::guest())
-										@if(Auth::user()->id == $comment->user_id)
-										  		<a href="#" id="{{ $comment->id }}" class="glyphicon glyphicon-remove text-danger pull-right ajax-remove" style="font-size: 20px; text-decoration: none;"></a>
-										@endif
-									@endif
+							  		<div><img class="img-responsive img-circle comment-profile-md" style="width:56px; height: 56px; margin-right:20px;" src="{{ url('/') }}/{{ $comment->icon }}">
+									</div>
+									<div class="comment-title-wrapper">
+								    	<span class="comment-username">{{ $comment->username }}</span>
+								    	<br>
+								    	<span>{{ $comment->created_at }}</span>
+								    </div>
 								</div>
 
 								<div class="col-md-12">
@@ -157,6 +162,7 @@
 					</div>
 					@endif
 				@endforeach
+					</div>
 				</div>
 			</div>
 		@endif
@@ -194,7 +200,18 @@
 				$('#reply_'+id).css('{display:block;}');
 			});
 		});
-
+		// init Masonry
+var $grid = $('.comment-grid').masonry({
+  // options...
+});
+// layout Masonry after each image loads
+$grid.imagesLoaded().progress( function() {
+  $grid.masonry('layout');
+});
+		$('.comment-grid').masonry({
+  			itemSelector: '.comment-tile',
+  			columnWidth: 1,
+		});
 		switch("{{ $summoner[0]->region }}") {
 			case "na":
 				document.getElementById("region").innerHTML = "North America";
