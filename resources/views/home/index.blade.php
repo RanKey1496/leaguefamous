@@ -57,16 +57,14 @@
 		<div class="row">
 			<div class="list-plate-wrapper">
 				@foreach($summoners as $summoner)
-					<div class="col-sm-6 col-md-4 col-lg-4 list-plate-outer">
+					<div class="col-sm-6 col-md-4 col-lg-3 list-plate-outer">
 						<div class="col-md-12 list-plate-inner">
 							<div class="list-plate-region">{{ $summoner->region }}</div>
 							<a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">
 								<img class="img-rounded avatar" src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/{{ $summoner->profileIconId }}.png" class="media-photo">
 							</a>
-							<span class="list-plate-name"><a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">{{ $summoner->playerName }}</a></span>
-							<br>
-								{{ $summoner->tier }} {{ $summoner->division }}
-							<br>
+							<div class="list-plate-name"><a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">{{ $summoner->playerName }}</a></div>
+							<div class="list-plate-division">	{{ $summoner->tier }} {{ $summoner->division }}</div>
 							<div class="list-plate-button-outer">
 								<span class="list-plate-button">
 									@if(!Auth::guest())
