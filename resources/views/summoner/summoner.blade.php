@@ -3,54 +3,57 @@
 @section('content')
 
 	<!--Summoner Data-->
-	<div class="container">
-	    <div class="row">
-	        <div class="col-xs-12 summoner-profile-left">
-				<div class="summoner-avatar"><img class="img-rounded" src="{{ 
-			$iconURL }}">
-				</div>
-				<div class="summoner-name">
-					{{ $summoner[0]->playerName }}
-				</div>
-				<span>
-					<div class="summoner-button">
-						<a href="#" class="glyphicon glyphicon-heart"></a>
-						{{ $summoner[0]->likes }}
+	<div class="section1">
+		<div class="container">
+		    <div class="row">
+		        <div class="col-md-2 summoner-profile-left">
+					<div class="summoner-avatar"><img class="img-rounded" src="{{ 
+				$iconURL }}">
 					</div>
-					<div class="summoner-button">
-						<span class="glyphicon glyphicon-comment"></span>
-						{{ $summoner[0]->comments }}
+				</div>
+				<div class="col-md-10 summoner-profile-right">
+					<div class="col-md-12 summoner-name">
+							{{ $summoner[0]->playerName }}
 					</div>
-				</span>
+					<div class="col-md-12 summoner-button-wrapper">
+						<span class="summoner-button">
+							<a href="#" class="glyphicon glyphicon-heart"></a>
+							{{ $summoner[0]->likes }}
+						</span>
+						<span class="summoner-button">
+							<span class="glyphicon glyphicon-comment"></span>
+							{{ $summoner[0]->comments }}
+						</span>
+					</div>
+					<div class="col-md-12">
+						<div class="col-xs-6 col-sm-4 col-md-2 summoner-data">
+							<h6>Region</h6>
+							<p>{{ $summoner[0]->region }}</p>
+						</div>
+						<div class="col-xs-6 col-sm-4 col-md-2 summoner-data">
+							<h6>Popularity</h6>
+							<p>{{ $summoner[0]->playerId }}</p>
+						</div>
+						<div class="col-xs-6 col-sm-4 col-md-2 summoner-data">
+							<h6>Current League</h6>
+							<p>{{ $summoner[0]->tier }} {{ $summoner[0]->division }}</p>
+						</div>
+						<div class="col-xs-6 col-sm-4 col-md-2 summoner-data">
+							<h6>League Points</h6>
+							<p>{{ $summoner[0]->leaguePoints }}</p>
+						</div>
+						<div class="col-xs-6 col-sm-4 col-md-2 summoner-data">
+							<h6>Max League</h6>
+							<p>{{ $summoner[0]->maxTier }} {{ $summoner[0]->maxDivision }}</p>
+						</div>
+						<div class="col-xs-6 col-sm-4 col-md-2 summoner-data">
+							<h6>Win / Loss</h6>
+							<p>{{ $summoner[0]->wins }} / {{ $summoner[0]->losses }}</p>
+						</div>
+					</div>
+			    </div>
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<div class="col-xs-6 col-sm-4 col-md-2 summoner-data">
-					<h6>Region</h6>
-					<p>{{ $summoner[0]->region }}</p>
-				</div>
-				<div class="col-xs-6 col-sm-4 col-md-2 summoner-data">
-					<h6>Popularity</h6>
-					<p>{{ $summoner[0]->playerId }}</p>
-				</div>
-				<div class="col-xs-6 col-sm-4 col-md-2 summoner-data">
-					<h6>Current League</h6>
-					<p>{{ $summoner[0]->tier }} {{ $summoner[0]->division }}</p>
-				</div>
-				<div class="col-xs-6 col-sm-4 col-md-2 summoner-data">
-					<h6>League Points</h6>
-					<p>{{ $summoner[0]->leaguePoints }}</p>
-				</div>
-				<div class="col-xs-6 col-sm-4 col-md-2 summoner-data">
-					<h6>Max League</h6>
-					<p>{{ $summoner[0]->maxTier }} {{ $summoner[0]->maxDivision }}</p>
-				</div>
-				<div class="col-xs-6 col-sm-4 col-md-2 summoner-data">
-					<h6>Win / Loss</h6>
-					<p>{{ $summoner[0]->wins }} / {{ $summoner[0]->losses }}</p>
-				</div>
-		    </div>
 		</div>
 	</div>
 	<!--End Summoner Data-->

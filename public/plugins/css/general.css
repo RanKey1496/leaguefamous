@@ -33,6 +33,10 @@ footer {
 	margin-bottom: 30px;
 }
 
+.section1{
+	padding-bottom:30px;
+}
+
 /* home page */
 
 .avatar{
@@ -94,6 +98,7 @@ footer {
 /* summoner profile top */
 
 .summoner-avatar{
+	margin-bottom:20px;
 }
 
 .summoner-profile-bg{
@@ -102,10 +107,10 @@ footer {
 }
 
 .summoner-profile-left{
-	height:250px;
 }
 
 .summoner-name{
+	margin-top:-20px;
 	font-family:Dosis;
 	font-weight:200;
     font-size:4em;
@@ -126,8 +131,11 @@ footer {
 	background-color:#2f2f2f;
 }
 
+.summoner-button-wrapper{
+	margin-top:20px;
+	margin-bottom:20px;
+}
 .summoner-button{
-	float:left;
 	padding-right:20px;
 	font-size:1.5em;
 }
@@ -145,6 +153,7 @@ footer {
 
 .summoner-data{
 	text-transform:uppercase;
+	margin-top:20px;
 	padding:0px;
 }
 
