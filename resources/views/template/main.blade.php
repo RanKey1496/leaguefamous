@@ -4,6 +4,8 @@
 	<title>@yield('title', 'Welcome') | League Famous</title>
 	<link rel="stylesheet" href="{{ asset('plugins\bootstrap\css\bootstrap.css')}}">
 	<link rel="stylesheet" href="{{ asset('plugins\css\general.css')}}">
+	<link rel="stylesheet" href="{{ asset('plugins\css\demo.css')}}">
+	<link rel="stylesheet" href="{{ asset('plugins\css\ct-paper.css')}}">
 	<link href='https://fonts.googleapis.com/css?family=Dosis:400,300,200' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
