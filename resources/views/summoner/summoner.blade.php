@@ -3,7 +3,7 @@
 @section('content')
 
 	<!--Summoner Data-->
-	<div class="section1">
+	<div class="section1 maze">
 		<div class="container">
 		    <div class="row">
 		        <div class="col-md-2 summoner-profile-left">

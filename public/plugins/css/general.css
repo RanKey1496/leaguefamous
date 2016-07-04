@@ -45,6 +45,10 @@ footer {
 	margin-right:15px;
 }
 
+.maze{
+	background:url('images/maze.jpg');
+}
+
 .list-plate-outer{
 	padding:5px;
 }
