@@ -31,6 +31,6 @@ class Like
     }
 
     public function likes($summonerId, $region){
-        return DB::select("SELECT COUNT(*) AS cont FROM likes WHERE summoner_id=? AND summoner_region=?", [$summonerId, $region]);
+        return DB::select("SELECT COUNT(*) AS cont FROM likes WHERE summoner_id=? AND summoner_region=? AND deleted_at IS NULL", [$summonerId, $region]);
     }
 }
