@@ -30,7 +30,7 @@
 
 	<div class="container">
 		<div calss="row"">
-			<h1 class="section-header">Popular Summoners</h1><br>
+			<h2>Popular Summoners</h2><br>
 				<div class="dropdown">
 				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 				All Regions

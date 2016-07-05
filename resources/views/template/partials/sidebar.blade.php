@@ -1,9 +1,10 @@
 
-    <div class="container-fluid inner-wrapper">
+    <div class="container-fluid">
         <div class="row row-eq-height">
-            <div class="col-md-3 viewport-height" style="background-color:#ddddff">
+            <div class="col-md-3 col-lg-2 viewport-height sidebar">
                 <div class="row">
                     <div class="col-md-12">
+                        <div class="text-center sidebar-brand"><a href="{{route('home')}}">Wood Tier</a></div>
                         <!-- SIDEBAR USERPIC -->
                         <img class="img-rounded center-block" src="{{ $iconURL }}">
                         <!-- END SIDEBAR USERPIC -->
@@ -55,7 +56,7 @@
                     <!-- END MENU -->
                 </div>
             </div>
-            <div class="col-md-9 summoner-content-wrapper" style="background-color:#ffdddd">
+            <div class="col-md-9 col-lg-10 summoner-content-wrapper">
                     <!--Page-Container-->
                     @include('flash::message')
                     @include('template.partials.errors')

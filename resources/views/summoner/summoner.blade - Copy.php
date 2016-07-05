@@ -102,7 +102,7 @@
 					<div class="col-sm-6 col-lg-4 comment-tile">
 						<div id="comment_{{ $comment->id }}" class="comment-panel">
 							<div class="row">
-								<div class="col-md-12 comment-header">
+								<div class="col-md-12 comment-header text-center">
 									<div class="comment-cog">
 										    @if(!Auth::guest())
 												@if(Auth::user()->id == $comment->user_id)
