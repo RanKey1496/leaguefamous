@@ -1,4 +1,4 @@
-@extends('template.main')
+@extends('template.submain')
 
 @section('content')
 
@@ -142,7 +142,7 @@
 					    		@if(!Auth::guest())
 					    		<div class="col-md-12">
 					    			<a href="" id="make_{{ $comment->id }}" class="make-reply-a">Reply</a>
-									<div id="reply_{{ $comment->id }}" class="panel-body" style="display:none;">
+									<div id="make_{{ $comment->id }}_reply" class="panel-body" style="display:none;">
 										<form method="post" action="{{ route('comments.storeReply') }}">
 											<input type="hidden" name="_token" value="{{ csrf_token() }}">
 											<input type="hidden" name="commentId" value="{{ $comment->id }}">
@@ -151,8 +151,7 @@
 											<div class="form-group">
 												<textarea required="required" placeholder="Enter comment here" name="body" class="form-control"></textarea>
 											</div>
-											<input type="submit" name='post_comment' class="btn btn-success" value="Post"/>
-											<a href="" id="cancel_{{ $comment->id }}" class="cancel-reply-a btn btn-default">Cancel</a>
+											<input type="submit" name='post_comment' class="btn btn-success" value="Reply"/>
 										</form>
 									</div>
 								</div>
@@ -196,18 +195,19 @@
 			$('.make-reply-a').click(function(e){
 				e.preventDefault();
 				var id = $(this).attr("id");
-				$('#'+id).css('{display:none;}');
-				$('#reply_'+id).css('{display:block;}');
+				$('#'+id).css('display','none');
+				$('#'+id+'_reply').css('display','inline');
 			});
 		});
+
 		// init Masonry
-var $grid = $('.comment-grid').masonry({
-  // options...
-});
-// layout Masonry after each image loads
-$grid.imagesLoaded().progress( function() {
-  $grid.masonry('layout');
-});
+		var $grid = $('.comment-grid').masonry({
+		  // options...
+		});
+		// layout Masonry after each image loads
+		$grid.imagesLoaded().progress( function() {
+		  $grid.masonry('layout');
+		});
 		$('.comment-grid').masonry({
   			itemSelector: '.comment-tile',
   			columnWidth: 1,
