@@ -1,68 +1,72 @@
-<div class="container">
-    <div class="row profile">
-        <div class="col-md-3">
-            <div class="profile-sidebar">
-                <!-- SIDEBAR USERPIC -->
-                <div class="profile-userpic">
-                    <img src="{{ $iconURL }}" class="img-responsive" alt="">
-                </div>
-                <!-- END SIDEBAR USERPIC -->
-                <!-- SIDEBAR USER TITLE -->
-                <div class="profile-usertitle">
-                    <div class="profile-usertitle-name">
-                        Jhon Gil
-                    </div>
-                    <div class="profile-usertitle-job">
-                        Pro player maximun
-                    </div>
-                </div>
-                <!-- END SIDEBAR USER TITLE -->
-                <!-- SIDEBAR BUTTONS -->
-                <div class="profile-userbuttons">
-                    <button type="button" class="btn btn-success btn-sm">Follow</button>
-                    <button type="button" class="btn btn-danger btn-sm">Message</button>
-                </div>
-                <!-- END SIDEBAR BUTTONS -->
-                <!-- SIDEBAR MENU -->
-                <div class="profile-usermenu">
-                    <ul class="nav">
-                        <li class="active">
-                            <a href="#">
-                            <i class="glyphicon glyphicon-home"></i>
-                            Overview </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                            <i class="glyphicon glyphicon-user"></i>
-                            Account Settings </a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank">
-                            <i class="glyphicon glyphicon-ok"></i>
-                            Tasks </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                            <i class="glyphicon glyphicon-flag"></i>
-                            Help </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- END MENU -->
-            </div>
-        </div>
-        <div class="col-md-9">
-            <div class="profile-content">
-                <!--Page-Container-->
-                @include('flash::message')
-                @include('template.partials.errors')
-                <section>
-                    @yield('content')
-                </section>
-                <!--End Page Container-->
 
-                @include('template.partials.foot')
+    <div class="container-fluid inner-wrapper">
+        <div class="row row-eq-height">
+            <div class="col-md-3 viewport-height" style="background-color:#ddddff">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- SIDEBAR USERPIC -->
+                        <img class="img-rounded center-block" src="{{ $iconURL }}">
+                        <!-- END SIDEBAR USERPIC -->
+                        <!-- SIDEBAR USER TITLE -->
+                        <div class="text-center summoner-name">
+                        {{ $summoner[0]->playerName }}
+                        </div>
+                        <!-- END SIDEBAR USER TITLE -->
+                        <!-- SIDEBAR BUTTONS -->
+                        <div class="summoner-button-wrapper text-center">
+                            <span class="summoner-button">
+                                <a href="#" class="glyphicon glyphicon-heart"></a>
+                                {{ $summoner[0]->likes }}
+                            </span>
+                            <span class="summoner-button">
+                                <span class="glyphicon glyphicon-comment"></span>
+                                {{ $summoner[0]->comments }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-4 col-md-12 summoner-data">
+                        <h6>Region</h6>
+                        <p>{{ $summoner[0]->region }}</p>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-12 summoner-data">
+                        <h6>Popularity</h6>
+                        <p>{{ $summoner[0]->playerId }}</p>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-12 summoner-data">
+                        <h6>Current League</h6>
+                        <p>{{ $summoner[0]->tier }} {{ $summoner[0]->division }}</p>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-12 summoner-data">
+                        <h6>League Points</h6>
+                        <p>{{ $summoner[0]->leaguePoints }}</p>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-12 summoner-data">
+                        <h6>Max League</h6>
+                        <p>{{ $summoner[0]->maxTier }} {{ $summoner[0]->maxDivision }}</p>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-12 summoner-data">
+                        <h6>Win / Loss</h6>
+                        <p>{{ $summoner[0]->wins }} / {{ $summoner[0]->losses }}</p>
+                    </div>
+                    <!-- END SIDEBAR BUTTONS -->
+                    <!-- SIDEBAR MENU -->
+                    <!-- END MENU -->
+                </div>
+            </div>
+            <div class="col-md-9 summoner-content-wrapper" style="background-color:#ffdddd">
+                    <!--Page-Container-->
+                    @include('flash::message')
+                    @include('template.partials.errors')
+                    <section>
+                        @yield('content')
+                    </section>
+                <div class="sticky-footer">
+                    @include('template.partials.foot')
+                </div>
+                    <!--End Page Container-->
+
             </div>
         </div>
     </div>
-</div>

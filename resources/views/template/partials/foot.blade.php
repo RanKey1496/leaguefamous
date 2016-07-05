@@ -1,7 +1,5 @@
 <footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
+            <div class="col-md-12">
                 <ul class="list-inline">
                     <li>
                         <a href="#" class="third after">Home</a>
@@ -21,6 +19,4 @@
                 </ul>
                 <p class="copyright small">Copyright &copy; League Famous 2016. All Rights Reserved</p>
             </div>
-        </div>
-    </div>
 </footer>
