@@ -21,15 +21,14 @@
 		</div>
 	</div>
 <!--End Summoner Data-->
-	<div class="row">
 		@if($comments)
-			<div class="comment-grid">
+		<div class="grid-wrapper">
+			<div id="grid" data-columns>
 				@foreach($comments as $comment)
 					@if($comment->parentId == NULL)
-					<div class="col-sm-6 col-md-4 col-lg-3 comment-tile">
+					<div class="comment-tile">
 						<div id="comment_{{ $comment->id }}" class="comment-panel">
-							<div class="row">
-								<div class="col-md-12 comment-header text-center">
+								<div class="comment-header text-left">
 									<div class="comment-cog">
 										    @if(!Auth::guest())
 												@if(Auth::user()->id == $comment->user_id)
@@ -46,7 +45,7 @@
 								    </div>
 								</div>
 
-								<div class="col-md-12">
+								<div class="comment-body">
 							    	<p>{{ $comment->body }}</p>
 						    		<div class="list-group">
 							    		@foreach($comments as $commentReply)
@@ -83,14 +82,15 @@
 									</div>
 								</div>
 								@endif
-							</div>
 						</div>
 					</div>
 					@endif
 				@endforeach
-					</div>
-				</div>
+			</div>
+		</div>
 		@endif
+
+	<script src="{{ asset('plugins/jquery/js/salvattore.min.js') }}">
 
 	<script type="text/javascript">
 		$(function() {
@@ -121,20 +121,6 @@
 				$('#'+id+'_reply').css('display','inline');
 			});
 		});
-
-		// init Masonry
-		var $grid = $('.comment-grid').masonry({
-		  // options...
-		});
-		// layout Masonry after each image loads
-		$grid.imagesLoaded().progress( function() {
-		  $grid.masonry('layout');
-		});
-		$('.comment-grid').masonry({
-  			itemSelector: '.comment-tile',
-  			columnWidth: 1,
-		});
-
 
 		switch("{{ $summoner[0]->region }}") {
 			case "na":

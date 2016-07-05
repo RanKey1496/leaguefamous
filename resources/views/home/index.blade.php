@@ -27,72 +27,74 @@
 	<!--End Header-->
 
 	<!--Lists-->
-
-	<div class="container">
-		<div calss="row"">
-			<h2>Popular Summoners</h2><br>
-				<div class="dropdown">
-				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-				All Regions
-				<span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-				<li><a href="#">North America</a></li>
-				<li><a href="#">Latin America North</a></li>
-				<li><a href="#">Latin America South</a></li>
-				<li><a href="#">Brazil</a></li>
-				<li role="separator" class="divider"></li>
-				<li><a href="#">Europe West</a></li>
-				<li><a href="#">Europe Nordic &amp; East</a></li>
-				<li><a href="#">Russia</a></li>
-				<li><a href="#">Turkey</a></li>
-				<li role="separator" class="divider"></li>
-				<li><a href="#">South Korea</a></li>
-				<li><a href="#">Oceania</a></li>
-				<li role="separator" class="divider"></li>
-				<li><a href="#">All Regions</a></li>
-				</ul>
+	<div class="section">
+		<div class="container">
+			<div class="row"">
+				<div class="col-md-12">
+					<h2>Popular Summoners</h2><br>
+					<div class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					All Regions
+					<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+					<li><a href="#">North America</a></li>
+					<li><a href="#">Latin America North</a></li>
+					<li><a href="#">Latin America South</a></li>
+					<li><a href="#">Brazil</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="#">Europe West</a></li>
+					<li><a href="#">Europe Nordic &amp; East</a></li>
+					<li><a href="#">Russia</a></li>
+					<li><a href="#">Turkey</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="#">South Korea</a></li>
+					<li><a href="#">Oceania</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="#">All Regions</a></li>
+					</ul>
+					</div>
 				</div>
-		</div>
-		<div class="row">
-			<div class="list-plate-wrapper">
-				@foreach($summoners as $summoner)
-					<div class="col-sm-6 col-md-4 col-lg-43 list-plate-outer">
-						<div class="col-md-12 list-plate-inner">
-							<div class="list-plate-region">{{ $summoner->region }}</div>
-							<a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">
-								<img class="img-rounded avatar" src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/{{ $summoner->profileIconId }}.png" class="media-photo">
-							</a>
-							<div class="list-plate-name"><a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">{{ $summoner->playerName }}</a></div>
-							<div class="list-plate-division">	{{ $summoner->tier }} {{ $summoner->division }}</div>
-							<div class="list-plate-button-outer">
-								<span class="list-plate-button">
-									@if(!Auth::guest())
-										@if(!$summoner->liked)
-											<a href="#" id="{{ $summoner->playerId }}_{{ $summoner->region }}" class=" glyphicon glyphicon-heart heart-liked ajax-like">
-											</a>
+			</div>
+			<div class="row">
+				<div class="list-plate-wrapper">
+					@foreach($summoners as $summoner)
+						<div class="col-sm-6 col-md-6 col-lg-4 list-plate-outer">
+							<div class="col-md-12 list-plate-inner">
+								<div class="list-plate-region">{{ $summoner->region }}</div>
+								<a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">
+									<img class="img-rounded avatar" src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/{{ $summoner->profileIconId }}.png" class="media-photo">
+								</a>
+								<div class="list-plate-name"><a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">{{ $summoner->playerName }}</a></div>
+								<div class="list-plate-division">	{{ $summoner->tier }} {{ $summoner->division }}</div>
+								<div class="list-plate-button-outer">
+									<span class="list-plate-button">
+										@if(!Auth::guest())
+											@if(!$summoner->liked)
+												<a href="#" id="{{ $summoner->playerId }}_{{ $summoner->region }}" class=" glyphicon glyphicon-heart heart-liked ajax-like">
+												</a>
+											@else
+												<a href="#" id="{{ $summoner->playerId }}_{{ $summoner->region }}" class=" glyphicon glyphicon-heart heart-unliked ajax-like">
+												</a>
+											@endif
 										@else
-											<a href="#" id="{{ $summoner->playerId }}_{{ $summoner->region }}" class=" glyphicon glyphicon-heart heart-unliked ajax-like">
+											<a href="{{ route('users.login') }}" class=" glyphicon glyphicon-heart heart-unliked">
 											</a>
 										@endif
-									@else
-										<a href="{{ route('users.login') }}" class=" glyphicon glyphicon-heart heart-unliked">
-										</a>
-									@endif
-									{{ $summoner->likes }}
-								</span>
-								<span class="list-plate-button">
-									<span class="glyphicon glyphicon-comment"></span>
-									{{ $summoner->comments }}
-								</span>
+										{{ $summoner->likes }}
+									</span>
+									<span class="list-plate-button">
+										<span class="glyphicon glyphicon-comment"></span>
+										{{ $summoner->comments }}
+									</span>
+								</div>
 							</div>
 						</div>
-					</div>
-				@endforeach
+					@endforeach
+				</div>
 			</div>
 		</div>
 	</div>
-
 <!--
 	<div class="container">
 		<div class="table-responsive">

@@ -1,9 +1,6 @@
 body {
-	color:#949ba2;
-	font-family:montserrat;
 	min-width:350px;
 	height:100%;
-	background-color:#eeeeee;
 }
 
 footer {
@@ -118,13 +115,11 @@ footer {
 
 .list-plate-name{
 	display:inline;
-	font-size:1.25em;
 }
 
 .list-plate-name a{
 	margin-top:-5px;
 	display:block;
-	font-family:dosis;
 	font-size:1.25em;
     text-decoration:none;
 }
@@ -182,7 +177,7 @@ footer {
 .summoner-content-wrapper{
 	padding-top:30px;
 	padding-bottom:100px;
-	background-color:#eeeeee;
+	background-color:#f4f3ef;
 }
 
 @media all and (min-width: 992px){
@@ -200,6 +195,7 @@ footer {
 @media all and (max-width: 991px){
 	.summoner-content-wrapper{
 	    min-height:400px;
+	    overflow:hidden;
 	}
 }
 
@@ -269,16 +265,8 @@ footer {
 	width:56px;
 }
 
-.comment-grid{
-	padding:30px 0px 30px;
-}
 
 /* summoner comment section */
-
-.comment-body{
-    background-color:#eeeeee;
-    min-height:100%;
-}
 
 
 
@@ -303,6 +291,51 @@ footer {
 	background: #eeeeee;
 }
 
+.comment-tile{
+
+}
+
+@media screen and (min-width: 1px) and (max-width: 767px){
+    #grid[data-columns]::before {
+        content: '1 .column.size-1of1';
+    }
+}
+@media screen and (min-width:768px) and (max-width: 1199px){
+    #grid[data-columns]::before {
+        content: '2 .column.size-1of2';
+    }
+}
+@media screen and (min-width:1200px) and (max-width: 1599px){
+    #grid[data-columns]::before {
+        content: '3 .column.size-1of3';
+    }
+}
+@media screen and (min-width:1600px){
+    #grid[data-columns]::before {
+        content: '4 .column.size-1of4';
+    }
+}
+
+.grid-wrapper{
+	margin-left:-10px;
+	margin-right:-10px;
+	margin-top:10px;
+}
+
+/* Again, you’re free to use and define the classes: */
+.column { float: left; }
+.size-1of1 { width: 100%; }
+.size-1of2 { width: 50%; }
+.size-1of3 { width: 33.333%; }
+.size-1of4 { width: 25%; }
+
+.comment-panel{
+	background-color:white;
+	padding:40px;
+	margin:10px;
+	box-shadow:0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
 .comment-header{
 	margin-bottom:30px;
 	overflow:-hidden;
@@ -323,6 +356,11 @@ footer {
 	font-size:1em;
 }
 
+
+.comment-body{
+    min-height:100%;
+}
+
 .comment-cog{
 	font-size:2em;
 	position:absolute;
@@ -340,12 +378,6 @@ footer {
 	color:#bbbbbb;
 }
 
-.comment-panel{
-	background-color:white;
-	margin-bottom:20px;
-	padding:30px;
-	box-shadow:0 1px 4px rgba(0, 0, 0, 0.1);
-}
 
 .comment-profile-md{
 	float:left;
