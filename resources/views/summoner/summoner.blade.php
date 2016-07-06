@@ -29,7 +29,7 @@
 				<input type="hidden" name="region" value="{{ $summoner[0]->region }}">
 				<div class="form-group">
 					<lable>Write a message</lable>
-					<textarea required="required" placeholder="Say something nice!" name="body" class="form-control"></textarea>
+					<textarea required="required" placeholder="Say something nice!" name="body" class="form-control comment-form"></textarea>
 				</div>
 				<input type="submit" name='post_comment' class="btn btn-success" value="Post"/>
 			</form>
@@ -51,14 +51,14 @@
 					@if($comment->parentId == NULL)
 					<div class="comment-tile">
 						<div id="comment_{{ $comment->id }}" class="comment-panel">
+							    @if(!Auth::guest())
+									@if(Auth::user()->id == $comment->user_id)
+											<div class="comment-cog">
+									  		<a href="#" id="{{ $comment->id }}" class="glyphicon glyphicon-cog ajax-remove"></a>
+									  		</div>
+									@endif
+								@endif
 								<div class="comment-header text-left">
-									<div class="comment-cog">
-										    @if(!Auth::guest())
-												@if(Auth::user()->id == $comment->user_id)
-												  		<a href="#" id="{{ $comment->id }}" class="glyphicon glyphicon-cog ajax-remove"></a>
-												@endif
-											@endif
-									</div>
 							  		<div><img class="img-responsive img-circle img-no-padding comment-profile-md" src="{{ url('/') }}/{{ $comment->icon }}">
 									</div>
 									<div class="comment-title-wrapper"><span class="comment-username">{{ $comment->username }}</span> &bull; {{ $comment->created_at }}
@@ -174,6 +174,8 @@
 				$('#'+id+'_reply').css('display','inline');
 			});
 		});
+
+
 
 		switch("{{ $summoner[0]->region }}") {
 			case "na":

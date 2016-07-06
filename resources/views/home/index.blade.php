@@ -22,7 +22,6 @@
 		</div>
 	</div>
 	<!--End Search-->
-	<br>
 	</div>
 	<!--End Header-->
 
@@ -93,6 +92,9 @@
 					@endforeach
 				</div>
 			</div>
+		</div>
+		<div class="text-center">
+			{!! $summoners->render() !!}
 		</div>
 	</div>
 <!--
@@ -190,6 +192,4 @@ $(".dropdown-menu li a").click(function(){
 	</script>
 
 	<!--End Lists-->
-
-	{!! $summoners->render() !!}
 @endsection
