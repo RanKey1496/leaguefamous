@@ -255,6 +255,10 @@ footer {
 	left:20px;
 }
 
+.write-comment-box{
+	padding-top:20px;
+}
+
 .logged-in{
 	position:absolute;
 	top:-10px;
@@ -342,7 +346,7 @@ footer {
 }
 
 .comment-title-wrapper{
-	padding-top:8px;
+	padding-top:20px;
 	height: 64px;
 }
 
@@ -382,6 +386,15 @@ footer {
 .comment-profile-md{
 	float:left;
 	width:64px;
+	height:64px;
+	margin-right:20px;
+}
+
+.comment-profile-sm{
+	float:left;
+	width:48px;
+	height:48px;
+	margin-right:20px;
 }
 
 .comment-username{
@@ -391,7 +404,16 @@ footer {
 
 .comment-time{
 
+}
 
+.comment-reply{
+	font-size:0.8em;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+.reply-body{
+	margin-top:10px;
 }
 
 .padding15{

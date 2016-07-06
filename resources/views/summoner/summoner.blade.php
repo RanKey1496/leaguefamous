@@ -6,8 +6,8 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="comment-section-header text-center">
-				<div class="write-comment">
-					<button class="btn"><span class="glyphicon glyphicon-pencil"></span></button>
+				<div>
+					<button class="btn write-comment"><span class="glyphicon glyphicon-pencil"></span></button>
 				</div>
 					<ul class="nav nav-pills nav-pills-center" role="tablist">
 	  					<li role="presentation" class="active"><a href="#">Recent</a></li>
@@ -19,6 +19,29 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="row write-comment-box">
+		@if(!Auth::guest())
+		<div class="col-md-5">
+			<form method="post" action="{{ route('comments.store') }}">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				<input type="hidden" name="summonerId" value="{{ $summoner[0]->playerId }}">
+				<input type="hidden" name="region" value="{{ $summoner[0]->region }}">
+				<div class="form-group">
+					<lable>Write a message</lable>
+					<textarea required="required" placeholder="Say something nice!" name="body" class="form-control"></textarea>
+				</div>
+				<input type="submit" name='post_comment' class="btn btn-success" value="Post"/>
+			</form>
+		</div>
+		<div class="col-md-9">
+
+		</div>
+		@else
+		<div class="col-md-12">
+			<p class="text-center">You must be logged in to comment. If you are not a member, please leave, because this area is for members only.</p>
+		</div>
+		@endif
 	</div>
 <!--End Summoner Data-->
 		@if($comments)
@@ -36,29 +59,26 @@
 												@endif
 											@endif
 									</div>
-							  		<div><img class="img-responsive img-circle img-no-padding comment-profile-md" style="width:56px; height: 56px; margin-right:20px;" src="{{ url('/') }}/{{ $comment->icon }}">
+							  		<div><img class="img-responsive img-circle img-no-padding comment-profile-md" src="{{ url('/') }}/{{ $comment->icon }}">
 									</div>
-									<div class="comment-title-wrapper">
-								    	<span class="comment-username">{{ $comment->username }}</span>
-								    	<br>
-								    	<span>{{ $comment->created_at }}</span>
+									<div class="comment-title-wrapper"><span class="comment-username">{{ $comment->username }}</span> &bull; {{ $comment->created_at }}
 								    </div>
 								</div>
 
 								<div class="comment-body">
 							    	<p>{{ $comment->body }}</p>
-						    		<div class="list-group">
+						    		<div class="">
 							    		@foreach($comments as $commentReply)
 							    			@if($commentReply->parentId == $comment->id)
-							    				<div id="comment_{{ $commentReply->id }}" class="list-group-item">
-							    					<strong>{{ $commentReply->username }}</strong> 
-												    <span class="text-default">{{ $commentReply->created_at }}</span>
+							    				<div id="comment_{{ $commentReply->id }}" class="comment-reply">
+							    					<div><img class="img-responsive img-circle img-no-padding comment-profile-sm" src="{{ url('/') }}/{{ $comment->icon }}"></div>
+							    					<div><span class="comment-username">{{ $commentReply->username }}</span> &bull; {{ $commentReply->created_at }}</div>
 												    @if(!Auth::guest())
 														@if(Auth::user()->id == $commentReply->user_id)
 														  		<a href="#" id="{{ $commentReply->id }}" class="glyphicon glyphicon-remove text-danger pull-right ajax-remove" style="font-size: 20px; text-decoration: none;"></a>
 														@endif
 													@endif
-													<p>{{ $commentReply->body }}</p>
+													<div class="reply-body">{{ $commentReply->body }}</div>
 							    				</div>
 							    			@endif
 							    		@endforeach
@@ -89,8 +109,41 @@
 			</div>
 		</div>
 		@endif
+	<div class-"row">
+		<div class="col-md-12" style="margin-top:50px">
+			<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Modal</button>
+		</div>
+	</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. 
 
-	<script src="{{ asset('plugins/jquery/js/salvattore.min.js') }}">
+        Indeed, i was accounting for a couple, where usually just 1 works. which is mainly the situation for a great part of them. When i'm short in money i can eat daily on a excessively unhealthy diet which goes for $5-6 a day, and that's just for me, just the food, no soda, just water, and I have a motorcycle to ride where they sell the cheap food. Rent around here for a single person goes for $75-100 with private bathroom. You can get them cheaper but then again i wouldn't recommend those areas.
+
+        Indeed, i was accounting for a couple, where usually just 1 works. which is mainly the situation for a great part of them. When i'm short in money i can eat daily on a excessively unhealthy diet which goes for $5-6 a day, and that's just for me, just the food, no soda, just water, and I have a motorcycle to ride where they sell the cheap food. Rent around here for a single person goes for $75-100 with private bathroom. You can get them cheaper but then again i wouldn't recommend those areas.
+
+        Indeed, i was accounting for a couple, where usually just 1 works. which is mainly the situation for a great part of them. When i'm short in money i can eat daily on a excessively unhealthy diet which goes for $5-6 a day, and that's just for me, just the food, no soda, just water, and I have a motorcycle to ride where they sell the cheap food. Rent around here for a single person goes for $75-100 with private bathroom. You can get them cheaper but then again i wouldn't recommend those areas.
+
+        Indeed, i was accounting for a couple, where usually just 1 works. which is mainly the situation for a great part of them. When i'm short in money i can eat daily on a excessively unhealthy diet which goes for $5-6 a day, and that's just for me, just the food, no soda, just water, and I have a motorcycle to ride where they sell the cheap food. Rent around here for a single person goes for $75-100 with private bathroom. You can get them cheaper but then again i wouldn't recommend those areas.
+      </div>
+      <div class="modal-footer">
+        <div class="left-side">
+            <button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Never mind</button>
+        </div>
+        <div class="divider"></div>
+        <div class="right-side">
+            <button type="button" class="btn btn-danger btn-simple">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 	<script type="text/javascript">
 		$(function() {
@@ -113,7 +166,7 @@
 			});
 		});
 
-		$(function(){
+		$(function() {
 			$('.make-reply-a').click(function(e){
 				e.preventDefault();
 				var id = $(this).attr("id");

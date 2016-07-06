@@ -11,8 +11,7 @@
 	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 	<script src="{{ asset('plugins/jquery/js/jquery-2.1.4.js') }}"></script>
 	<script src="{{ asset('plugins/bootstrap/js/bootstrap.js') }}"></script>
-	<script src="{{ asset('plugins/jquery/js/masonry.pkgd.min.js') }}"></script>
-	<script src="{{ asset('plugins/jquery/js/imagesloaded.pkgd.min.js') }}"></script>
+	<script src="{{ asset('plugins/jquery/js/salvattore.min.js') }}"></script>
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<script type="text/javascript">
 		$.ajaxSetup({
@@ -29,4 +28,14 @@
 	<!--End Sidebar-->
 
 </body>
+
+	<script src="{{ asset('plugins/jquery/js/salvattore.min.js') }}"></script>
+<script>
+
+		$(function() {
+			$('button.write-comment').click(function() {
+    			$('.write-comment-box').slideToggle(200);
+			});
+		});
+</script>
 </html>
