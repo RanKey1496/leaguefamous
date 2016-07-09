@@ -10,15 +10,21 @@
 		</div>
 	</div> -->
 	<!--Search-->
-	<div class="section section-light-blue">
+	<div class="section section-dark">
 		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h1 class="main-header">Welcome to Wood Tier!</h1>
+					<h4>See what people have to say about your favorite summoners!</h4>
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3">
 					<div class="search-wrapper">
 						<form>
-							<input type="text" class="form-control summoner-search" aria-label="..." placeholder="Search Summoner">
+							<input type="text" class="form-control summoner-search" aria-label="..." placeholder="Find platinum or above summoners...">
 							<div class="dropdown region-menu">
-								<button class="btn btn-xs btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								<button class="btn btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 								NA
 								<span class="caret"></span>
 								</button>
@@ -53,11 +59,11 @@
 	<!--End Header-->
 
 	<!--Lists-->
-	<div class="section">
+	<div class="section section-with-space">
 		<div class="container">
 			<div class="row"">
 				<div class="col-md-12">
-					<h2>Popular Summoners</h2>
+					<h3>Popular Summoners</h3>
 					<div class="dropdown">
 					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 					All Regions
@@ -122,6 +128,27 @@
 		</div>
 		<div class="text-center">
 			{!! $summoners->render() !!}
+		</div>
+	</div>
+	<div class="section section-light-brown section-with-space">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h3>Newest Comments</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					Jerry > Populum <span class="timestamp">&bull; 1d</span>
+					<p>This is a comment.</p>
+					<a class="btn btn-danger btn-simple" href="#">Go to Populum's Page</a>
+				</div>
+				<div class="col-md-6">2
+					Jerry > Populum <span class="timestamp">&bull; 1d</span>
+					<p>This is a comment.</p>
+					<a class="btn btn-danger btn-simple" href="#">Go to Populum's Page</a>
+				</div>
+			</div>
 		</div>
 	</div>
 <!--

@@ -39,8 +39,8 @@
 				<input type="hidden" name="summonerId" value="{{ $summoner[0]->playerId }}">
 				<input type="hidden" name="region" value="{{ $summoner[0]->region }}">
 				<div class="form-group">
-					<label>Write a message</label>
-					<textarea required="required" placeholder="Say something nice!" name="body" class="form-control comment-form"></textarea>
+					<label>Write a comment</label>
+					<textarea required="required" placeholder="Say something original..." name="body" class="form-control comment-form"></textarea>
 				</div>
 				<input type="submit" name='post_comment' class="btn btn-success" value="Post"/>
 			</form>
@@ -97,8 +97,7 @@
 							    </div>
 <!--comment reply-->
 					    		@if(!Auth::guest())
-					    		<div class="col-md-12">
-					    			<a href="" id="make_{{ $comment->id }}" class="make-reply-a">Reply</a>
+					    			<a class="btn btn-xs comment-reply-button" data-toggle="modal" data-target="#myModal">Reply</a>
 									<div id="make_{{ $comment->id }}_reply" class="panel-body" style="display:none;">
 										<form method="post" action="{{ route('comments.storeReply') }}">
 											<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -111,7 +110,6 @@
 											<input type="submit" name='post_comment' class="btn btn-success" value="Reply"/>
 										</form>
 									</div>
-								</div>
 								@endif
 						</div>
 					</div>
@@ -122,7 +120,6 @@
 		@endif
 	<div class-"row">
 		<div class="col-md-12" style="margin-top:50px">
-			<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Modal</button>
 		</div>
 	</div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -185,8 +182,6 @@
 				$('#'+id+'_reply').css('display','inline');
 			});
 		});
-
-
 
 		switch("{{ $summoner[0]->region }}") {
 			case "na":

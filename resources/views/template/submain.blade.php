@@ -34,7 +34,7 @@
 
 		$(function() {
 			$('button.write-comment').click(function() {
-    			$('.write-comment-box').slideToggle(200);
+    			$('.write-comment-box').slideToggle(400);
 			});
 		});
 </script>

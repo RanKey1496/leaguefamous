@@ -21,7 +21,7 @@
               <li><a href="{{route('users.edit.profile')}}">Change my avatar</a></li>
               <li><a href="{{route('users.edit.password')}}">Change my password</a></li>
               <li role="separator" class="divider"></li>
-         	  <li><a href="{{route('users.logout')}}">Logout</a></li>
+         	    <li><a href="{{route('users.logout')}}">Logout</a></li>
             </ul>
           </li>
         @else

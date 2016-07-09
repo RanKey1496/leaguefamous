@@ -51,6 +51,10 @@ footer {
 
 /* home page */
 
+.main-header{
+	font-family:Lobster;
+}
+
 .big-search{
     padding-top:15px;
     padding-bottom:15px;
@@ -68,12 +72,14 @@ footer {
 .summoner-search{
 	float:left;
 	border-radius:50%;
+	margin-top:30px;
+	margin-bottom:30px;
 }
 
 .region-menu{
 	position:absolute;
 	right:25px;
-	top:7px;
+	top:37px;
 }
 
 .big-search-input{
@@ -435,6 +441,17 @@ footer {
 	font-size:0.8em;
 	margin-top:20px;
 	margin-bottom:20px;
+}
+
+.comment-reply-button{
+	margin-bottom:-20px;
+	opacity:0.25;
+	transition:1s;
+}
+
+.comment-panel:hover .comment-reply-button{
+	opacity:1;
+	transition:0.2s;
 }
 
 .comment-form{
