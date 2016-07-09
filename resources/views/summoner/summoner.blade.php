@@ -12,11 +12,22 @@
 					<ul class="nav nav-pills nav-pills-center" role="tablist">
 	  					<li role="presentation" class="active"><a href="#">Recent</a></li>
 	  				    <li role="presentation"><a href="#">Popular</a></li>
-					</ul>	
+					</ul>
 				
-				<div class="logged-in">
-					<a href="#"><img class="img-responsive img-circle img-no-padding user-profile-pic" src="{{ $iconURL }}"></a>
-				</div>
+				@if(!Auth::guest())
+                    <div class="logged-in dropdown">
+                        <a href="#"><img class="img-responsive img-circle img-no-padding user-profile-pic" src="{{ url('/') }}/{{Auth::user()->profileImage}}"></a>
+                    	<ul class="dropdown-menu">
+				            <li><a href="{{route('users.panel')}}">Profile</a></li>
+				            <li><a href="{{route('users.edit.profile')}}">Change my avatar</a></li>
+				            <li><a href="{{route('users.edit.password')}}">Change my password</a></li>
+				            <li role="separator" class="divider"></li>
+				         	<li><a href="{{route('users.logout')}}">Logout</a></li>
+			            </ul>
+                    </div>
+                @else
+                    <a href="{{route('users.register')}}">Log In or Sign Up</a>
+                @endif
 			</div>
 		</div>
 	</div>
@@ -28,7 +39,7 @@
 				<input type="hidden" name="summonerId" value="{{ $summoner[0]->playerId }}">
 				<input type="hidden" name="region" value="{{ $summoner[0]->region }}">
 				<div class="form-group">
-					<lable>Write a message</lable>
+					<label>Write a message</label>
 					<textarea required="required" placeholder="Say something nice!" name="body" class="form-control comment-form"></textarea>
 				</div>
 				<input type="submit" name='post_comment' class="btn btn-success" value="Post"/>
@@ -61,7 +72,7 @@
 								<div class="comment-header text-left">
 							  		<div><img class="img-responsive img-circle img-no-padding comment-profile-md" src="{{ url('/') }}/{{ $comment->icon }}">
 									</div>
-									<div class="comment-title-wrapper"><span class="comment-username">{{ $comment->username }}</span> &bull; {{ $comment->created_at }}
+									<div class="comment-title-wrapper"><span class="comment-username">{{ $comment->username }}</span> <span class="timestamp">&bull; {{ $comment->created_at }}</span>
 								    </div>
 								</div>
 
@@ -72,7 +83,7 @@
 							    			@if($commentReply->parentId == $comment->id)
 							    				<div id="comment_{{ $commentReply->id }}" class="comment-reply">
 							    					<div><img class="img-responsive img-circle img-no-padding comment-profile-sm" src="{{ url('/') }}/{{ $comment->icon }}"></div>
-							    					<div><span class="comment-username">{{ $commentReply->username }}</span> &bull; {{ $commentReply->created_at }}</div>
+							    					<div><span class="comment-username">{{ $commentReply->username }}</span> <span class="timestamp">&bull; {{ $commentReply->created_at }}</span></div>
 												    @if(!Auth::guest())
 														@if(Auth::user()->id == $commentReply->user_id)
 														  		<a href="#" id="{{ $commentReply->id }}" class="glyphicon glyphicon-remove text-danger pull-right ajax-remove" style="font-size: 20px; text-decoration: none;"></a>

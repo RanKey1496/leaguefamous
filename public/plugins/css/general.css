@@ -61,6 +61,21 @@ footer {
 	font-size:1.25em;
 }
 
+.search-wrapper{
+	margin:0 auto;
+}
+
+.summoner-search{
+	float:left;
+	border-radius:50%;
+}
+
+.region-menu{
+	position:absolute;
+	right:25px;
+	top:7px;
+}
+
 .big-search-input{
 	width:auto;
 	display:inline;
@@ -160,6 +175,7 @@ footer {
 
 .sidebar{
 	background-color:white;
+	padding-bottom:20px;
 }
 
 .sidebar-brand{
@@ -268,6 +284,7 @@ footer {
 
 .user-profile-pic{
 	width:56px;
+	height:56px;
 }
 
 
@@ -422,6 +439,10 @@ footer {
 
 .comment-form{
 	height:8em;
+}
+
+.timestamp{
+	opacity:0.75;
 }
 
 .reply-body{

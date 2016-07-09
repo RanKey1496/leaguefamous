@@ -10,10 +10,37 @@
 		</div>
 	</div> -->
 	<!--Search-->
-	<div class="big-search">
+	<div class="section section-light-blue">
 		<div class="container">
-			<span class="glyphicon glyphicon-search"></span>
-			<input type="text" class="form-control big-search-input" placeholder="Search summoners...">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="search-wrapper">
+						<form>
+							<input type="text" class="form-control summoner-search" aria-label="..." placeholder="Search Summoner">
+							<div class="dropdown region-menu">
+								<button class="btn btn-xs btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								NA
+								<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+								<li><a href="#">NA</a></li>
+								<li><a href="#">LAN</a></li>
+								<li><a href="#">LAS</a></li>
+								<li><a href="#">BR</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">EUW</a></li>
+								<li><a href="#">EUNE</a></li>
+								<li><a href="#">RU</a></li>
+								<li><a href="#">TR</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">KR</a></li>
+								<li><a href="#">OCE</a></li>
+								</ul>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="container">
@@ -30,7 +57,7 @@
 		<div class="container">
 			<div class="row"">
 				<div class="col-md-12">
-					<h2>Popular Summoners</h2><br>
+					<h2>Popular Summoners</h2>
 					<div class="dropdown">
 					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 					All Regions
