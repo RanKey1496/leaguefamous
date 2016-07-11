@@ -288,6 +288,12 @@ footer {
 	right:20px;
 }
 
+.not-logged-in{
+	position:absolute;
+	top:0.2em;
+	right:20px;
+}
+
 .user-profile-pic{
 	width:56px;
 	height:56px;
