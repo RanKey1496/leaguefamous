@@ -71,6 +71,10 @@ Route::get('user', [
 		'uses'	=>	'UserController@user',
 		'as'	=>	'users.panel']);
 
+Route::get('settings', [
+	'uses'	=>	'UserController@settings',
+	'as'	=>	'users.settings']);
+
 Route::get('user/profile', [
 		'uses'	=>	'UserController@profile',
 		'as'	=>	'users.edit.profile']);
