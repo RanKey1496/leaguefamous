@@ -425,10 +425,10 @@ footer {
 .size-1of2 { width: 50%; }
 .size-1of3 { width: 33.333%; }
 .size-1of4 { width: 25%; }
-
+       
 .comment-panel{
 	position:relative;
-	background-color:#e0e0e0;
+	background-color:#e6e5e1;
 	color:#777777;
 	border-radius:40px;
 	padding:40px;
