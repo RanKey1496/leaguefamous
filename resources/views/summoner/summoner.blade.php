@@ -3,6 +3,26 @@
 @section('content')
 
 	<!--Summoner Data-->
+	<div class="row write-comment-box">
+		@if(!Auth::guest())
+		<div class="col-md-12 col-lg-8">
+			<form method="post" action="{{ route('comments.store') }}">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				<input type="hidden" name="summonerId" value="{{ $summoner[0]->playerId }}">
+				<input type="hidden" name="region" value="{{ $summoner[0]->region }}">
+				<div class="form-group">
+					<label>Write a comment</label>
+					<textarea required="required" placeholder="Say something original..." name="body" class="form-control comment-form"></textarea>
+				</div>
+				<input type="submit" name='post_comment' class="btn btn-success" value="Post"/>
+			</form>
+		</div>
+		@else
+		<div class="col-md-12">
+			<p class="text-center">You must be logged in to comment. If you are not a member, please leave, because this area is for members only.</p>
+		</div>
+		@endif
+	</div>
 	<div class="row">
 		<div class="col-md-12">
 			<div class="comment-section-header text-center">
@@ -30,29 +50,6 @@
                 @endif
 			</div>
 		</div>
-	</div>
-	<div class="row write-comment-box">
-		@if(!Auth::guest())
-		<div class="col-md-5">
-			<form method="post" action="{{ route('comments.store') }}">
-				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-				<input type="hidden" name="summonerId" value="{{ $summoner[0]->playerId }}">
-				<input type="hidden" name="region" value="{{ $summoner[0]->region }}">
-				<div class="form-group">
-					<label>Write a comment</label>
-					<textarea required="required" placeholder="Say something original..." name="body" class="form-control comment-form"></textarea>
-				</div>
-				<input type="submit" name='post_comment' class="btn btn-success" value="Post"/>
-			</form>
-		</div>
-		<div class="col-md-9">
-
-		</div>
-		@else
-		<div class="col-md-12">
-			<p class="text-center">You must be logged in to comment. If you are not a member, please leave, because this area is for members only.</p>
-		</div>
-		@endif
 	</div>
 <!--End Summoner Data-->
 		@if($comments)
