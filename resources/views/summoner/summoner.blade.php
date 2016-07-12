@@ -12,9 +12,10 @@
 				<input type="hidden" name="region" value="{{ $summoner[0]->region }}">
 				<div class="form-group">
 					<label>Write a comment</label>
-					<textarea required="required" placeholder="Say something original..." name="body" class="form-control comment-form"></textarea>
+					<textarea id="commentField" required="required" placeholder="Say something original..." name="body" class="form-control comment-form" onkeyup="countChar(this)"></textarea>
 				</div>
 				<input type="submit" name='post_comment' class="btn btn-success" value="Post"/>
+				<div id="charNum">Characters left: 300</div>
 			</form>
 		</div>
 		@else

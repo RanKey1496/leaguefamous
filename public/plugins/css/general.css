@@ -287,6 +287,12 @@ footer {
 	padding-bottom:30px;
 }
 
+#charNum{
+	position:absolute;
+	bottom:10px;
+	right:15px;
+}
+
 .logged-in{
 	position:absolute;
 	top:0px;
