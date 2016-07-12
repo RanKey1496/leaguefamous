@@ -12,11 +12,11 @@
 	<link href='https://fonts.googleapis.com/css?family=Ropa+Sans' rel='stylesheet' type='text/css'>
 	<script src="{{ asset('plugins/jquery/js/jquery-2.1.4.js') }}"></script>
 	<script src="{{ asset('plugins/bootstrap/js/bootstrap.js') }}"></script>
-	<script src="{{ asset('plugins/bootstrap/js/bootstrap-datepicker.js') }}"></script>
-	<script src="{{ asset('plugins/bootstrap/js/bootstrap-select.js') }}"></script>
-	<script src="{{ asset('plugins/bootstrap/js/ct-paper') }}"></script>
-	<script src="{{ asset('plugins/bootstrap/js/ct-paper-checkbox') }}"></script>
-	<script src="{{ asset('plugins/bootstrap/js/ct-paper-radio') }}"></script>
+	<script src="{{ asset('plugins/jquery/js/bootstrap-datepicker.js') }}"></script>
+	<script src="{{ asset('plugins/jquery/js/bootstrap-select.js') }}"></script>
+	<script src="{{ asset('plugins/jquery/js/ct-paper.js') }}"></script>
+	<script src="{{ asset('plugins/jquery/js/ct-paper-checkbox.js') }}"></script>
+	<script src="{{ asset('plugins/jquery/js/ct-paper-radio.js') }}"></script>
 	<script src="{{ asset('plugins/jquery/js/salvattore.min.js') }}"></script>
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<script type="text/javascript">

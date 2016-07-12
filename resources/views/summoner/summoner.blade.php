@@ -13,17 +13,17 @@
 	  					<li role="presentation" class="active"><a href="#">Recent</a></li>
 	  				    <li role="presentation"><a href="#">Popular</a></li>
 					</ul>
-				
+
 				@if(!Auth::guest())
                     <div class="logged-in dropdown">
                         <a href="#"><img class="img-responsive img-circle img-no-padding user-profile-pic" src="{{ url('/') }}/{{Auth::user()->profileImage}}"></a>
                     	<ul class="dropdown-menu">
-				            <li><a href="{{route('users.panel')}}">Profile</a></li>
-				            <li><a href="{{route('users.edit.profile')}}">Change my avatar</a></li>
-				            <li><a href="{{route('users.edit.password')}}">Change my password</a></li>
-				            <li role="separator" class="divider"></li>
-				         	<li><a href="{{route('users.logout')}}">Logout</a></li>
-			            </ul>
+				            		<li><a href="{{route('users.panel')}}">Profile</a></li>
+				            		<li><a href="{{route('users.edit.profile')}}">Change my avatar</a></li>
+				            		<li><a href="{{route('users.edit.password')}}">Change my password</a></li>
+				            		<li role="separator" class="divider"></li>
+				         				<li><a href="{{route('users.logout')}}">Logout</a></li>
+			            		</ul>
                     </div>
                 @else
                     <div class="not-logged-in"><a href="{{route('users.register')}}">Log In or Sign Up</a></div>
@@ -130,7 +130,7 @@
         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
       <div class="modal-body">
-        Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. 
+        Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.
 
         Indeed, i was accounting for a couple, where usually just 1 works. which is mainly the situation for a great part of them. When i'm short in money i can eat daily on a excessively unhealthy diet which goes for $5-6 a day, and that's just for me, just the food, no soda, just water, and I have a motorcycle to ride where they sell the cheap food. Rent around here for a single person goes for $75-100 with private bathroom. You can get them cheaper but then again i wouldn't recommend those areas.
 

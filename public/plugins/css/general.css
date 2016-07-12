@@ -302,9 +302,51 @@ footer {
 
 /* settings page */
 
+.pic-wrapper{
+	float:left;
+	position:relative;
+	width:150px;
+	height:150px;
+	margin-right:30px;
+}
 .user-profile-pic-lg{
-	width:120px;
-	height:120px;
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:150px;
+	height:150px;
+}
+
+.change-profile-picture{
+	position:absolute;
+	left:0px;
+	top:0px;
+	opacity:0;
+	background-color:rgba(0,0,0,0.2);
+	width:150px;
+	height:150px;
+	border-radius:50%;
+	text-align:center;
+	transition:0.2s;
+	color:white;
+}
+
+.change-profile-picture:hover{
+	color:white;
+	opacity:1;
+	transition:0.2s;
+}
+
+.change-profile-picture span{
+	display:table-cell;
+	width:150px;
+	height:150px;
+	font-size:2em;
+	vertical-align:middle;
+}
+
+.change-profile-picture{
+
 }
 
 /* summoner comment section */
