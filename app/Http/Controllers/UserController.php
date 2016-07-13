@@ -27,12 +27,12 @@ class UserController extends Controller
     }
 
     public function updateProfile(Request $request){
-        $rules = ['image' => 'required|image|max:256*256*1',];
+        $rules = ['image' => 'required|image|max:300*300*1',];
 
         $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()){
-            Flash::success($validator);
+            Flash::warning($validator);
             return redirect()->route('users.edit.profile');
         } else {
             $name = str_random(30) . '-' . $request->file('image')->getClientOriginalName();

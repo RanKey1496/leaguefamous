@@ -111,7 +111,7 @@ class AuthController extends Controller
             ]
             , $request->has('remember')
             )){
-            return redirect()->intended($this->redirectPath());
+            return redirect()->back();
         }else{
             $rules = [
             'email' => 'required|email',
