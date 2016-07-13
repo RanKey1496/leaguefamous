@@ -5,8 +5,8 @@
 	<!--
 	<div class="container">
 		<div class="jumbotron jumbotron-dark">
-		  <h1>Welcome</h1> 
-		  <p>Wombats are short-legged, muscular quadrupedal marsupials that are native to Australia.</p> 
+		  <h1>Welcome</h1>
+		  <p>Wombats are short-legged, muscular quadrupedal marsupials that are native to Australia.</p>
 		</div>
 	</div> -->
 	<!--Search-->
@@ -19,7 +19,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-6 col-md-offset-3">
+				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 					<div class="search-wrapper">
 						<form>
 							<input type="text" class="form-control summoner-search" aria-label="..." placeholder="Find platinum or above summoners...">
@@ -51,7 +51,7 @@
 	</div>
 	<div class="container">
 		<div class="row">
-		 	
+
 		</div>
 	</div>
 	<!--End Search-->
@@ -166,7 +166,7 @@
 			<tbody>
 				@foreach($summoners as $summoner)
 					<tr class="table-row" data-href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">
-						<td class="text-center"> 
+						<td class="text-center">
 							<img class="img-rounded avatar" src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/{{ $summoner->profileIconId }}.png" class="media-photo">
 						</td>
 						<td>
@@ -233,7 +233,7 @@
                     });
                     return false;
                 });
-            });		
+            });
 	 $(function(){
 
 $(".dropdown-menu li a").click(function(){
