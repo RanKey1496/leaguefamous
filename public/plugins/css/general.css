@@ -376,6 +376,13 @@ footer {
 	border:0px;
 }
 
+.change-profile-picture:focus{
+	outline: 0;
+	color:white;
+	opacity:1;
+	transition:0.2s;
+}
+
 .change-profile-picture span{
 	display:table-cell;
 	width:150px;

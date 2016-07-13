@@ -49,11 +49,15 @@
 					<h4>Change E-mail</h4>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="croppieFrame">
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-	<script src="{{ asset('plugins/jquery/js/salvattore.min.js') }}"></script>
-	<link rel="stylesheet" href="{{ asset('plugins\css\croppie.css')}}">
-
+		<div class="cropImage" data-id="{{ url('/') }}/{{Auth::user()->profileImage}}"></div>
 	<div class="modal fade" id="changeImage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
@@ -62,7 +66,10 @@
 	        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
 	      </div>
 	      <div class="modal-body">
-
+					<div class="croppieFrame">
+					</div>
+					<div class="croppieUpload">
+					</div>
 	      </div>
 	      <div class="modal-footer">
 	        <div class="left-side">
@@ -76,4 +83,25 @@
 	    </div>
 	  </div>
 	</div>
+
+	<script>
+	var cropImageUrl = $('#cropImage').data("id");
+		$(function(){
+			$('.croppieFrame').croppie({
+				url: cropImageUrl,
+			})
+		$uploadCrop = $('.croppieUpload').croppie({
+			enableExif: true,
+			viewport: {
+				width:200,
+				height:200,
+				type: 'circle'
+			},
+			boundary: {
+				width:300,
+				height:300
+			}
+		})
+		});
+	</script>
 @endsection
