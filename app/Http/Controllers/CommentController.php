@@ -8,15 +8,15 @@ use App\Http\Requests;
 use App\Comment;
 use Laracasts\Flash\Flash;
 use DB;
+use App\User;
+use Carbon\Carbon;
 use Auth;
 use Illuminate\Support\Facades\Input;
 use Response;
 
 class CommentController extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth');
-    }
+
 
     public function store(Request $request)
     {
@@ -43,5 +43,24 @@ class CommentController extends Controller
         }else{
             return Response::json(array('result' => '0'));
         }
+    }
+
+    public function index($commentId){
+        $comment = DB::select("SELECT * FROM comments WHERE id=? AND parentId IS NULL AND deleted_at IS NULL", [$commentId]);
+        $commentsReply = DB::Select("SELECT * FROM comments WHERE parentId=? AND deleted_at IS NULL", [$commentId]);
+        foreach ($comment as $comment) {
+                $data = User::find($comment->user_id);
+                $comment->username = $data->username;
+                $comment->icon = $data->profileImage;
+                $comment->created_at = Carbon::parse($comment->created_at)->diffForHumans();
+        }
+        foreach ($commentsReply as $commentReply) {
+                $data = User::find($commentReply->user_id);
+                $commentReply->username = $data->username;
+                $commentReply->icon = $data->profileImage;
+                $commentReply->created_at = Carbon::parse($comment->created_at)->diffForHumans();
+        }
+        //dd($commentsReply);
+        return View('comment.index')->with('comment', $comment)->with('commentReplys', $commentsReply);
     }
 }

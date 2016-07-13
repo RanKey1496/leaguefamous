@@ -104,7 +104,9 @@ Route::get('/all', [
 		'uses'	=>	'SearchController@all',
 		'as'	=>	'summoners.all']);
 
-Route::post('executeSearch', ['uses' => 'SearchController@search', 'as'	=> 'executeSearch']);
+Route::post('executeSearch', [
+		'uses' => 'SearchController@search', 
+		'as'	=> 'executeSearch']);
 
 Route::get('search', function(){
 	return View('search');
@@ -119,9 +121,13 @@ Route::post('commentReply/add', [
 		'uses'	=>	'CommentController@storeReply',
 		'as'	=>	'comments.storeReply']);
 
-Route::post('delete',[
+Route::post('delete', [
 		'uses'	=>	'CommentController@destroy',
 		'as'	=>	'comments.destroy']);
+
+Route::get('/comment/search/{commentId}', [
+		'uses'	=>	'CommentController@index',
+		'as'	=>	'comments.index']);
 
 //Like Routes
 Route::post('/like', [
