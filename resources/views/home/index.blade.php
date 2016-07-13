@@ -21,8 +21,8 @@
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 					<div class="search-wrapper" action="http://www.google.com">
-						<form method="get" action="/#">
-							<input type="text" class="form-control summoner-search" aria-label="..." placeholder="Find platinum or above summoners...">
+						<form id="frmSearch" method="GET" action="">
+							<input id="txtSearch" type="text" class="form-control summoner-search" aria-label="..." placeholder="Find platinum or above summoners...">
 							<div class="dropdown region-menu">
 								<button class="btn btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 								NA
@@ -234,14 +234,24 @@
                     return false;
                 });
             });
-	 $(function(){
 
-$(".dropdown-menu li a").click(function(){
-  $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
-  $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
-});
+		var region = "na";
 
-});
+		$(function(){
+
+			$(".dropdown-menu li a").click(function(){
+			  $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+			  $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+			  region = $(this).text().toLowerCase();
+
+			});
+
+		});
+
+		document.getElementById('frmSearch').onsubmit = function() {
+	        window.location = 'http://localhost/leaguefamous/public/' + region + '/' + document.getElementById('txtSearch').value;
+	        return false;
+	    }
 
 	</script>
 
