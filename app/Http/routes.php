@@ -21,30 +21,30 @@ Route::get('/home', [
 		'as'	=>	'home']);
 
 //Registrar cuenta
-Route::get('auth/register', [
+Route::get('/register', [
 		'uses'	=>	'Auth\AuthController@getRegister',
 		'as'	=>	'users.register']);
 
-Route::post('auth/register', [
+Route::post('/register', [
 		'uses'	=>	'Auth\AuthController@postRegister',
 		'as'	=>	'users.register']);
 
 //Confirmar cuenta
-Route::get('auth/confirm/email/{email}/confirm_token/{confirm_token}', [
+Route::get('/confirm/email/{email}/confirm_token/{confirm_token}', [
 		'uses'	=>	'Auth\AuthController@confirmRegister',
 		'as'	=>	'users.confirm']);
 
 //Iniciar sesion
-Route::get('/auth/login', [
+Route::get('/login', [
 		'uses'	=>	'Auth\AuthController@getLogin',
 		'as'	=>	'users.login']);
 
-Route::post('/auth/login', [
+Route::post('/login', [
 		'uses'	=>	'Auth\AuthController@postLogin',
 		'as'	=>	'users.login']);
 
 //Cerrar sesion
-Route::get('/auth/logout', [
+Route::get('/logout', [
 		'uses'	=>	'Auth\AuthController@getLogout',
 		'as'	=>	'users.logout']);
 
