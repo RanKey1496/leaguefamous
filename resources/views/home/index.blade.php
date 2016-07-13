@@ -249,7 +249,7 @@
 		});
 
 		document.getElementById('frmSearch').onsubmit = function() {
-	        window.location = 'http://localhost/leaguefamous/public/' + region + '/' + document.getElementById('txtSearch').value;
+	        window.location = '{{ url('/') }}/' + region + '/' + document.getElementById('txtSearch').value;
 	        return false;
 	    }
 
