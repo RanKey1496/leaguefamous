@@ -36,7 +36,7 @@ $(function(){
 $(function(){
  $(".toggleButton").click(function(){
    var toggleTarget = $(this).data("target");
-   $("." + toggleTarget).slideToggle(200);
+   $(toggleTarget).slideToggle(200);
  });
 
 });
