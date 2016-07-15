@@ -22,19 +22,7 @@
 			<div class="container">
 				<div class="row">
 						<div class="col-md-12">
-							<h4>Hello!</h4>
-							<label class="btn btn-default btn-file">
-		    				Browse <input type="file" style="display: none;" id="upload" value="Choose a file" accept="image/*">
-							</label>
-						</div>
-					</div>
-			</div>
-	</div>
-	<div class="section section-brown image-cropper">
-			<div class="container">
-				<div class="row">
-						<div class="col-md-12">
-							<h4>Parte morenita más cuquita!</h4>
+							<h4>Upload new profile image!</h4>
 							<form id="uploadImg" method="POST" action="{{ route('users.update.profile') }}">
 							    <label class="btn btn-default btn-file">
 			    				Browse <input type="file" style="display: none;" id="imgInp" value="Choose a file" accept="image/*">
@@ -142,6 +130,6 @@
 	</div>
 
 	<script>
-		
+
 	</script>
 @endsection

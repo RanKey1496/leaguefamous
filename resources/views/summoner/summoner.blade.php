@@ -28,7 +28,7 @@
 		<div class="col-md-12">
 			<div class="comment-section-header text-center">
 				<div>
-					<button class="btn write-comment toggleButton" data-target=".write-comment-box"><span class="glyphicon glyphicon-pencil"></span></button>
+					<button type="button" class="btn write-comment toggleButton" data-target=".write-comment-box"><span class="glyphicon glyphicon-pencil"></span></button>
 				</div>
 					<ul class="nav nav-pills nav-pills-center" role="tablist">
 	  					<li role="presentation" class="active"><a href="#">Recent</a></li>
@@ -180,7 +180,6 @@
 				$('#'+id+'_reply').css('display','inline');
 			});
 		});
-
 
 	</script>
 

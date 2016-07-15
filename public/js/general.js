@@ -34,15 +34,12 @@ $(function(){
 
 
 $(function(){
- $(".toggleButton").click(function(){
-   var toggleTarget = $(this).data("target");
-   $(toggleTarget).slideToggle(200);
+ $('.toggleButton').click(function(){
+   var toggleTarget = $(this).data('target');
+   $(toggleTarget).slideToggle(100);
  });
 
 });
-
-
-
 
 /* region text changer */
 switch("{{ $summoner[0]->region }}") {
