@@ -30,6 +30,52 @@
 					</div>
 			</div>
 	</div>
+	<div class="section section-brown image-cropper">
+			<div class="container">
+				<div class="row">
+						<div class="col-md-12">
+							<h4>Parte morenita más cuquita!</h4>
+							<form id="uploadImg" method="POST" action="{{ route('users.update.profile') }}">
+							    <label class="btn btn-default btn-file">
+			    				Browse <input type="file" style="display: none;" id="imgInp" value="Choose a file" accept="image/*">
+								</label>
+							</form>
+							<div class="demo"></div>
+							<script>
+
+								function readURL(input) {
+
+								    if (input.files && input.files[0]) {
+								        var reader = new FileReader();
+
+								        reader.onload = function (e) {
+											$('.demo').croppie({
+											    viewport: {
+											        width: 200,
+											        height: 200,
+											        type: 'circle'
+											    },
+											    boundary: {
+											        width: 300,
+											        height: 300
+											    },
+											    url: e.target.result,
+											});
+								        }
+
+								        reader.readAsDataURL(input.files[0]);
+								    }
+								}
+
+								$("#imgInp").change(function(){
+								    readURL(this);
+								});
+
+							</script>
+						</div>
+					</div>
+			</div>
+	</div>
 	<div class="section">
 		<div class="container">
 			<div class="row">
@@ -96,6 +142,6 @@
 	</div>
 
 	<script>
-
+		
 	</script>
 @endsection
