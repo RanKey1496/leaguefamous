@@ -1,3 +1,5 @@
+/* Character counter */
+
 function countChar(val) {
   var len = val.value.length;
   var left = 300 - len;
@@ -8,9 +10,9 @@ function countChar(val) {
   }
 };
 
+/* Croppie */
+
 $(function(){
-
-
   var cropImageUrl = $('.cropImage').data("id");
 
 
@@ -26,5 +28,57 @@ $(function(){
           height: 300
       }
   });
+});
 
-  });
+/* show hide */
+
+
+$(function(){
+ $(".toggleButton").click(function(){
+   var toggleTarget = $(this).data("target");
+   $("." + toggleTarget).slideToggle(200);
+ });
+
+});
+
+
+
+
+/* region text changer */
+switch("{{ $summoner[0]->region }}") {
+	case "na":
+		document.getElementById("region").innerHTML = "North America";
+		break;
+	case "lan":
+		document.getElementById("region").innerHTML = "Latin America North";
+		break;
+	case "las":
+		document.getElementById("region").innerHTML = "Latin America South";
+		break;
+	case "br":
+		document.getElementById("region").innerHTML = "Brazil";
+		break;
+	case "euw":
+		document.getElementById("region").innerHTML = "Europe West";
+		break;
+	case "eune":
+		document.getElementById("region").innerHTML = "Europe Nordic & East";
+		break;
+	case "ru":
+		document.getElementById("region").innerHTML = "Russia";
+		break;
+	case "tr":
+		document.getElementById("region").innerHTML = "Turkey";
+		break;
+	case "kr":
+		document.getElementById("region").innerHTML = "South Korea";
+		break;
+	case "oce":
+		document.getElementById("region").innerHTML = "Oceania";
+		break;
+	case "jp":
+		document.getElementById("region").innerHTML = "Japan";
+		break;
+	default:
+		document.getElementById("region").innerHTML = "{{ $summoner[0]->region }}";
+};

@@ -9,16 +9,26 @@
 				<div class="col-md-12">
 						<div class="pic-wrapper">
 							<img class="img-responsive img-circle img-no-padding user-profile-pic-lg" src="{{ url('/') }}/{{Auth::user()->profileImage}}">
-							<a href="#" class="change-profile-picture" data-toggle="modal" data-target="#changeImage" onclick="
-						  $('.croppieFrame').croppie('bind')"><span class="glyphicon glyphicon-camera"></span></a>
+							<a href="#" class="change-profile-picture toggleButton" data-target="image-cropper"><span class="glyphicon glyphicon-camera"></span></a>
 						</div>
 						<div class="settings-header">
 							<h3>{{Auth::user()->username}}</h3>
-							<span>Settings</span>
 						</div>
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="section section-brown image-cropper">
+			<div class="container">
+				<div class="row">
+						<div class="col-md-12">
+							<h4>Hello!</h4>
+							<label class="btn btn-default btn-file">
+		    				Browse <input type="file" style="display: none;" id="upload" value="Choose a file" accept="image/*">
+							</label>
+						</div>
+					</div>
+			</div>
 	</div>
 	<div class="section">
 		<div class="container">

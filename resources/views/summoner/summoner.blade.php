@@ -28,7 +28,7 @@
 		<div class="col-md-12">
 			<div class="comment-section-header text-center">
 				<div>
-					<button class="btn write-comment"><span class="glyphicon glyphicon-pencil"></span></button>
+					<button class="btn write-comment" data-target="write-comment-box"><span class="glyphicon glyphicon-pencil"></span></button>
 				</div>
 					<ul class="nav nav-pills nav-pills-center" role="tablist">
 	  					<li role="presentation" class="active"><a href="#">Recent</a></li>
@@ -181,43 +181,7 @@
 			});
 		});
 
-		switch("{{ $summoner[0]->region }}") {
-			case "na":
-				document.getElementById("region").innerHTML = "North America";
-				break;
-			case "lan":
-				document.getElementById("region").innerHTML = "Latin America North";
-				break;
-			case "las":
-				document.getElementById("region").innerHTML = "Latin America South";
-				break;
-			case "br":
-				document.getElementById("region").innerHTML = "Brazil";
-				break;
-			case "euw":
-				document.getElementById("region").innerHTML = "Europe West";
-				break;
-			case "eune":
-				document.getElementById("region").innerHTML = "Europe Nordic & East";
-				break;
-			case "ru":
-				document.getElementById("region").innerHTML = "Russia";
-				break;
-			case "tr":
-				document.getElementById("region").innerHTML = "Turkey";
-				break;
-			case "kr":
-				document.getElementById("region").innerHTML = "South Korea";
-				break;
-			case "oce":
-				document.getElementById("region").innerHTML = "Oceania";
-				break;
-			case "jp":
-				document.getElementById("region").innerHTML = "Japan";
-				break;
-			default:
-				document.getElementById("region").innerHTML = "{{ $summoner[0]->region }}";
-		};
+
 	</script>
 
 @endsection

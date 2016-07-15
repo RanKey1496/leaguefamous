@@ -392,8 +392,8 @@ footer {
 	border:0px;
 }
 
-.change-profile-picture{
-
+.bottom-divider{
+	border-bottom:1px #ddd solid;
 }
 
 /* summoner comment section */
