@@ -65,9 +65,7 @@
 									$('.upload-result').on('click', function (ev) {
 										$uploadCrop.croppie('result', {
 											type: 'canvas',
-											size: 'viewport',
-											format: 'jpeg',
-											quality: 0.95
+											size: 'viewport'
 										}).then(function (resp) {
 											$('.result').attr("src",resp);
 										});

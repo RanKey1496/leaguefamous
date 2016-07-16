@@ -46,17 +46,20 @@ class UserController extends Controller
     }
 
     public function updateAvatar(Request $request){
-        $img = $request->file('image'); // Your data 'data:image/png;base64,AAAFBfj42Pj4';
-        $img = str_replace('data:image/png;base64,', '', $img);
-        $img = str_replace(' ', '+', $img);
-        $data = base64_decode($img);
-
-            $name = str_random(30) . '-' . Auth::user()->id;
-            $data->move('profiles', $name);
-            dd($data);
+        //$img = $request->file('image'); // Your data 'data:image/png;base64,AAAFBfj42Pj4';
+        if($request->image != NULL){
+            $img = $request->image;
+            $data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $img));
+            $name = str_random(30) . '-' . Auth::user()->id . '.png';
+            $path = public_path() . "/profiles/" . $name;
+            file_put_contents($path, $data);
             $user = new User;
             $user->where('email', '=', Auth::user()->email)->update(['profileImage' => 'profiles/'.$name]);
             return Response::json(array('result'=>'1','isUpdated'=>'1','text'=>'Avatar Update'));
+        }
+        else {
+            return Response::json(array('result'=>'0'));
+        }
     }
 
     public function password(){
