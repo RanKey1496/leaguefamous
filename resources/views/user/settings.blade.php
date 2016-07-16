@@ -29,34 +29,72 @@
 								</label>
 							</form>
 							<div class="demo"></div>
+							<button class="upload-result">Result</button>
+							<img class="result" src="">
+							<a href="#" class="ajax-post" style="">Upload prrin</a>
 							<script>
 
 								function readURL(input) {
+									var $uploadCrop;
 
 								    if (input.files && input.files[0]) {
 								        var reader = new FileReader();
 
 								        reader.onload = function (e) {
-											$('.demo').croppie({
-											    viewport: {
-											        width: 200,
-											        height: 200,
-											        type: 'circle'
-											    },
-											    boundary: {
-											        width: 300,
-											        height: 300
-											    },
-											    url: e.target.result,
-											});
+											$uploadCrop.croppie('bind', {
+							            		url: e.target.result
+							            	});
+							            	$('.upload-demo').addClass('ready');
 								        }
 
 								        reader.readAsDataURL(input.files[0]);
 								    }
+
+								    $uploadCrop = $('.demo').croppie({
+										viewport: {
+											width: 200,
+											height: 200,
+											type: 'circle'
+										},
+										boundary: {
+											width: 300,
+											height: 300
+										},
+										exif: true
+									});
+
+									$('.upload-result').on('click', function (ev) {
+										$uploadCrop.croppie('result', {
+											type: 'canvas',
+											size: 'viewport'
+										}).then(function (resp) {
+											$('.result').attr("src",resp);
+										});
+									});
 								}
 
 								$("#imgInp").change(function(){
 								    readURL(this);
+								});
+
+								$(function() {
+
+									$('.ajax-post').click(function(e) {
+										e.preventDefault();
+										$.post('{{ route('users.update.avatar') }}', {
+											"image" : $('.result').attr("src")
+										}, function(response) {
+											if(response.result != null && response.result == '1'){
+												if(response.isUpdated == '1'){
+													alert('Funcionó prrón');
+												}
+											}else{
+												alert("Server Error");
+											}
+										}, "json").always(function() {
+						                    });
+										return false;
+									});
 								});
 
 							</script>
@@ -64,6 +102,7 @@
 					</div>
 			</div>
 	</div>
+
 	<div class="section">
 		<div class="container">
 			<div class="row">

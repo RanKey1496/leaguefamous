@@ -83,6 +83,10 @@ Route::post('user/update', [
 		'uses'	=>	'UserController@updateProfile',
 		'as'	=>	'users.update.profile']);
 
+Route::post('user/updateAvatar', [
+		'uses'	=>	'UserController@updateAvatar',
+		'as'	=>	'users.update.avatar']);
+
 Route::get('user/password', [
 		'uses'	=>	'UserController@password',
 		'as'	=>	'users.edit.password']);
