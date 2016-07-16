@@ -8,7 +8,7 @@
 			<div class="row">
 				<div class="col-md-12">
 						<div class="pic-wrapper">
-							<img class="img-responsive img-circle img-no-padding user-profile-pic-lg" src="{{ url('/') }}/{{Auth::user()->profileImage}}">
+							<img class="img-responsive img-no-padding user-profile-pic-lg" src="{{ url('/') }}/{{Auth::user()->profileImage}}">
 							<a href="#" class="change-profile-picture toggleButton" data-target=".image-cropper"><span class="glyphicon glyphicon-camera"></span></a>
 						</div>
 						<div class="settings-header">
