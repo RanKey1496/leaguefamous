@@ -29,9 +29,7 @@
 			    				Browse <input type="file" style="display: none;" id="imgInp" value="Choose a file" accept="image/*">
 								</label>
 							</form>
-							<button class="upload-result">Result</button>
-							<img class="result" src="">
-							<a href="#" class="ajax-post" style="">Upload prrin</a>
+							<a href="#" class="btn btn-primary ajax-post" style="">Save</a>
 							<script>
 
 								function readURL(input) {
@@ -62,30 +60,21 @@
 										exif: true
 									});
 
-									$('.upload-result').on('click', function (ev) {
+									$('.ajax-post').click(function(e) {
+										var image = '';
 										$uploadCrop.croppie('result', {
 											type: 'canvas',
-											size: 'viewport'
-										}).then(function (resp) {
-											$('.result').attr("src",resp);
+											size: 'viewport'}).then(function (resp) {
+											$image = resp;
 										});
-									});
-								}
 
-								$("#imgInp").change(function(){
-								    readURL(this);
-								});
-
-								$(function() {
-
-									$('.ajax-post').click(function(e) {
 										e.preventDefault();
 										$.post('{{ route('users.update.avatar') }}', {
-											"image" : $('.result').attr("src")
+											"image" : $image
 										}, function(response) {
 											if(response.result != null && response.result == '1'){
 												if(response.isUpdated == '1'){
-													alert('Funcionó prrón');
+													location.reload();
 												}
 											}else{
 												alert("Server Error");
@@ -94,6 +83,10 @@
 						                    });
 										return false;
 									});
+								}
+
+								$("#imgInp").change(function(){
+								    readURL(this);
 								});
 
 							</script>
