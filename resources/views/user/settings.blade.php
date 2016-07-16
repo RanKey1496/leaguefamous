@@ -23,12 +23,12 @@
 				<div class="row">
 						<div class="col-md-12">
 							<h4>Upload new profile image!</h4>
+							<div class="demo croppie-container"></div>
 							<form id="uploadImg" method="POST" action="{{ route('users.update.profile') }}">
 							    <label class="btn btn-default btn-file">
 			    				Browse <input type="file" style="display: none;" id="imgInp" value="Choose a file" accept="image/*">
 								</label>
 							</form>
-							<div class="demo"></div>
 							<button class="upload-result">Result</button>
 							<img class="result" src="">
 							<a href="#" class="ajax-post" style="">Upload prrin</a>
@@ -36,7 +36,6 @@
 
 								function readURL(input) {
 									var $uploadCrop;
-
 								    if (input.files && input.files[0]) {
 								        var reader = new FileReader();
 
@@ -52,13 +51,13 @@
 
 								    $uploadCrop = $('.demo').croppie({
 										viewport: {
-											width: 200,
-											height: 200,
+											width: 150,
+											height: 150,
 											type: 'circle'
 										},
 										boundary: {
-											width: 300,
-											height: 300
+											width: 160,
+											height: 160
 										},
 										exif: true
 									});
@@ -66,7 +65,9 @@
 									$('.upload-result').on('click', function (ev) {
 										$uploadCrop.croppie('result', {
 											type: 'canvas',
-											size: 'viewport'
+											size: 'viewport',
+											format: 'jpeg',
+											quality: 0.95
 										}).then(function (resp) {
 											$('.result').attr("src",resp);
 										});

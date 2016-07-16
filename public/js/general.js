@@ -11,7 +11,7 @@ function countChar(val) {
 };
 
 /* Croppie */
-
+/*
 $(function(){
   var cropImageUrl = $('.cropImage').data("id");
 
@@ -30,18 +30,20 @@ $(function(){
   });
 });
 
-/* show hide */
+*/
 
+/* show hide */
 
 $(function(){
  $('.toggleButton').click(function(){
    var toggleTarget = $(this).data('target');
-   $(toggleTarget).slideToggle(100);
+   $(toggleTarget).slideToggle(200);
  });
 
 });
 
 /* region text changer */
+/*
 switch("{{ $summoner[0]->region }}") {
 	case "na":
 		document.getElementById("region").innerHTML = "North America";
@@ -79,3 +81,4 @@ switch("{{ $summoner[0]->region }}") {
 	default:
 		document.getElementById("region").innerHTML = "{{ $summoner[0]->region }}";
 };
+*/

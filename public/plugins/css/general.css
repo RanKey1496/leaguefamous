@@ -396,6 +396,10 @@ footer {
 	border-bottom:1px #ddd solid;
 }
 
+.croppie-container{
+  max-width:400px;
+}
+
 /* summoner comment section */
 
 
