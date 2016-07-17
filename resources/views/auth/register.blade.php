@@ -24,7 +24,7 @@
         <a href="{{route('users.password.email')}}" class="">Forgot password?</a>
         </div>
         <div class="col-sm-5 col-md-4">
-            <h3>Sign Up</h3>
+            <h3>Register</h3>
         {!! Form::open(['route' => 'users.register', 'method' => 'POST']) !!}
 
             <div class="form-group">
@@ -37,7 +37,7 @@
 
             <div class="form-group">
                 {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'password','required']) !!}
-                </br>           
+                </br>
                 {!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 're-enter password','required']) !!}
             </div>
 

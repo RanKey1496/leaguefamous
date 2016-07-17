@@ -1,32 +1,29 @@
 <nav class="navbar navbar-woodtier navbar-static-top">
   <div class="container">
-    <div class="navbar-header">
-    	   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-             <span class="sr-only">Toggle navigation</span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-           </button>
       <a class="navbar-brand" href="{{route('home')}}">
         Wood Tier
       </a>
-    </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
+      <div class="nav-login">
         @if (Auth::check())
-          <li class="dropdown">
-            <a href="{{route('users.panel')}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Auth::user()->username}}<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="{{route('users.settings')}}">Account settings</a></li>
+          <div class="logged-in dropdown">
+              <button class="clearbutton dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <span class="collapse-text">{{Auth::user()->username}}</span>
+                <img class="img-responsive img-no-padding user-profile-pic" src="{{ url('/') }}/{{Auth::user()->profileImage}}">
+              </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li><a href="{{route('users.settings')}}">Settings</a></li>
               <li><a href="{{route('users.edit.profile')}}">Change my avatar</a></li>
+              <li><a href="{{route('users.edit.password')}}">Change my password</a></li>
               <li role="separator" class="divider"></li>
-         	    <li><a href="{{route('users.logout')}}">Logout</a></li>
+              <li><a href="{{route('users.logout')}}">Logout</a></li>
             </ul>
-          </li>
+          </div>
         @else
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
-            <ul id="login-dp" class="dropdown-menu">
+          <div class="nav-not-logged-in dropdown">
+            <button class="clearbutton dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Login <span class="caret"></span>
+            </button>
+            <ul id="login-dp" class="dropdown-menu dropdown-menu-right">
               <li>
                  <div class="row">
                     <div class="col-md-12">
@@ -47,11 +44,15 @@
                       {!! Form::close() !!}
                     </div>
                  </div>
+                 <div class="row">
+                   <div class="col-md-12 text-center">
+                     <a href="{{route('users.register')}}">Register New User</a>
+                   </div>
+                 </div>
               </li>
             </ul>
-          </li>
+          </div>
         @endif
-      </ul>
       </div>
   </div>
 </nav>

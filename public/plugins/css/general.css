@@ -45,10 +45,25 @@ footer {
 	font-size:2em;
 }
 
+.nav-login{
+	position:relative;
+	margin-top:15px;
+}
+
+.nav-not-logged-in{
+	position:absolute;
+	top:10px;
+	right:0px;
+}
+
 #login-nav{
     min-width: 250px;
     padding: 14px 14px 0;
     overflow:hidden;
+}
+
+#login-dp{
+	padding-bottom:20px;
 }
 
 #login-dp .help-block{
@@ -204,7 +219,6 @@ footer {
 
 /* Two Column Layout */
 
-
 .sidebar{
 	background-color:white;
 	padding-bottom:20px;
@@ -292,6 +306,15 @@ footer {
 
 /* comment section */
 
+.clearbutton{
+	background:none;
+	border:none;
+	font-size:1em;
+}
+
+.clearbutton:focus{
+	outline:5px;
+}
 
 .comment-section-header{
 	position:relative;
@@ -319,22 +342,31 @@ footer {
 	right:15px;
 }
 
+
 .logged-in{
 	position:absolute;
 	top:0px;
 	right:0px;
 }
 
+@media screen and (min-width: 1px) and (max-width: 767px){
+    .collapse-text {
+        display:none;
+    }
+}
+
 .not-logged-in{
 	position:absolute;
 	top:0.2em;
 	top:0px;
-	right:20px;
+	right:0px;
 }
 
 .user-profile-pic{
-	width:56px;
-	height:56px;
+	display:inline-block;
+	width:48px;
+	height:48px;
+  margin-left:15spx;
 }
 
 
@@ -508,7 +540,7 @@ footer {
 	position:absolute;
 	top:30px;
 	right:30px;
-	font-size:1.5em;
+	font-size:1.2em;
 	transition:1s;
 }
 

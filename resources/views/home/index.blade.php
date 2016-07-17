@@ -10,7 +10,7 @@
 		</div>
 	</div> -->
 	<!--Search-->
-	<div class="section section-dark">
+	<div class="section section-dark-blue">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 text-center">
@@ -151,57 +151,6 @@
 			</div>
 		</div>
 	</div>
-<!--
-	<div class="container">
-		<div class="table-responsive">
-		  <table class="table table-hover">
-		    <thead>
-				<th>Imagen</th>
-				<th>Summoner</th>
-				<th>Rank</th>
-				<th>Wins</th>
-				<th>Losses</th>
-				<th>Likes</th>
-			</thead>
-			<tbody>
-				@foreach($summoners as $summoner)
-					<tr class="table-row" data-href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">
-						<td class="text-center">
-							<img class="img-rounded avatar" src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/{{ $summoner->profileIconId }}.png" class="media-photo">
-						</td>
-						<td>
-							<h2 class="media-meta">{{ $summoner->playerName }}</h2>
-						</td>
-						<td>
-							<h2 class="media-meta">{{ $summoner->tier }} {{ $summoner->division }}</h2>
-						</td>
-						<td>
-							<h2 style="color: #00ff00;" class="summary">{{ $summoner->wins }}</h2>
-						</td>
-						<td>
-							<h2 style="color: #ff0000;" class="summary">{{ $summoner->losses }}</h2>
-						</td>
-						<td>
-							@if(!Auth::guest())
-								@if(!$summoner->liked)
-									<a href="#" id="{{ $summoner->playerId }}_{{ $summoner->region }}" class=" glyphicon glyphicon-heart text-danger ajax-like" style="font-size: 50px; text-decoration: none;">
-									</a>
-								@else
-									<a href="#" id="{{ $summoner->playerId }}_{{ $summoner->region }}" class=" glyphicon glyphicon-heart text-primary ajax-like" style="font-size: 50px; text-decoration: none;">
-									</a>
-								@endif
-							@else
-								<a href="{{ route('users.login') }}" class=" glyphicon glyphicon-heart text-danger" style="font-size: 50px; text-decoration: none;">
-								</a>
-							@endif
-						</td>
-					</tr>
-				@endforeach
-			</tbody>
-		  </table>
-		</div>
-	</div>
--->
 
 	<script type="text/javascript">
 		$(document).ready(function($) {
