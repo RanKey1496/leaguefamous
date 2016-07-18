@@ -372,6 +372,10 @@ footer {
 
 /* settings page */
 
+.image-cropper{
+	display:none;
+}
+
 .pic-wrapper{
 	float:left;
 	position:relative;
