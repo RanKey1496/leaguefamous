@@ -34,10 +34,6 @@
 				<div>
 					<button type="button" class="btn write-comment toggleButton" data-target=".write-comment-box"><span class="glyphicon glyphicon-pencil"></span></button>
 				</div>
-					<ul class="nav nav-pills nav-pills-center" role="tablist">
-	  					<li role="presentation" class="active"><a href="#">Recent</a></li>
-	  				    <li role="presentation"><a href="#">Popular</a></li>
-					</ul>
 					@include('template.partials.loginmenu')
 			</div>
 		</div>

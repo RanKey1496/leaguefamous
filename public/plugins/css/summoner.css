@@ -1,0 +1,280 @@
+/* Two Column Layout */
+
+.sidebar{
+	background-color:white;
+	padding-bottom:20px;
+}
+
+.sidebar-brand{
+	margin-top:30px;
+	margin-bottom:30px;
+	font-family:Lobster;
+	font-size:2em;
+}
+
+.sidebar-brand a, .sidebar-brand a:hover{
+	font-family:Lobster;
+	text-decoration: none;
+}
+
+.summoner-content-wrapper{
+	padding-top:0px;
+	padding-bottom:100px;
+	background-color:#f4f3ef;
+}
+
+@media all and (min-width: 992px){
+	.viewport-height{
+			min-height:100vh;
+		}
+	.row-eq-height {
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: -ms-flexbox;
+			display:         flex;
+		}
+}
+
+@media all and (max-width: 991px){
+	.summoner-content-wrapper{
+	    min-height:400px;
+	    overflow:hidden;
+	}
+}
+
+/* Sidebar */
+
+.summoner-name{
+	margin-top:20px;
+	margin-bottom:20px;
+	font-weight:200;
+    font-size:1.5em;
+}
+
+.summoner-button-wrapper{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.summoner-button{
+	padding:10px;
+	font-size:1.25em;
+}
+
+.summoner-button a , span{
+	text-decoration:none;
+}
+
+.summoner-button a:hover{
+}
+
+.summoner-data{
+	text-transform:uppercase;
+	margin-top:20px;
+	padding:0px;
+	text-align:center;
+}
+
+.summoner-data h6{
+	margin:0;
+	font-weight:bold;
+	text-transform:uppercase;
+}
+.summoner-data p{
+	font-family:Dosis;
+	font-size:1.5em;
+}
+
+/* comment section */
+
+
+.comment-section-header{
+	position:relative;
+	vertical-align:center;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+.write-comment{
+	position:absolute;
+	top:0px;
+	left:10px;
+}
+
+.write-comment-box{
+	display:none;
+	border-bottom:1px #dddddd solid;
+	padding-top:30px;
+	padding-bottom:30px;
+}
+
+#charNum{
+	position:absolute;
+	bottom:10px;
+	right:15px;
+}
+
+
+
+@media screen and (min-width: 1px) and (max-width: 767px){
+    .collapse-text {
+        display:none;
+    }
+}
+
+/* comment section */
+
+.member-warning{
+	background:#333333;
+	padding:30px;
+}
+
+.comment-section{
+	background: #eeeeee;
+}
+
+.comment-tile{
+
+}
+
+.comment-panel{
+	position:relative;
+	background-color:#e6e5e1;
+	color:#777777;
+	padding:40px;
+	margin:10px 15px 30px;
+	box-shadow:0 1px 4px rgba(0, 0, 0, 0.0);
+}
+
+.comment-header{
+	margin-bottom:30px;
+	overflow:-hidden;
+}
+
+.comment-title-wrapper{
+	padding-top:20px;
+	height: 64px;
+}
+
+.comment-title-wrapper span{
+	display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+.comment-title{
+	font-size:1em;
+}
+
+
+.comment-body{
+    min-height:100%;
+    font-family:'Press Start 2P';
+}
+
+.comment-tile:hover .comment-cog{
+	opacity:1;
+	transition:0.2s;
+}
+
+.comment-cog{
+	opacity:0;
+	position:absolute;
+	top:30px;
+	right:30px;
+	font-size:1.2em;
+	transition:1s;
+}
+
+.comment-cog a{
+	color:#bbbbbb;
+	transition:.4s;
+}
+.comment-cog a:hover{
+	text-decoration:none;
+	color:#888888;
+}
+
+
+.comment-profile-md{
+	float:left;
+	width:64px;
+	height:64px;
+	margin-right:20px;
+}
+
+.comment-profile-sm{
+	float:left;
+	width:48px;
+	height:48px;
+	margin-right:20px;
+}
+
+.comment-username{
+	font-weight:bold;
+	color:#666666;
+}
+
+.comment-reply{
+	font-size:0.8em;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+.comment-reply-button{
+	margin-bottom:-20px;
+	opacity:0.25;
+	transition:1s;
+}
+
+.comment-panel:hover .comment-reply-button{
+	opacity:1;
+	transition:0.2s;
+}
+
+textarea.comment-form{
+	height:10em;
+}
+
+.timestamp{
+	opacity:0.75;
+}
+
+.reply-body{
+	margin-top:10px;
+}
+
+@media screen and (min-width: 1px) and (max-width: 767px){
+    #grid[data-columns]::before {
+        content: '1 .column.size-1of1';
+    }
+}
+@media screen and (min-width:768px) and (max-width: 1199px){
+    #grid[data-columns]::before {
+        content: '2 .column.size-1of2';
+    }
+}
+@media screen and (min-width:1200px) and (max-width: 1599px){
+    #grid[data-columns]::before {
+        content: '3 .column.size-1of3';
+    }
+}
+@media screen and (min-width:1600px){
+    #grid[data-columns]::before {
+        content: '4 .column.size-1of4';
+    }
+}
+
+.grid-wrapper{
+	margin-left:-10px;
+	margin-right:-10px;
+	margin-top:40px;
+}
+
+
+/* Again, you’re free to use and define the classes: */
+.column { float: left; }
+.size-1of1 { width: 100%; }
+.size-1of2 { width: 50%; }
+.size-1of3 { width: 33.333%; }
+.size-1of4 { width: 25%; }

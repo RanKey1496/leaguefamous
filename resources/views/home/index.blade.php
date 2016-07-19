@@ -14,7 +14,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 text-center">
-					<h1 class="main-header">Welcome to Wood Tier!</h1>
+					<h1 class="main-header">welcome to banter!</h1>
 					<h4>See what people have to say about your favorite summoners!</h4>
 				</div>
 			</div>
