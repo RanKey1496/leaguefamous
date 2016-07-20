@@ -50,16 +50,21 @@
 			<div class="row">
 				<div class="list-plate-wrapper">
 					@foreach($summoners as $summoner)
-						<div class=" col-md-8 list-plate-outer">
-							<a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">
-								<img class="avatar" src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/{{ $summoner->profileIconId }}.png" class="media-photo">
-							</a>
+						<div class=" col-md-8">
 							<div class="list-plate-inner">
-								<div class="list-plate-region">{{ $summoner->region }}</div>
-								<div class="list-plate-name"><a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">{{ $summoner->playerName }}</a></div>
-								<div class="list-plate-division">	{{ $summoner->tier }} {{ $summoner->division }}</div>
+								<a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">
+									<img class="avatar" src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/{{ $summoner->profileIconId }}.png" class="media-photo">
+								</a>
+								<a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}" class="list-plate-main">
+									<div>
+										<span class="list-plate-name">{{ $summoner->playerName }}</span>
+										<span class="list-plate-popularity">1</span>
+									</div>
+									<div class="list-plate-division">{{ $summoner->region }} &bull;	{{ $summoner->tier }} {{ $summoner->division }}</div>
+								</a>
 								<div class="list-plate-button-outer">
 									<span class="list-plate-button">
+										{{ $summoner->likes }}
 										@if(!Auth::guest())
 											@if(!$summoner->liked)
 												<a href="#" id="{{ $summoner->playerId }}_{{ $summoner->region }}" class=" glyphicon glyphicon-heart heart-liked ajax-like">
@@ -72,11 +77,10 @@
 											<a href="{{ route('users.login') }}" class=" glyphicon glyphicon-heart heart-unliked">
 											</a>
 										@endif
-										{{ $summoner->likes }}
 									</span>
 									<span class="list-plate-button">
-										<span class="glyphicon glyphicon-comment"></span>
 										{{ $summoner->comments }}
+										<span class="glyphicon glyphicon-comment"></span>
 									</span>
 								</div>
 							</div>
@@ -87,27 +91,6 @@
 		</div>
 		<div class="text-center">
 			{!! $summoners->render() !!}
-		</div>
-	</div>
-	<div class="section section-light-brown section-with-space">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<h3>Newest Comments</h3>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-					Jerry > Populum <span class="timestamp">&bull; 1d</span>
-					<p>This is a comment.</p>
-					<a class="btn btn-danger btn-simple" href="#">Go to Populum's Page</a>
-				</div>
-				<div class="col-md-6">2
-					Jerry > Populum <span class="timestamp">&bull; 1d</span>
-					<p>This is a comment.</p>
-					<a class="btn btn-danger btn-simple" href="#">Go to Populum's Page</a>
-				</div>
-			</div>
 		</div>
 	</div>
 
