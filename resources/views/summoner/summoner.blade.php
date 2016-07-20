@@ -2,10 +2,6 @@
 
 @section('content')
 
-	<script type="text/javascript">
-		{{ asset('css/summoner.css') }}
-	</script>
-
 	<!--Summoner Data-->
 	<div class="row write-comment-box">
 		@if(!Auth::guest())

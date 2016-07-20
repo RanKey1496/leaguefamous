@@ -4,9 +4,9 @@
             <div class="col-md-3 col-lg-2 viewport-height sidebar">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="text-center sidebar-brand"><a href="{{route('home')}}">Wood Tier</a></div>
+                        <div class="text-center sidebar-brand"><a href="{{route('home')}}">B</a></div>
                         <!-- SIDEBAR USERPIC -->
-                        <img class="img-rounded center-block" src="{{ $iconURL }}">
+                        <img class="center-block" src="{{ $iconURL }}">
                         <!-- END SIDEBAR USERPIC -->
                         <!-- SIDEBAR USER TITLE -->
                         <div class="text-center summoner-name">

@@ -6,10 +6,9 @@
 	<link rel="stylesheet" href="{{ asset('plugins\css\general.css')}}">
 	<link rel="stylesheet" href="{{ asset('plugins\css\summoner.css')}}">
 	<link rel="stylesheet" href="{{ asset('plugins\css\croppie.css')}}">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Dosis:400,300,200' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Ropa+Sans' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 	<script src="{{ asset('plugins/jquery/js/jquery-2.1.4.js') }}"></script>
 	<script src="{{ asset('plugins/bootstrap/js/bootstrap.js') }}"></script>
 	<script src="{{ asset('plugins/js/salvattore.min.js') }}"></script>
@@ -31,5 +30,5 @@
 	<!--End Sidebar-->
 
 </body>
-	<script src="{{ asset('plugins/jquery/js/salvattore.min.js') }}"></script>
+	<script src="{{ asset('plugins/js/salvattore.min.js') }}"></script>
 </html>

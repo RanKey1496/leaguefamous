@@ -14,15 +14,15 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 text-center">
-					<h1 class="main-header">welcome to banter!</h1>
-					<h4>See what people have to say about your favorite summoners!</h4>
+					<h1 class="main-header">Welcome!</h1>
+					<h4>Find summoners platinum or above.</h4>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 					<div class="search-wrapper" action="http://www.google.com">
 						<form id="frmSearch" method="GET" action="">
-							<input id="txtSearch" type="text" class="form-control summoner-search" aria-label="..." placeholder="Find platinum or above summoners...">
+							<input id="txtSearch" type="text" class="form-control summoner-search" aria-label="..." placeholder="Find summoners...">
 							<div class="dropdown region-menu">
 								<button class="btn btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 								NA
@@ -91,12 +91,12 @@
 			<div class="row">
 				<div class="list-plate-wrapper">
 					@foreach($summoners as $summoner)
-						<div class="col-sm-6 col-md-6 col-lg-4 list-plate-outer">
-							<div class="col-md-12 list-plate-inner">
+						<div class=" col-md-8 list-plate-outer">
+							<a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">
+								<img class="avatar" src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/{{ $summoner->profileIconId }}.png" class="media-photo">
+							</a>
+							<div class="list-plate-inner">
 								<div class="list-plate-region">{{ $summoner->region }}</div>
-								<a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">
-									<img class="img-rounded avatar" src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/{{ $summoner->profileIconId }}.png" class="media-photo">
-								</a>
 								<div class="list-plate-name"><a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">{{ $summoner->playerName }}</a></div>
 								<div class="list-plate-division">	{{ $summoner->tier }} {{ $summoner->division }}</div>
 								<div class="list-plate-button-outer">

@@ -1,26 +1,24 @@
 /* Two Column Layout */
 
 .sidebar{
-	background-color:white;
+	background-color:;
 	padding-bottom:20px;
 }
 
 .sidebar-brand{
 	margin-top:30px;
 	margin-bottom:30px;
-	font-family:Lobster;
 	font-size:2em;
 }
 
 .sidebar-brand a, .sidebar-brand a:hover{
-	font-family:Lobster;
 	text-decoration: none;
 }
 
 .summoner-content-wrapper{
 	padding-top:0px;
 	padding-bottom:100px;
-	background-color:#f4f3ef;
+	background-color:;
 }
 
 @media all and (min-width: 992px){
@@ -48,7 +46,7 @@
 	margin-top:20px;
 	margin-bottom:20px;
 	font-weight:200;
-    font-size:1.5em;
+  font-size:1.5em;
 }
 
 .summoner-button-wrapper{
@@ -85,7 +83,7 @@
 	font-size:1.5em;
 }
 
-/* comment section */
+/* write comment section */
 
 
 .comment-section-header{
@@ -139,7 +137,7 @@
 
 .comment-panel{
 	position:relative;
-	background-color:#e6e5e1;
+	background-color:white;
 	color:#777777;
 	padding:40px;
 	margin:10px 15px 30px;
@@ -169,7 +167,8 @@
 
 .comment-body{
     min-height:100%;
-    font-family:'Press Start 2P';
+    font-size:1.2em;
+    line-height:2em;
 }
 
 .comment-tile:hover .comment-cog{
