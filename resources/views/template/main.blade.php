@@ -27,7 +27,7 @@
 	<!--Navbar-->
 	@include('template.partials.nav')
 	<!--End Navbar-->
-
+	<div class="spacer"></div>
 	<!--Page-Container-->
 	@include('flash::message')
 	@include('template.partials.errors')

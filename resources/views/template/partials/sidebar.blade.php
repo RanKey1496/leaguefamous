@@ -4,7 +4,6 @@
             <div class="col-md-3 col-lg-2 viewport-height sidebar">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="text-center sidebar-brand"><a href="{{route('home')}}">B</a></div>
                         <!-- SIDEBAR USERPIC -->
                         <img class="center-block" src="{{ $iconURL }}">
                         <!-- END SIDEBAR USERPIC -->

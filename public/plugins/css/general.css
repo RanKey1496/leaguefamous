@@ -6,6 +6,10 @@ body {
 	font-family:'Varela Round', sans-serif;
 }
 
+.nav-spacer{
+	height:60px;
+}
+
 footer {
     padding: 50px 0px 20px;
     margin-bottom:30px;
@@ -37,26 +41,161 @@ footer {
 	margin:0 auto;
 }
 
-/* nav */
+/* flexnav */
 
-.navbar-woodtier{
-	background:rgba(255, 255, 255, 0.95);
+#flexnav{
+	position:fixed;
+	display: flex;
+	width:100%;
+	height:60px;
+	background-color:rgba(245,245,245,0.98);
+	z-index:1000;
+	align-items:center;
+	border-bottom:1px rgba(0,0,0,0.1) solid;
 }
 
-.navbar-brand{
+#flexnav.active{
+	box-shadow: 0 0 10px rgba(0,0,0,0.07);
+}
+
+#flexnav-brand{
+	margin:0px 10px;
+	padding:10px;
 	font-size:2em;
+	width:60px;
+	transition: 0.5s;
+	color:black;
+}
+
+a#flexnav-brand:hover{
+	color:red;
+	text-decoration:none;
+	transition: 0.5s;
+}
+
+.nav-search-form{
+	position: relative;
+	display: flex;
+	align-items: center;
+	height:100%;
+	border-left:1px rgba(0,0,0,0.1) solid;
+	border-right:1px rgba(0,0,0,0.1) solid;
+}
+
+.search-icon{
+	position: absolute;
+	left: 20px;
+	line-height: 58px;
+}
+
+.nav-search-input{
+	width:300px;
+	height:100%;
+	padding-left:50px;
+	background-color:transparent;
+	border:0;
+	border-radius:0;
+	box-shadow:none;
+}
+
+.nav-search-input:focus{
+	margin-top:2px;
+	border-bottom:2px red solid;
+	box-shadow:none;
+}
+
+.nav-region-menu{
+	height:100%;
+	border-left:1px rgba(0,0,0,0.1) solid;
+	border-right:1px rgba(0,0,0,0.1) solid;
+}
+
+.nav-search-form button{
+	padding-left:15px;
+	padding-right:15px;
+	height:100%;
+	border-radius:0;
+	background-color:transparent;
+}
+
+.nav-search-form button:focus{
+	padding-top:2px;
+	border-bottom:2px red solid;
+}
+
+.nav-region-menu > button:active{
+	box-shadow:none;
+	outline:0;
+}
+
+#search-submit{
+	padding-left:15px;
+	padding-right:15px;
+	height:100%;
+  background:none;
+  border:none;
 }
 
 .nav-login{
-	position:relative;
-	margin-top:15px;
+	display:flex;
+	padding-right:15px;
 }
 
-.nav-not-logged-in{
-	position:absolute;
-	top:10px;
-	right:0px;
+.nav-profile-img{
+	width:32px;
+	height:32px;
 }
+
+.flexgrower{
+	flex-grow:1;
+}
+
+
+.flexblock{
+	background-color:white;
+	align-items:center;
+	margin:10px;
+	width:50px;
+}
+
+@media screen and (min-width: 1px) and (max-width:767px){
+	.nav-search-form{
+		display:none;
+	}
+	.search-wrapper{
+		margin:0 auto;
+		display:block;
+		width:300px;
+	}
+
+	.search-wrapper form{
+		position:relative;
+	}
+}
+@media screen and (min-width:768px){
+	.search-wrapper{
+		display:none;
+	}
+}
+@media screen and (min-width:1200px) and (max-width: 1599px){
+}
+@media screen and (min-width:1600px){
+}
+
+.summoner-search{
+	float:left;
+	border-radius:0px !important;
+	margin-top:15px;
+	margin-bottom:15px;
+}
+
+.region-menu{
+	position:absolute;
+	right:5px;
+	top:22px;
+}
+
+/* nav-login dropdown */
 
 #login-nav{
     min-width: 250px;
@@ -82,74 +221,17 @@ footer {
     margin-bottom: 10px;
 }
 
-@media(max-width:768px){
-    #login-dp{
-        background-color: inherit;
-        color: #fff;
-    }
-    #login-dp .bottom{
-        background-color: inherit;
-        border-top:0 none;
-    }
+/* underbox */
+
+#underbox{
+	background-color:#888888;
+	color:white;
+	box-shadow: inset 0px 0px 19px 1px rgba(0,0,0,0.2);
+	min-height:100px;
+	display:none;
 }
 
 /* home page */
-
-.main-header{
-}
-
-.big-search{
-    padding-top:15px;
-    padding-bottom:15px;
-    background:#444444;
-}
-
-.big-search span{
-	font-size:1.25em;
-}
-
-.search-wrapper{
-	margin:0 auto;
-}
-
-.summoner-search{
-	float:left;
-	border-radius:20px !important;
-	margin-top:30px;
-	margin-bottom:30px;
-}
-
-.region-menu{
-	position:absolute;
-	right:25px;
-	top:37px;
-}
-
-.big-search-input{
-	width:auto;
-	display:inline;
-	-webkit-appearance: none;
-	padding:0px;
-	margin-left:20px;
-	background:none;
-	color:white;
-	font-size:1.5em;
-	border-radius:0px;
-	border-top:0px;
-	border-left:0px;
-	border-right:0px;
-	border-bottom:1px white solid;
-	box-shadow: rgba(0, 0, 0, 0) 0px 1px 4px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px inset;
-	outline:none;
-	border: none;
-	transition: width 0.4s ease-in-out;
-}
-
-.big-search-input:focus{
-	outline: none;
-	border: none;
-	box-shadow: rgba(0, 0, 0, 0) 0px 1px 4px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px inset;
-}
 
 .avatar{
 	float:left;

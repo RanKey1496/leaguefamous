@@ -1,19 +1,19 @@
 @if (Auth::check())
-  <div class="logged-in dropdown">
+  <div class="nav-login dropdown">
       <button class="clearbutton dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        <span class="collapse-text">{{Auth::user()->username}}</span>
-        <img class="img-responsive img-no-padding user-profile-pic" src="{{ url('/') }}/{{Auth::user()->profileImage}}">
+        <img class="img-responsive img-no-padding nav-profile-img" src="{{ url('/') }}/{{Auth::user()->profileImage}}">
       </button>
     <ul class="dropdown-menu dropdown-menu-right">
       <li><a href="{{route('users.settings')}}">Settings</a></li>
       <li><a href="{{route('users.edit.profile')}}">Change my avatar</a></li>
       <li><a href="{{route('users.edit.password')}}">Change my password</a></li>
+      <li><a href="#" class="underbox-show" data="">Password Underbox</a></li>
       <li role="separator" class="divider"></li>
       <li><a href="{{route('users.logout')}}">Logout</a></li>
     </ul>
   </div>
 @else
-  <div class="nav-not-logged-in dropdown">
+  <div class="nav-login dropdown">
     <button class="clearbutton dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
       Login <span class="caret"></span>
     </button>

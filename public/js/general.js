@@ -10,27 +10,38 @@ function countChar(val) {
   }
 };
 
-/* Croppie */
+/* underbox */
+
+
+
+$(document).ready(function() {
 /*
-$(function(){
-  var cropImageUrl = $('.cropImage').data("id");
+   $('#underbox').click(function(e) {
+        $('#hide-underbox').toggle();
+        e.stopPropagation();
+   });
 
+   $(document.body).click(function() {
+        $('#underbox').slideUp();
+   });
 
-  $uploadCrop = $('#uploadImage').croppie({
-      enableExif: true,
-      viewport: {
-          width: 150,
-          height: 150,
-          type: 'circle'
-      },
-      boundary: {
-          width: 300,
-          height: 300
-      }
-  });
+   $('#underbox').click(function(e) {
+        e.stopPropagation();
+   });
+   */
 });
 
-*/
+/* navbar shadow on scroll */
+
+$(window).scroll(function() {
+    var scroll = $(window).scrollTop();
+    if (scroll > 0) {
+        $("#flexnav").addClass("active");
+    }
+    else {
+        $("#flexnav").removeClass("active");
+    }
+});
 
 /* show hide */
 

@@ -1,6 +1,3 @@
-@extends('template.main')
-
-@section('title', 'Password reset')
 
 @section('content')
 

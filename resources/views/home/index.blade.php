@@ -1,62 +1,21 @@
 @extends('template.main')
 
 @section('content')
-	<!--Header-->
-	<!--
-	<div class="container">
-		<div class="jumbotron jumbotron-dark">
-		  <h1>Welcome</h1>
-		  <p>Wombats are short-legged, muscular quadrupedal marsupials that are native to Australia.</p>
-		</div>
-	</div> -->
-	<!--Search-->
-	<div class="section section-dark-blue">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 text-center">
-					<h1 class="main-header">Welcome!</h1>
-					<h4>Find summoners platinum or above.</h4>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-					<div class="search-wrapper" action="http://www.google.com">
-						<form id="frmSearch" method="GET" action="">
-							<input id="txtSearch" type="text" class="form-control summoner-search" aria-label="..." placeholder="Find summoners...">
-							<div class="dropdown region-menu">
-								<button class="btn btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-								NA
-								<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-									<li><a href="#">NA</a></li>
-									<li><a href="#">LAN</a></li>
-									<li><a href="#">LAS</a></li>
-									<li><a href="#">BR</a></li>
-									<li role="separator" class="divider"></li>
-									<li><a href="#">EUW</a></li>
-									<li><a href="#">EUNE</a></li>
-									<li><a href="#">RU</a></li>
-									<li><a href="#">TR</a></li>
-									<li role="separator" class="divider"></li>
-									<li><a href="#">KR</a></li>
-									<li><a href="#">OCE</a></li>
-								</ul>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
+<!-- Header -->
+
+<div class="section">
 	<div class="container">
 		<div class="row">
-
+			<div class="col-md-12">
+				<h1 class="main-header">Welcome!</h1>
+				<h4>Have a look around.</h4>
+			</div>
 		</div>
 	</div>
-	<!--End Search-->
-	</div>
-	<!--End Header-->
+</div>
+
+<!--End Header-->
 
 	<!--Lists-->
 	<div class="section section-with-space">
@@ -153,6 +112,7 @@
 	</div>
 
 	<script type="text/javascript">
+
 		$(document).ready(function($) {
 			$(".table-row").click(function() {
 				window.document.location = $(this).data("href");

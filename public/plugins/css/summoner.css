@@ -2,17 +2,8 @@
 
 .sidebar{
 	background-color:;
+  padding-top:40px;
 	padding-bottom:20px;
-}
-
-.sidebar-brand{
-	margin-top:30px;
-	margin-bottom:30px;
-	font-size:2em;
-}
-
-.sidebar-brand a, .sidebar-brand a:hover{
-	text-decoration: none;
 }
 
 .summoner-content-wrapper{

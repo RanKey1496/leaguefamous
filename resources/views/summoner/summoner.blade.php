@@ -30,7 +30,6 @@
 				<div>
 					<button type="button" class="btn write-comment toggleButton" data-target=".write-comment-box"><span class="glyphicon glyphicon-pencil"></span></button>
 				</div>
-					@include('template.partials.loginmenu')
 			</div>
 		</div>
 	</div>

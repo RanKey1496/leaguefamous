@@ -25,6 +25,10 @@
 </head>
 <body>
 
+	<!--Navbar-->
+	@include('template.partials.nav')
+	<!--End Navbar-->
+	<div class="spacer"></div>
 	<!--Sidebar-->
 	@include('template.partials.sidebar')
 	<!--End Sidebar-->
