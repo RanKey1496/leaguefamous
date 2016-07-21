@@ -267,7 +267,7 @@ a#flexnav-brand:hover{
 	color:#444;
 }
 
-.list-plate-main:hover{
+.list-plate-main:hover, .list-plate-main:active * , .list-plate-main:active {
 	text-decoration:none;
 }
 

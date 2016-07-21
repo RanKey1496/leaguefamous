@@ -3,6 +3,16 @@
 @section('content')
 
 	<!--Summoner Data-->
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="comment-section-header">
+				<div>
+					<button type="button" class="btn write-comment toggleButton" data-target=".write-comment-box"><span class="glyphicon glyphicon-pencil"></span></button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="row write-comment-box">
 		@if(!Auth::guest())
 		<div class="col-md-12 col-lg-8">
@@ -14,8 +24,10 @@
 					<label>Write a comment</label>
 					<textarea id="commentField" required="required" placeholder="Say something original..." name="body" class="form-control comment-form" onkeyup="countChar(this)"></textarea>
 				</div>
-				<input type="submit" name='post_comment' class="btn btn-success" value="Post"/>
-				<div id="charNum">Characters left: 300</div>
+				<div class="form-bottom">
+					<input type="submit" name='post_comment' class="btn btn-default" value="Save"/>
+					<div id="charNum">Characters left: 300</div>
+				</div>
 			</form>
 		</div>
 		@else
@@ -23,15 +35,6 @@
 			<p class="text-center">You must be logged in to comment. If you are not a member, please leave, because this area is for members only.</p>
 		</div>
 		@endif
-	</div>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="comment-section-header text-center">
-				<div>
-					<button type="button" class="btn write-comment toggleButton" data-target=".write-comment-box"><span class="glyphicon glyphicon-pencil"></span></button>
-				</div>
-			</div>
-		</div>
 	</div>
 <!--End Summoner Data-->
 		@if($comments)
@@ -81,7 +84,7 @@
 							    	</div>
 							    </div>
 <!--comment reply-->
-					    		<a class="btn btn-xs comment-reply-button" data-toggle="modal" data-target="#myModal">Reply!</a>
+					    		<a class="btn btn-xs comment-reply-button" data-toggle="modal" data-target="#myModal">Expand</a>
 									<div id="make_{{ $comment->id }}_reply" class="panel-body" style="display:none;">
 										<form method="post" action="{{ route('comments.storeReply') }}">
 											<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -110,19 +113,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Replies (0) !!FIX!!</h4>
       </div>
       <div class="modal-body">
 				My first modal!
       </div>
       <div class="modal-footer">
-        <div class="left-side">
-            <button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Never mind</button>
-        </div>
-        <div class="divider"></div>
-        <div class="right-side">
-            <button type="button" class="btn btn-danger btn-simple" onclick="$('.modal-body').load('http://localhost/woodtier/public/comment/search/4');">Delete</button>
-        </div>
+			<button type="button" class="btn btn-warning" onclick="$('.modal-body').load('http://localhost/woodtier/public/comment/search/4');">Load Sample</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

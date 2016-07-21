@@ -58,7 +58,7 @@
 								<a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}" class="list-plate-main">
 									<div>
 										<span class="list-plate-name">{{ $summoner->playerName }}</span>
-										<span class="list-plate-popularity">1</span>
+										<span class="list-plate-popularity">#1</span>
 									</div>
 									<div class="list-plate-division">{{ $summoner->region }} &bull;	{{ $summoner->tier }} {{ $summoner->division }}</div>
 								</a>

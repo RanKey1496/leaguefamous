@@ -57,11 +57,11 @@
             </div>
             <div class="col-md-9 col-lg-10 summoner-content-wrapper">
                 <!--Page-Container-->
-                    @include('flash::message')
-                    @include('template.partials.errors')
-                    <section>
-                        @yield('content')
-                    </section>
+                @include('flash::message')
+                @include('template.partials.errors')
+                <section>
+                    @yield('content')
+                </section>
                 <div class="sticky-footer">
                     @include('template.partials.foot')
                 </div>
