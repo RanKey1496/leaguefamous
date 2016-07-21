@@ -71,26 +71,37 @@ Route::get('user', [
 		'uses'	=>	'UserController@user',
 		'as'	=>	'users.panel']);
 
+//Configuración de la cuenta
 Route::get('settings', [
 	'uses'	=>	'UserController@settings',
 	'as'	=>	'users.settings']);
 
+//Configuración de la cuenta2
+Route::get('testsettings', [
+	'uses'	=>	'UserController@testsettings',
+	'as'	=>	'users.testsettings']);
+
+//Perfil del usuario
 Route::get('user/profile', [
 		'uses'	=>	'UserController@profile',
 		'as'	=>	'users.edit.profile']);
 
+//Enviar foto de perfil
 Route::post('user/update', [
 		'uses'	=>	'UserController@updateProfile',
 		'as'	=>	'users.update.profile']);
 
+//Enviar foto de perfil2
 Route::post('user/updateAvatar', [
 		'uses'	=>	'UserController@updateAvatar',
 		'as'	=>	'users.update.avatar']);
 
+//Página para cambiar password
 Route::get('user/password', [
 		'uses'	=>	'UserController@password',
 		'as'	=>	'users.edit.password']);
 
+//Cambiar password
 Route::post('user/updatepassword', [
 		'uses'	=>	'UserController@updatePassword',
 		'as'	=>	'users.update.password']);

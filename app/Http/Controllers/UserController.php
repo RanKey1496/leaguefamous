@@ -93,4 +93,8 @@ class UserController extends Controller
     public function settings(){
         return View('user.settings');
     }
+
+    public function testsettings(){
+        return View('user.testsettings');
+    }
 }
