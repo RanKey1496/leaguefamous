@@ -11,12 +11,12 @@
 			<div class="grid-item">
 				<a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">
 					<div class="grid-panel">
-						<div class="grid-popularity">#1</div>
+						<div class="grid-popularity">1</div>
 						<div class="grid-region">{{ $summoner->region }}</div>
+						<div class="grid-name">{{ $summoner->playerName }}
+						</div>
 						<div class="">
 							<img src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/{{ $summoner->profileIconId }}.png" class="grid-avatar">
-						</div>
-						<div class="grid-name">{{ $summoner->playerName }}
 						</div>
 						<div class="grid-likes">
 

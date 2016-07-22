@@ -325,10 +325,10 @@ a#flexnav-brand:hover{
 	height:100%;
 	display:flex;
 	flex-direction:column;
-	justify-content:space-around;
+	justify-content:center;
 	align-items:center;
 	border:10px white solid;
-	transition:.2s;
+	transition:.5s;
 }
 
 .grid-panel:hover{
@@ -353,7 +353,7 @@ a#flexnav-brand:hover{
 
 .grid-avatar{
 	width:64px;
-	margin-top:20px;
+	margin:5px;
 }
 
 .grid-name{
