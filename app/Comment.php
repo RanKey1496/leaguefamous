@@ -11,7 +11,7 @@ class Comment
     }
 
     public function getComments($summonerId, $region) { 
-        return DB::select("SELECT * FROM comments WHERE summoner_id = ? AND summoner_region = ? AND deleted_at IS NULL ORDER BY created_at DESC", [$summonerId, $region]);
+        return DB::select("SELECT * FROM comments WHERE summoner_id = ? AND summoner_region = ? AND deleted_at IS NULL AND parentId IS NULL ORDER BY created_at DESC", [$summonerId, $region]);
     }
 
     public function getComment($user_id, $id) { 
@@ -24,5 +24,13 @@ class Comment
 
     public function comments($summonerId, $region){
         return DB::select("SELECT COUNT(*) AS cont FROM comments WHERE summoner_id=? AND summoner_region=? AND deleted_at IS NULL", [$summonerId, $region]);
+    }
+
+    public function replys($id){
+        return DB::select("SELECT * FROM comments WHERE parentId=? AND deleted_at IS NULL LIMIT 5", [$id]);
+    }
+
+    public function cntreplys($id){
+        return DB::select("SELECT COUNT(*) AS cont FROM comments WHERE parentId=? AND deleted_at IS NULL", [$id]);
     }
 }

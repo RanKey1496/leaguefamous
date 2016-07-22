@@ -62,21 +62,16 @@
 									</div>
 									<div class="comment-title-wrapper"><span class="comment-username">{{ $comment->username }}</span> <span class="timestamp">&bull; {{ $comment->created_at }}</span>
 								    </div>
+								    <span>Este comentario tiene tu ano y {{ $comment->cntreplys }} replys</span>
 								</div>
 
 								<div class="comment-body">
 							    	<p>{{ $comment->body }}</p>
 						    		<div class="">
-							    		@foreach($comments as $commentReply)
+							    		@foreach($comment->replys as $commentReply)
 							    			@if($commentReply->parentId == $comment->id)
 							    				<div id="comment_{{ $commentReply->id }}" class="comment-reply">
 							    					<div><img class="img-responsive img-circle img-no-padding comment-profile-sm" src="{{ url('/') }}/{{ $comment->icon }}"></div>
-							    					<div><span class="comment-username">{{ $commentReply->username }}</span> <span class="timestamp">&bull; {{ $commentReply->created_at }}</span></div>
-												    @if(!Auth::guest())
-														@if(Auth::user()->id == $commentReply->user_id)
-														  		<a href="#" id="{{ $commentReply->id }}" class="glyphicon glyphicon-remove text-danger pull-right ajax-remove" style="font-size: 20px; text-decoration: none;"></a>
-														@endif
-													@endif
 													<div class="reply-body">{{ $commentReply->body }}</div>
 							    				</div>
 							    			@endif
@@ -115,11 +110,40 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Replies (0) !!FIX!!</h4>
       </div>
+      <div class="comment-body">
+		<div id="comment_{{ $comment->id }}">
+			<div class="comment-header text-left">
+		  		<div><img class="img-responsive img-no-padding comment-profile-md" src="{{ url('/') }}/{{ $comment->icon }}">
+				</div>
+				<div class="comment-title-wrapper"><span class="comment-username">{{ $comment->username }}</span> <span class="timestamp">&bull; {{ $comment->created_at }}</span>
+			    </div>
+			</div>
+			<div class="modal-comment-body">
+				<p>{{ $comment->body }}</p>
+			</div>
+			<div class="modal-reply-area">
+				<form method="post" action="{{ route('comments.storeReply') }}">
+					<div class="form-group">
+						<label for="reply">Leave a reply:</label>
+						<textarea class="form-control" rows="3" required="required" name="body" id="reply"></textarea>
+					</div>
+					<div class="form-bottom">
+											<input type="hidden" name="_token" value="{{ csrf_token() }}">
+											<input type="hidden" name="commentId" value="{{ $comment->id }}">
+											<input type="hidden" name="summonerId" value="{{ $summoner[0]->playerId }}">
+											<input type="hidden" name="region" value="{{ $summoner[0]->region }}">
+						<input type="submit" name='post_comment' class="btn btn-default" value="Save"/>
+						<div id="charNum">Characters left: 300</div>
+					</div>
+				</form>
+			</div>
+		</div>
+      </div>
       <div class="modal-body">
 				My first modal!
       </div>
       <div class="modal-footer">
-			<button type="button" class="btn btn-warning" onclick="$('.modal-body').load('http://localhost/woodtier/public/comment/search/4');">Load Sample</button>
+			<button type="button" class="btn btn-warning" onclick="$('.modal-body').load('http://localhost/woodtier/public/comment/search/1');">Load Sample</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>

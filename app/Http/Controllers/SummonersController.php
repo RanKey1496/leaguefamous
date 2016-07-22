@@ -27,15 +27,18 @@ class SummonersController extends Controller
             $summoner = Summoner::where($matchThese)->get();
             $profileIconId = $summoner[0]['profileIconId'];
             $profileIconId = 'http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/'.$profileIconId.'.png';
-            $comment = new Comment();
+            $commentss = new Comment();
             $like = new Like();
-            $comments = $comment->getComments($summoner[0]['playerId'], $summoner[0]['region']);
+            $comments = $commentss->getComments($summoner[0]['playerId'], $summoner[0]['region']);
             
             foreach ($comments as $comment) {
                 $data = User::find($comment->user_id);
                 $comment->username = $data->username;
                 $comment->icon = $data->profileImage;
                 $comment->created_at = Carbon::parse($comment->created_at)->diffForHumans();
+                $replys = $commentss->cntreplys($comment->id);
+                $comment->cntreplys = $replys[0]->cont;
+                $comment->replys = $commentss->replys($comment->id);
             }
 
             $cntcomment = new Comment();
