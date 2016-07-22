@@ -64,14 +64,14 @@
 								</a>
 								<div class="list-plate-button-outer">
 									<span class="list-plate-button">
-										{{ $summoner->likes }}
+										<span id="likes_{{ $summoner->playerId }}_{{ $summoner->region }}">{{ $summoner->likes }}</span>
 										@if(!Auth::guest())
 											@if(!$summoner->liked)
-												<a href="#" id="{{ $summoner->playerId }}_{{ $summoner->region }}" class=" glyphicon glyphicon-heart heart-liked ajax-like">
-												</a>
+												<span id="{{ $summoner->playerId }}_{{ $summoner->region }}" class="glyphicon glyphicon-heart text-primary ajax-like">
+												</span>
 											@else
-												<a href="#" id="{{ $summoner->playerId }}_{{ $summoner->region }}" class=" glyphicon glyphicon-heart heart-unliked ajax-like">
-												</a>
+												<span id="{{ $summoner->playerId }}_{{ $summoner->region }}" class="glyphicon glyphicon-heart text-danger ajax-like">
+												</span>
 											@endif
 										@else
 											<a href="{{ route('users.login') }}" class=" glyphicon glyphicon-heart heart-unliked">
@@ -104,18 +104,17 @@
 
 		$(function() {
                 $('.ajax-like').click(function(e) {
-                    e.preventDefault();
                     var id=$(this).attr("id");
                     $.post('{{ route('summoners.like') }}', {
                         "summonerId_region" : $(this).attr("id")
                     }, function(response) {
                         if(response.result != null && response.result == '1'){
                             if(response.isunlike=='1'){
-                                $("#"+id).removeClass('text-danger');
-                                $("#"+id).addClass('text-primary');
+                                $("#likes_"+id).text(response.cnt);
+                                $("#"+id).removeClass('text-danger').addClass('text-primary');
                             }else{
-                                $("#"+id).removeClass('text-primary');
-                                $("#"+id).addClass('text-danger');
+                                $("#likes_"+id).text(response.cnt);
+                                $("#"+id).removeClass('text-primary').addClass('text-danger');
                             }
                         }else{
                             alert("Server Error");

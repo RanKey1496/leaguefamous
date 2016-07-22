@@ -31,7 +31,8 @@ class LikeController extends Controller
 
             if(count($likes) > 0){
                 $likes = $like->liked($summonerId, $region, Auth::user()->id);
-                return Response::json(array('result'=>'1','isunlike'=>'0','text'=>'Like'));
+                $likes = $like->likes($summonerId, $region);
+                return Response::json(array('result'=>'1','isunlike'=>'0','cnt'=>$likes[0]->cont));
             }else{
                 $likes = $like->getLiked($summonerId, $region, Auth::user()->id);
                 if(count($likes) > 0){
@@ -39,8 +40,8 @@ class LikeController extends Controller
                 } else {
                     $like->save($summonerId, $region, Auth::user()->id);
                 }
-  
-                return Response::json(array('result'=>'1','isunlike'=>'1','text'=>'Unlike'));
+                $likes = $like->likes($summonerId, $region);
+                return Response::json(array('result'=>'1','isunlike'=>'1','cnt'=>$likes[0]->cont));
             }
         }else{
             return Response::json(array('result' => '0'));
