@@ -328,7 +328,7 @@ a#flexnav-brand:hover{
 	justify-content:center;
 	align-items:center;
 	border:10px white solid;
-	transition:.5s;
+	transition:0.5s;
 }
 
 .grid-panel:hover{
