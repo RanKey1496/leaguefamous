@@ -2,6 +2,45 @@
 
 @section('content')
 
+<div class="section">
+	<div class="container-fluid">
+		<h2>TOP 50</h2>
+	</div>
+	<div class="grid">
+			@foreach($summoners as $summoner)
+			<div class="grid-item">
+				<a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">
+					<div class="grid-panel">
+						<div class="grid-popularity">#1</div>
+						<div class="grid-region">{{ $summoner->region }}</div>
+						<div class="">
+							<img src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/{{ $summoner->profileIconId }}.png" class="grid-avatar">
+						</div>
+						<div class="grid-name">{{ $summoner->playerName }}
+						</div>
+						<div class="grid-likes">
+
+							@if(!Auth::guest())
+								@if(!$summoner->liked)
+									<span id="{{ $summoner->playerId }}_{{ $summoner->region }}" class="glyphicon glyphicon-heart text-primary ajax-like">
+									</span>
+								@else
+									<span id="{{ $summoner->playerId }}_{{ $summoner->region }}" class="glyphicon glyphicon-heart text-danger ajax-like">
+									</span>
+								@endif
+							@else
+								<a href="{{ route('users.login') }}" class=" glyphicon glyphicon-heart heart-unliked">
+								</a>
+							@endif
+							<span>{{ $summoner->likes }}</span>
+						</div>
+					</div>
+				</a>
+			</div>
+			@endforeach
+	</div>
+</div>
+
 <!-- Header -->
 
 <div class="section">
@@ -93,19 +132,6 @@
 			{!! $summoners->render() !!}
 		</div>
 	</div>
-	<div class="section">
-		<div class="grid">
-				@foreach($summoners as $summoner)
-				<div class="grid-item">
-					<a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">
-						<div class="grid-panel">
-							<img src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/{{ $summoner->profileIconId }}.png" class="grid-avatar">
-						</div>
-					</a>
-				</div>
-				@endforeach
-		</div>
-	</div>
 
 	<script type="text/javascript">
 
@@ -152,15 +178,33 @@
 
 		});
 
-		document.getElementById('frmSearch').onsubmit = function() {
-	        window.location = '{{ url('/') }}/' + region + '/' + document.getElementById('txtSearch').value;
-	        return false;
+			document.getElementById('frmSearch').onsubmit = function() {
+        window.location = '{{ url('/') }}/' + region + '/' + document.getElementById('txtSearch').value;
+        return false;
 	    }
+
+	$(function(){
+		var gridWidth = function() {
+		  var roundDown = Math.floor(window.innerWidth / 180);
+		  var percentWidth = Math.floor(1 / roundDown * 10000) / 100;
+		  $('.grid-item').css({
+		    'width': percentWidth + '%',
+		    'height': percentWidth + "vw"
+		  });
+		}
+
+		gridWidth();
+
+		$(window).resize(function(){
+			gridWidth();
+		});
 
 		$('.grid').packery({
 			itemSelector: '.grid-item',
 			gutter:0
 		});
+	});
+
 	</script>
 
 	<!--End Lists-->
