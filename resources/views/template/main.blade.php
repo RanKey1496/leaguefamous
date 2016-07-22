@@ -11,6 +11,7 @@
 	<script src="{{ asset('plugins/bootstrap/js/bootstrap.js') }}"></script>
 	<script src="{{ asset('plugins/js/salvattore.min.js') }}"></script>
 	<script src="{{ asset('plugins/js/croppie.js') }}"></script>
+	<script src="{{ asset('plugins/js/packery.pkgd.min.js') }}"></script>
 	<script src="{{ asset('js/general.js')}}"></script>
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<script type="text/javascript">

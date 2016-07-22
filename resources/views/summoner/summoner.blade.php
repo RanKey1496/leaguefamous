@@ -62,7 +62,6 @@
 									</div>
 									<div class="comment-title-wrapper"><span class="comment-username">{{ $comment->username }}</span> <span class="timestamp">&bull; {{ $comment->created_at }}</span>
 								    </div>
-								    <span>Este comentario tiene tu ano y {{ $comment->cntreplys }} replys</span>
 								</div>
 
 								<div class="comment-body">
@@ -80,6 +79,7 @@
 							    </div>
 <!--comment reply-->
 					    		<a class="btn btn-xs comment-reply-button" data-toggle="modal" data-target="#myModal">Expand</a>
+									<span>({{ $comment->cntreplys }})</span>
 									<div id="make_{{ $comment->id }}_reply" class="panel-body" style="display:none;">
 										<form method="post" action="{{ route('comments.storeReply') }}">
 											<input type="hidden" name="_token" value="{{ csrf_token() }}">
