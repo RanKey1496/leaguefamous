@@ -6,11 +6,6 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			<div class="comment-section-header">
-				<div>
-					<button type="button" class="btn write-comment toggleButton" data-target=".write-comment-box"><span class="glyphicon glyphicon-pencil"></span></button>
-				</div>
-			</div>
 		</div>
 	</div>
 	<div class="row write-comment-box">
@@ -91,6 +86,11 @@
 										<h6>Win / Loss</h6>
 										<p>{{ $summoner[0]->wins }} / {{ $summoner[0]->losses }}</p>
 								</div>
+						</div>
+					</div>
+					<div class="summoner-buttons">
+						<div>
+							<button type="button" class="btn write-comment toggleButton" data-target=".write-comment-box"><span class="glyphicon glyphicon-pencil"></span> Say Something</button>
 						</div>
 					</div>
 				</div>

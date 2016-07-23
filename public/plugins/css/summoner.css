@@ -77,13 +77,6 @@
 
 /* write comment section */
 
-.comment-section-header{
-	position:relative;
-	vertical-align:center;
-	margin-top:20px;
-	margin-bottom:0px;
-}
-
 .write-comment{
 }
 
@@ -114,6 +107,11 @@
 	background: #eeeeee;
 }
 
+.summoner-buttons{
+  display:flex;
+  justify-content:center;
+}
+
 /* comment grid */
 
 .comment-grid{
@@ -136,7 +134,7 @@
 	padding:30px;
 	margin:15px;
   border-top:5px rgba(0,0,0,0.05) solid;
-  border-bottom:5px rgba(0,0,0,0.05) solid;
+  border-bottom:5px rgba(0,0,0,0.1) solid;
 }
 
 .comment-header{
