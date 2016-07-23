@@ -39,7 +39,7 @@
 <!--End Summoner Data-->
 		@if($comments)
 		<div class="grid-wrapper">
-			<div id="grid" data-columns>
+			<div class="comment-grid">
 				@foreach($comments as $comment)
 					@if($comment->parentId == NULL)
 					<div class="comment-tile">
@@ -57,41 +57,41 @@
 										</ul>
 									@endif
 								@endif
-								<div class="comment-header text-left">
-							  		<div><img class="img-responsive img-circle img-no-padding comment-profile-md" src="{{ url('/') }}/{{ $comment->icon }}">
-									</div>
-									<div class="comment-title-wrapper"><span class="comment-username">{{ $comment->username }}</span> <span class="timestamp">&bull; {{ $comment->created_at }}</span>
-								    </div>
+							<div class="comment-header text-left">
+						  		<div><img class="img-responsive img-circle img-no-padding comment-profile-md" src="{{ url('/') }}/{{ $comment->icon }}">
 								</div>
-
-								<div class="comment-body">
-							    	<p>{{ $comment->body }}</p>
-						    		<div class="">
-							    		@foreach($comment->replys as $commentReply)
-							    			@if($commentReply->parentId == $comment->id)
-							    				<div id="comment_{{ $commentReply->id }}" class="comment-reply">
-							    					<div><img class="img-responsive img-circle img-no-padding comment-profile-sm" src="{{ url('/') }}/{{ $comment->icon }}"></div>
-													<div class="reply-body">{{ $commentReply->body }}</div>
-							    				</div>
-							    			@endif
-							    		@endforeach
-							    	</div>
+								<div class="comment-title-wrapper"><span class="comment-username">{{ $comment->username }}</span> <span class="timestamp">&bull; {{ $comment->created_at }}</span>
 							    </div>
+							</div>
+
+							<div class="comment-body">
+					    	<p>{{ $comment->body }}</p>
+				    		<div class="">
+					    		@foreach($comment->replys as $commentReply)
+					    			@if($commentReply->parentId == $comment->id)
+					    				<div id="comment_{{ $commentReply->id }}" class="comment-reply">
+					    					<div><img class="img-responsive img-circle img-no-padding comment-profile-sm" src="{{ url('/') }}/{{ $comment->icon }}"></div>
+											<div class="reply-body">{{ $commentReply->body }}</div>
+					    				</div>
+					    			@endif
+					    		@endforeach
+					    	</div>
+					    </div>
 <!--comment reply-->
-					    		<a class="btn btn-xs comment-reply-button" data-toggle="modal" data-target="#myModal">Expand</a>
-									<span>({{ $comment->cntreplys }})</span>
-									<div id="make_{{ $comment->id }}_reply" class="panel-body" style="display:none;">
-										<form method="post" action="{{ route('comments.storeReply') }}">
-											<input type="hidden" name="_token" value="{{ csrf_token() }}">
-											<input type="hidden" name="commentId" value="{{ $comment->id }}">
-											<input type="hidden" name="summonerId" value="{{ $summoner[0]->playerId }}">
-											<input type="hidden" name="region" value="{{ $summoner[0]->region }}">
-											<div class="form-group">
-												<textarea required="required" placeholder="Enter comment here" name="body" class="form-control"></textarea>
-											</div>
-											<input type="submit" name='post_comment' class="btn btn-success" value="Reply"/>
-										</form>
+			    		<a class="btn btn-xs comment-reply-button" data-toggle="modal" data-target="#myModal">Expand</a>
+							<span>({{ $comment->cntreplys }})</span>
+							<div id="make_{{ $comment->id }}_reply" class="panel-body" style="display:none;">
+								<form method="post" action="{{ route('comments.storeReply') }}">
+									<input type="hidden" name="_token" value="{{ csrf_token() }}">
+									<input type="hidden" name="commentId" value="{{ $comment->id }}">
+									<input type="hidden" name="summonerId" value="{{ $summoner[0]->playerId }}">
+									<input type="hidden" name="region" value="{{ $summoner[0]->region }}">
+									<div class="form-group">
+										<textarea required="required" placeholder="Enter comment here" name="body" class="form-control"></textarea>
 									</div>
+									<input type="submit" name='post_comment' class="btn btn-success" value="Reply"/>
+								</form>
+							</div>
 						</div>
 					</div>
 					@endif
@@ -99,42 +99,38 @@
 			</div>
 		</div>
 		@endif
-	<div class-"row">
-		<div class="col-md-12" style="margin-top:50px">
-		</div>
-	</div>
 	@if($comments)
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="comment-body">
-				<div id="comment_{{ $comment->id }}">
-					<div class="comment-header text-left">
-				  		<div><img class="img-responsive img-no-padding comment-profile-md" src="{{ url('/') }}/{{ $comment->icon }}">
+						<div id="comment_{{ $comment->id }}">
+							<div class="comment-header text-left">
+						  		<div><img class="img-responsive img-no-padding comment-profile-md" src="{{ url('/') }}/{{ $comment->icon }}">
+								</div>
+								<div class="comment-title-wrapper"><span class="comment-username">{{ $comment->username }}</span> <span class="timestamp">&bull; {{ $comment->created_at }}</span>
+							    </div>
+							</div>
+							<div class="modal-comment-body">
+								<p>{{ $comment->body }}</p>
+							</div>
+							<div class="modal-reply-area">
+								<form method="post" action="{{ route('comments.storeReply') }}">
+									<div class="form-group">
+										<label for="reply">Leave a reply:</label>
+										<textarea class="form-control" rows="3" required="required" name="body" id="reply"></textarea>
+									</div>
+									<div class="form-bottom">
+															<input type="hidden" name="_token" value="{{ csrf_token() }}">
+															<input type="hidden" name="commentId" value="{{ $comment->id }}">
+															<input type="hidden" name="summonerId" value="{{ $summoner[0]->playerId }}">
+															<input type="hidden" name="region" value="{{ $summoner[0]->region }}">
+										<input type="submit" name='post_comment' class="btn btn-default" value="Save"/>
+										<div id="charNum">Characters left: 300</div>
+									</div>
+								</form>
+							</div>
 						</div>
-						<div class="comment-title-wrapper"><span class="comment-username">{{ $comment->username }}</span> <span class="timestamp">&bull; {{ $comment->created_at }}</span>
-					    </div>
-					</div>
-					<div class="modal-comment-body">
-						<p>{{ $comment->body }}</p>
-					</div>
-					<div class="modal-reply-area">
-						<form method="post" action="{{ route('comments.storeReply') }}">
-							<div class="form-group">
-								<label for="reply">Leave a reply:</label>
-								<textarea class="form-control" rows="3" required="required" name="body" id="reply"></textarea>
-							</div>
-							<div class="form-bottom">
-													<input type="hidden" name="_token" value="{{ csrf_token() }}">
-													<input type="hidden" name="commentId" value="{{ $comment->id }}">
-													<input type="hidden" name="summonerId" value="{{ $summoner[0]->playerId }}">
-													<input type="hidden" name="region" value="{{ $summoner[0]->region }}">
-								<input type="submit" name='post_comment' class="btn btn-default" value="Save"/>
-								<div id="charNum">Characters left: 300</div>
-							</div>
-						</form>
-					</div>
-				</div>
 		      </div>
 		      <div class="modal-body">
 						My first modal!
@@ -179,6 +175,26 @@
 
 		});
 
+		$(function(){
+			var gridWidth = function() {
+			  var roundDown = Math.floor(window.innerWidth / 360);
+			  var percentWidth = Math.floor(1 / roundDown * 10000) / 100;
+			  $('.comment-tile').css({
+			    'width': percentWidth + '%'
+			  });
+			}
+
+			gridWidth();
+
+			$(window).resize(function(){
+				gridWidth();
+			});
+
+			$('.comment-grid').packery({
+				itemSelector: '.comment-tile',
+				gutter:0
+			});
+		});
 /*
 		$(function() {
 			$('.make-reply-a').click(function(e){
