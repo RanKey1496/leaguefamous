@@ -132,17 +132,18 @@
 								</span>
 							</div>
 <!--comment reply-->
-			    		<div class="comment-expand"><a class="btn btn-sm comment-expand-button" data-toggle="modal" data-target="#myModal">Expand</a></div>
 
-								@foreach($comment->replys as $commentReply)
-									@if($commentReply->parentId == $comment->id)
-										<div id="comment_{{ $commentReply->id }}" class="comment-reply">
-											<div><img class="img-responsive img-circle img-no-padding comment-profile-sm" src="{{ url('/') }}/{{ $comment->icon }}"></div>
-											<div class="reply-body">{{ $commentReply->body }}</div>
-										</div>
-									@endif
-								@endforeach
-								
+							@foreach($comment->replys as $commentReply)
+								@if($commentReply->parentId == $comment->id)
+									<div id="comment_{{ $commentReply->id }}" class="comment-reply">
+										<div><img class="img-responsive img-circle img-no-padding comment-profile-sm" src="{{ url('/') }}/{{ $comment->icon }}"></div>
+										<div class="reply-body">{{ $commentReply->body }}</div>
+									</div>
+								@endif
+							@endforeach
+
+			    		<div class="comment-expand"><a class="btn btn-sm comment-expand-button" data-toggle="modal" data-target="#myModal">Open</a></div>
+
 							<div id="make_{{ $comment->id }}_reply" class="panel-body" style="display:none;">
 								<form method="post" action="{{ route('comments.storeReply') }}">
 									<input type="hidden" name="_token" value="{{ csrf_token() }}">

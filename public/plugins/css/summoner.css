@@ -112,16 +112,17 @@
 	position:relative;
 	background-color:rgba(255,255,255,0.5);
 	color:#777777;
-	padding:30px;
-	margin:15px;
+	padding:20px;
+	margin:10px;
   border:10px white solid;
 }
 
 .comment-panel{
 	position:relative;
 	color:#777777;
+  background-color:white;
 	padding:20px;
-	margin:15px;
+	margin:10px;
 }
 
 .comment-header{
@@ -201,7 +202,7 @@
 .comment-reply{
   display:flex;
   justify-content:center;
-	margin:10px;
+	margin:20px;
 }
 
 .comment-expand{
