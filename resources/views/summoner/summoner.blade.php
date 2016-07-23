@@ -49,12 +49,12 @@
 									<!-- SIDEBAR BUTTONS -->
 									<div class="summoner-button-wrapper text-center">
 										<span class="summoner-button">
-												<a href="#" class="glyphicon glyphicon-heart"></a>
-												{{ $summoner[0]->likes }}
-										</span>
-										<span class="summoner-button">
 												<span class="glyphicon glyphicon-comment"></span>
 												{{ $summoner[0]->comments }}
+										</span>
+										<span class="summoner-button">
+												<a href="#" class="glyphicon glyphicon-heart"></a>
+												{{ $summoner[0]->likes }}
 										</span>
 									</div>
 								</div>
@@ -111,29 +111,38 @@
 										</ul>
 									@endif
 								@endif
-							<div class="comment-header text-left">
-						  		<div><img class="img-responsive img-circle img-no-padding comment-profile-md" src="{{ url('/') }}/{{ $comment->icon }}">
-								</div>
-								<div class="comment-title-wrapper">
+							<div class="comment-header">
+						  		<img class="img-responsive img-circle img-no-padding comment-profile-md" src="{{ url('/') }}/{{ $comment->icon }}">
 									<div class="comment-username">{{ $comment->username }}</div>
 									<div class="timestamp">{{ $comment->created_at }}</div>
-							  </div>
 							</div>
 
 							<div class="comment-body">
 					    	<p>{{ $comment->body }}</p>
-					    		@foreach($comment->replys as $commentReply)
-					    			@if($commentReply->parentId == $comment->id)
-					    				<div id="comment_{{ $commentReply->id }}" class="comment-reply">
-					    					<div><img class="img-responsive img-circle img-no-padding comment-profile-sm" src="{{ url('/') }}/{{ $comment->icon }}"></div>
-												<div class="reply-body">{{ $commentReply->body }}</div>
-					    				</div>
-					    			@endif
-					    		@endforeach
 					    </div>
+
+							<div class="comment-footer">
+								<span class="comment-replies">
+										<span class="glyphicon glyphicon-comment"></span>
+										{{ $comment->cntreplys }}
+								</span>
+								<span class="comment-likes">
+										<a href="#" class="glyphicon glyphicon-heart"></a>
+										{{ $summoner[0]->likes }}
+								</span>
+							</div>
 <!--comment reply-->
-			    		<a class="btn btn-xs comment-reply-button" data-toggle="modal" data-target="#myModal">Expand</a>
-							<span>({{ $comment->cntreplys }})</span>
+			    		<div class="comment-expand"><a class="btn btn-sm comment-expand-button" data-toggle="modal" data-target="#myModal">Expand</a></div>
+
+								@foreach($comment->replys as $commentReply)
+									@if($commentReply->parentId == $comment->id)
+										<div id="comment_{{ $commentReply->id }}" class="comment-reply">
+											<div><img class="img-responsive img-circle img-no-padding comment-profile-sm" src="{{ url('/') }}/{{ $comment->icon }}"></div>
+											<div class="reply-body">{{ $commentReply->body }}</div>
+										</div>
+									@endif
+								@endforeach
+								
 							<div id="make_{{ $comment->id }}_reply" class="panel-body" style="display:none;">
 								<form method="post" action="{{ route('comments.storeReply') }}">
 									<input type="hidden" name="_token" value="{{ csrf_token() }}">
