@@ -110,6 +110,7 @@
 .summoner-buttons{
   display:flex;
   justify-content:center;
+  margin-top:10px;
 }
 
 /* comment grid */
@@ -208,9 +209,9 @@
 }
 
 .comment-reply{
-	font-size:0.8em;
-	margin-top:20px;
-	margin-bottom:20px;
+  display:flex;
+	margin-top:25px;
+	margin-bottom:25px;
 }
 
 .comment-reply-button{

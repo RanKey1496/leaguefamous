@@ -87,10 +87,10 @@
 										<p>{{ $summoner[0]->wins }} / {{ $summoner[0]->losses }}</p>
 								</div>
 						</div>
-					</div>
-					<div class="summoner-buttons">
-						<div>
-							<button type="button" class="btn write-comment toggleButton" data-target=".write-comment-box"><span class="glyphicon glyphicon-pencil"></span> Say Something</button>
+						<div class="summoner-buttons">
+							<div>
+								<button type="button" class="btn btn-default write-comment toggleButton" data-target=".write-comment-box"><span class="glyphicon glyphicon-pencil"></span> Say Something</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -120,7 +120,6 @@
 
 							<div class="comment-body">
 					    	<p>{{ $comment->body }}</p>
-				    		<div class="">
 					    		@foreach($comment->replys as $commentReply)
 					    			@if($commentReply->parentId == $comment->id)
 					    				<div id="comment_{{ $commentReply->id }}" class="comment-reply">
@@ -129,7 +128,6 @@
 					    				</div>
 					    			@endif
 					    		@endforeach
-					    	</div>
 					    </div>
 <!--comment reply-->
 			    		<a class="btn btn-xs comment-reply-button" data-toggle="modal" data-target="#myModal">Expand</a>
@@ -231,7 +229,7 @@
 
 		$(function(){
 			var gridWidth = function() {
-			  var roundDown = Math.floor(window.innerWidth / 360);
+			  var roundDown = Math.floor(window.innerWidth / 320);
 			  var percentWidth = Math.floor(1 / roundDown * 10000) / 100;
 			  $('.comment-tile').css({
 			    'width': percentWidth + '%'
