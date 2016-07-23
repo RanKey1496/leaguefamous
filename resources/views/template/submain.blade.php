@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="{{ asset('plugins\css\theme.css')}}">
 	<link rel="stylesheet" href="{{ asset('plugins\css\summoner.css')}}">
 	<link rel="stylesheet" href="{{ asset('plugins\css\croppie.css')}}">
-	<link href="https://fonts.googleapis.com/css?family=Asap|Dosis|Varela+Round" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Asap|Dosis|Varela+Round|Titillium+Web" rel="stylesheet">
 	<script src="{{ asset('plugins/jquery/js/jquery-2.1.4.js') }}"></script>
 	<script src="{{ asset('plugins/bootstrap/js/bootstrap.js') }}"></script>
 	<script src="{{ asset('plugins/js/packery.pkgd.min.js') }}"></script>
@@ -31,6 +31,16 @@
 	<!--Sidebar-->
 	@include('template.partials.sidebar')
 	<!--End Sidebar-->
+
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					@include('template.partials.foot')
+				</div>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>

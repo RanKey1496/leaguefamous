@@ -185,7 +185,7 @@
 
 	$(function(){
 		var gridWidth = function() {
-		  var roundDown = Math.floor(window.innerWidth / 180);
+		  var roundDown = Math.floor(window.innerWidth / 200);
 		  var percentWidth = Math.floor(1 / roundDown * 10000) / 100;
 		  $('.grid-item').css({
 		    'width': percentWidth + '%',

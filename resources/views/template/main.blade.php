@@ -35,8 +35,14 @@
 		@yield('content')
 	</section>
 	<!--End Page Container-->
-
-	@include('template.partials.foot')
-
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					@include('template.partials.foot')
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

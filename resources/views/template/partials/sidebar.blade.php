@@ -8,9 +8,6 @@
             <section>
                 @yield('content')
             </section>
-            <div class="sticky-footer">
-                @include('template.partials.foot')
-            </div>
             <!--End Page Container-->
         </div>
       </div>

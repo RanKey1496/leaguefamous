@@ -27,12 +27,11 @@
 		</div>
 		@else
 		<div class="col-md-12">
-			<p class="text-center">You must be logged in to comment. If you are not a member, please leave, because this area is for members only.</p>
+			<p class="text-center member-warning">You must be logged in to comment. If you are not a member, please leave, because this area is for members only.</p>
 		</div>
 		@endif
 	</div>
 <!--End Summoner Data-->
-		@if($comments)
 		<div class="grid-wrapper">
 			<div class="comment-grid">
 				<div class="comment-tile">
@@ -62,27 +61,27 @@
 						</div>
 
 						<div class="row">
-								<div class="col-xs-6 col-sm-4 col-md-6 summoner-data">
+								<div class="col-xs-6 summoner-data">
 										<h6>Region</h6>
 										<p>{{ $summoner[0]->region }}</p>
 								</div>
-								<div class="col-xs-6 col-sm-4 col-md-6 summoner-data">
+								<div class="col-xs-6 summoner-data">
 										<h6>Popularity</h6>
 										<p>{{ $summoner[0]->playerId }}</p>
 								</div>
-								<div class="col-xs-6 col-sm-4 col-md-6 summoner-data">
+								<div class="col-xs-6 summoner-data">
 										<h6>Current League</h6>
 										<p>{{ $summoner[0]->tier }} {{ $summoner[0]->division }}</p>
 								</div>
-								<div class="col-xs-6 col-sm-4 col-md-6 summoner-data">
+								<div class="col-xs-6 summoner-data">
 										<h6>League Points</h6>
 										<p>{{ $summoner[0]->leaguePoints }}</p>
 								</div>
-								<div class="col-xs-6 col-sm-4 col-md-6 summoner-data">
+								<div class="col-xs-6 summoner-data">
 										<h6>Max League</h6>
 										<p>{{ $summoner[0]->maxTier }} {{ $summoner[0]->maxDivision }}</p>
 								</div>
-								<div class="col-xs-6 col-sm-4 col-md-6 summoner-data">
+								<div class="col-xs-6 summoner-data">
 										<h6>Win / Loss</h6>
 										<p>{{ $summoner[0]->wins }} / {{ $summoner[0]->losses }}</p>
 								</div>
@@ -94,6 +93,7 @@
 						</div>
 					</div>
 				</div>
+				@if($comments)
 				@foreach($comments as $comment)
 					@if($comment->parentId == NULL)
 					<div class="comment-tile">
@@ -114,8 +114,10 @@
 							<div class="comment-header text-left">
 						  		<div><img class="img-responsive img-circle img-no-padding comment-profile-md" src="{{ url('/') }}/{{ $comment->icon }}">
 								</div>
-								<div class="comment-title-wrapper"><span class="comment-username">{{ $comment->username }}</span> <span class="timestamp">&bull; {{ $comment->created_at }}</span>
-							    </div>
+								<div class="comment-title-wrapper">
+									<div class="comment-username">{{ $comment->username }}</div>
+									<div class="timestamp">{{ $comment->created_at }}</div>
+							  </div>
 							</div>
 
 							<div class="comment-body">
@@ -124,7 +126,7 @@
 					    			@if($commentReply->parentId == $comment->id)
 					    				<div id="comment_{{ $commentReply->id }}" class="comment-reply">
 					    					<div><img class="img-responsive img-circle img-no-padding comment-profile-sm" src="{{ url('/') }}/{{ $comment->icon }}"></div>
-											<div class="reply-body">{{ $commentReply->body }}</div>
+												<div class="reply-body">{{ $commentReply->body }}</div>
 					    				</div>
 					    			@endif
 					    		@endforeach
@@ -148,9 +150,9 @@
 					</div>
 					@endif
 				@endforeach
+				@endif
 			</div>
 		</div>
-		@endif
 	@if($comments)
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
@@ -160,8 +162,10 @@
 							<div class="comment-header text-left">
 						  		<div><img class="img-responsive img-no-padding comment-profile-md" src="{{ url('/') }}/{{ $comment->icon }}">
 								</div>
-								<div class="comment-title-wrapper"><span class="comment-username">{{ $comment->username }}</span> <span class="timestamp">&bull; {{ $comment->created_at }}</span>
-							    </div>
+								<div class="comment-title-wrapper">
+									<div class="comment-username">{{ $comment->username }}</div>
+									<div class="timestamp">{{ $comment->created_at }}</div>
+							  </div>
 							</div>
 							<div class="modal-comment-body">
 								<p>{{ $comment->body }}</p>
@@ -230,7 +234,7 @@
 		$(function(){
 			var gridWidth = function() {
 			  var roundDown = Math.floor(window.innerWidth / 320);
-			  var percentWidth = Math.floor(1 / roundDown * 10000) / 100;
+			  var percentWidth = Math.floor(1 / roundDown * 1000) / 10;
 			  $('.comment-tile').css({
 			    'width': percentWidth + '%'
 			  });
@@ -246,8 +250,7 @@
 				$('.comment-grid').packery({
 					itemSelector: '.comment-tile',
 					gutter:0
-				});
-				$('.comment-grid').animate({opacity: 1});
+				}).packery();
 			});
 		});
 /*
