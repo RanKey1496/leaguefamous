@@ -49,7 +49,7 @@ class CommentController extends Controller
 
     public function index($commentId){
         $comment = DB::select("SELECT * FROM comments WHERE id=? AND parentId IS NULL AND deleted_at IS NULL", [$commentId]);
-        $commentsReply = DB::Select("SELECT * FROM comments WHERE parentId=? AND deleted_at IS NULL", [$commentId]);
+        $commentsReply = DB::select("SELECT * FROM comments WHERE parentId=? AND deleted_at IS NULL ORDER BY created_at DESC", [$commentId]);
         foreach ($comment as $comment) {
                 $data = User::find($comment->user_id);
                 $comment->username = $data->username;

@@ -27,7 +27,7 @@ class Comment
     }
 
     public function replys($id){
-        return DB::select("SELECT * FROM comments WHERE parentId=? AND deleted_at IS NULL LIMIT 5", [$id]);
+        return DB::select("SELECT * FROM comments WHERE parentId=? AND deleted_at IS NULL ORDER BY created_at DESC LIMIT 5", [$id]);
     }
 
     public function cntreplys($id){
