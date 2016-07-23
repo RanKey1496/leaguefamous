@@ -190,9 +190,12 @@
 				gridWidth();
 			});
 
-			$('.comment-grid').packery({
-				itemSelector: '.comment-tile',
-				gutter:0
+			$(window).load(function(){
+				$('.comment-grid').packery({
+					itemSelector: '.comment-tile',
+					gutter:0
+				});
+				$('.comment-grid').animate({opacity: 1});
 			});
 		});
 /*
