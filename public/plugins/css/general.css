@@ -374,10 +374,10 @@ a#flexnav-brand:hover{
 	flex-grow:1;
 }
 
-.grid-likes{
-}
-
-.grid-comments{
+.howsad{
+	color:#bbbbbb;
+	margin:20px;
+	font-family:'Titillium Web',Helvetica,Arial;
 }
 
 /* */

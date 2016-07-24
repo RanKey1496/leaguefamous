@@ -46,20 +46,22 @@
 
 <!-- Header -->
 
-<div class="section">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<h1 class="main-header">Welcome!</h1>
-				<h4>Have a look around.</h4>
+
+<!--End Header-->
+	<!--Lists-->
+	<!--
+
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1 class="main-header">Welcome!</h1>
+					<h4>Have a look around.</h4>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
-<!--End Header-->
-
-	<!--Lists-->
 	<div class="section section-with-space">
 		<div class="container">
 			<div class="row"">
@@ -131,11 +133,12 @@
 				</div>
 			</div>
 		</div>
-		<div class="text-center">
-			{!! $summoners->render() !!}
-		</div>
 	</div>
+-->
 
+<div class="text-center">
+	{!! $summoners->render() !!}
+</div>
 	<script type="text/javascript">
 
 		$(document).ready(function($) {
@@ -188,11 +191,11 @@
 
 	$(function(){
 		var gridWidth = function() {
-		  var roundDown = Math.floor(window.innerWidth / 200);
+		  var roundDown = Math.floor(window.innerWidth / 180);
 		  var percentWidth = Math.floor(1 / roundDown * 10000) / 100;
 		  $('.grid-item').css({
 		    'width': percentWidth + '%',
-		    'height': percentWidth + "vw"
+		    'height': percentWidth + 'vw'
 		  });
 		}
 
@@ -205,7 +208,7 @@
 		$('.grid').packery({
 			itemSelector: '.grid-item',
 			gutter:0
-		});
+		}).packery();
 	});
 
 	</script>
