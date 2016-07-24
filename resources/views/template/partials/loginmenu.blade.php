@@ -40,7 +40,10 @@
          </div>
          <div class="row">
            <div class="col-md-12 text-center">
+             <!--
              <a href="{{route('users.register')}}">Register New User</a>
+             -->
+             <a href="#" data-toggle="modal" data-target="#registrationModal">Create New Account</a>
            </div>
          </div>
       </li>

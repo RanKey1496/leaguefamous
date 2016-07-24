@@ -76,9 +76,46 @@
 				</div>
 			</form>
 		</div>
-	</div class="container">
+  </div>
 </div>
+
+
+@if(Auth::guest())
+<div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="col-sm-6 col-md-5">
+                  <h3>Register</h3>
+              {!! Form::open(['route' => 'users.register', 'method' => 'POST']) !!}
+
+                  <div class="form-group">
+                      {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'username','required']) !!}
+                  </div>
+
+                  <div class="form-group">
+                      {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'e-mail','required']) !!}
+                  </div>
+
+                  <div class="form-group">
+                      {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'password','required']) !!}
+                      </br>
+                      {!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 're-enter password','required']) !!}
+                  </div>
+
+                  <div class="form-group">
+                      {!! Form::submit('Create Account', ['class' => 'btn btn-primary']) !!}
+                  </div>
+              {!! Form::close() !!}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
+@endif
 
 <script type="text/javascript">
   $(function(){
