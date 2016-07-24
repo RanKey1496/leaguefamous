@@ -9,14 +9,14 @@
 	<div class="grid">
 		@foreach($summoners as $summoner)
 			<div class="grid-item">
-				<a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}" class="grid-item-link">
+				<a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">
 					<div class="grid-panel">
 						<div class="grid-header">
-							<div class="grid-popularity">{{ $summoner->rank }}</div>
-							<div class="grid-region">{{ $summoner->region }}</div>
+							<span class="grid-popularity">{{ $summoner->rank }}</span>
+							<span class="grid-region">{{ $summoner->region }}</span>
 						</div>
 						<div class="grid-name">{{ $summoner->playerName }}</div>
-						<img src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/{{ $summoner->profileIconId }}.png" class="grid-avatar" />
+						<img src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/{{ $summoner->profileIconId }}.png" class="grid-avatar">
 						<div class="grid-division">{{ $summoner->tier }} {{ $summoner->division }}</div>
 						<div class="grid-footer">
 							<div class="grid-comments">

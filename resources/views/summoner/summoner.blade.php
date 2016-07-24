@@ -86,9 +86,7 @@
 								</div>
 						</div>
 						<div class="summoner-buttons">
-							<div>
 								<button type="button" class="btn btn-default write-comment toggleButton" data-target=".write-comment-box"><span class="glyphicon glyphicon-pencil"></span> Say Something</button>
-							</div>
 						</div>
 					</div>
 				</div>
