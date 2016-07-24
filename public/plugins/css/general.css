@@ -67,7 +67,7 @@ footer {
 	color:black;
 }
 
-a#flexnav-brand:hover{
+#flexnav-brand:hover{
 	color:red;
 	text-decoration:none;
 	transition: 0.5s;
@@ -306,7 +306,7 @@ a#flexnav-brand:hover{
 	color:#cccccc;
 }
 
-/* packery */
+/* The GRID */
 
 .grid-item{
 	padding:5px;
@@ -314,7 +314,7 @@ a#flexnav-brand:hover{
 	height:180px;
 }
 
-.grid-item-link:hover .grid-panel:hover div:hover{
+.grid-item-link:hover{
 	text-decoration:none;
 }
 
@@ -345,9 +345,6 @@ a#flexnav-brand:hover{
 	display:flex;
 	justify-content:space-between;;
 	width:100%;
-}
-
-.grid-popularity{
 }
 
 .grid-region{

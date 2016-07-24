@@ -40,19 +40,18 @@
 							<div class="col-md-12">
 									<!-- SIDEBAR USERPIC -->
 									<img class="center-block" src="{{ $iconURL }}">
-									<!-- END SIDEBAR USERPIC -->
 									<!-- SIDEBAR USER TITLE -->
 									<div class="text-center summoner-name">
-									{{ $summoner[0]->playerName }}
+									<h2>{{ $summoner[0]->playerName }}</h2>
 									</div>
 									<!-- END SIDEBAR USER TITLE -->
 									<!-- SIDEBAR BUTTONS -->
-									<div class="summoner-button-wrapper text-center">
-										<span class="summoner-button">
+									<div class="summoner-likes-comments">
+										<span>
 												<span class="glyphicon glyphicon-comment"></span>
 												{{ $summoner[0]->comments }}
 										</span>
-										<span class="summoner-button">
+										<span>
 												<a href="#" class="glyphicon glyphicon-heart"></a>
 												{{ $summoner[0]->likes }}
 										</span>
@@ -67,7 +66,7 @@
 								</div>
 								<div class="col-xs-6 summoner-data">
 										<h6>Popularity</h6>
-										<p>{{ $summoner[0]->playerId }}</p>
+										<p>1</p>
 								</div>
 								<div class="col-xs-6 summoner-data">
 										<h6>Current League</h6>
@@ -162,7 +161,7 @@
 					@endforeach
 				@else
 				<div class="comment-tile">
-					<h2 class="howsad">{{ $summoner[0]->playerName }} has no comments yet. How sad!!</h2>
+					<h2 class="howsad">{{ $summoner[0]->playerName }} has no comments yet. How sad!</h2>
 				</div>
 				@endif
 			</div>
@@ -246,7 +245,7 @@
 
 		$(function(){
 			var gridWidth = function() {
-			  var roundDown = Math.floor(window.innerWidth / 320);
+			  var roundDown = Math.floor(window.innerWidth / 300);
 			  var percentWidth = Math.floor(1 / roundDown * 1000) / 10;
 			  $('.comment-tile').css({
 			    'width': percentWidth + '%'

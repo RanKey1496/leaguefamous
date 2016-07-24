@@ -9,15 +9,14 @@
 	<div class="grid">
 		@foreach($summoners as $summoner)
 			<div class="grid-item">
-
 				<a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}" class="grid-item-link">
 					<div class="grid-panel">
 						<div class="grid-header">
-							<div class="grid-popularity">#1</div>
+							<div class="grid-popularity">{{ $summoner->rank }}</div>
 							<div class="grid-region">{{ $summoner->region }}</div>
 						</div>
 						<div class="grid-name">{{ $summoner->playerName }}</div>
-						<img src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/{{ $summoner->profileIconId }}.png" class="grid-avatar">
+						<img src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/{{ $summoner->profileIconId }}.png" class="grid-avatar" />
 						<div class="grid-division">{{ $summoner->tier }} {{ $summoner->division }}</div>
 						<div class="grid-footer">
 							<div class="grid-comments">
@@ -170,24 +169,6 @@
                     return false;
                 });
             });
-
-		var region = "na";
-
-		$(function(){
-
-			$(".dropdown-menu li a").click(function(){
-			  $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
-			  $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
-			  region = $(this).text().toLowerCase();
-
-			});
-
-		});
-
-			document.getElementById('frmSearch').onsubmit = function() {
-        window.location = '{{ url('/') }}/' + region + '/' + document.getElementById('txtSearch').value;
-        return false;
-	    }
 
 	$(function(){
 		var gridWidth = function() {

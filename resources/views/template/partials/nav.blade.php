@@ -81,16 +81,30 @@
 </div>
 
 <script type="text/javascript">
+  $(function(){
+    var region = "na";
+    $(".dropdown-menu li a").click(function(){
+      $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+      $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+      region = $(this).text().toLowerCase();
+    });
 
-	  $(document).ready(function() {
-	    $('.underbox-show').click(function(){
-	      var id = $(this).attr('data');
-	      var underboxUrl = "{{ url('/') }}/user/";
-	      $('#underbox').load( underboxUrl + id );
-	      $('#underbox').show();
-	      return this;
-	    });
-	  });
+    document.getElementById('frmSearch').onsubmit = function() {
+      window.location = '{{ url('/') }}/' + region + '/' + document.getElementById('txtSearch').value;
+      return false;
+    }
+
+  });
+
+  $(document).ready(function() {
+    $('.underbox-show').click(function(){
+      var id = $(this).attr('data');
+      var underboxUrl = "{{ url('/') }}/user/";
+      $('#underbox').load( underboxUrl + id );
+      $('#underbox').show();
+      return this;
+    });
+  });
 
 </script>
 
