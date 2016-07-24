@@ -30,8 +30,6 @@
 									@else
 										<span id="{{ $summoner->playerId }}_{{ $summoner->region }}" class="glyphicon glyphicon-heart text-danger ajax-like"></span>
 									@endif
-								@else
-									<a href="{{ route('users.login') }}" class=" glyphicon glyphicon-heart heart-unliked"></a>
 								@endif
 								<span>{{ $summoner->likes }}</span>
 							</div>

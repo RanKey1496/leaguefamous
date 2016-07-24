@@ -399,15 +399,12 @@ footer {
 	float:left;
 	position:relative;
 	width:150px;
-
+	height:150px;
 	margin-right:30px;
 }
+
 .user-profile-pic-lg{
-	position:absolute;
-	top:0;
-	left:0;
 	width:150px;
-	height:150px;
 }
 
 .change-profile-picture{
