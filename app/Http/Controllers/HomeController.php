@@ -18,7 +18,7 @@ class HomeController extends Controller
     {
 		//$summoners = Summoner::orderBy('tier', 'ASC')->paginate(20);
 		//$summoners = new Summoner();
-		$summoners = DB::select("SELECT s.* FROM summoners s LEFT JOIN rank r ON s.playerId = r.summoner_id AND s.region = r.summoner_region ORDER BY r.points DESC");
+		$summoners = DB::select("SELECT * FROM summoners s LEFT JOIN rank r ON s.playerId = r.summoner_id AND s.region = r.summoner_region ORDER BY r.points DESC");
 		$like = new Like();
 		$comment = new Comment();
 		$rank = new Rank();
@@ -34,6 +34,7 @@ class HomeController extends Controller
 			}
 		}
 		foreach ($summoners as $summoner) {
+
 			$likes = $like->likes($summoner->playerId, $summoner->region);
 			$comments = $comment->comments($summoner->playerId, $summoner->region);
 			$ranks = $rank->getRank($summoner->playerId, $summoner->region);
