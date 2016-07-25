@@ -85,28 +85,49 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <div class="col-sm-6 col-md-5">
-                  <h3>Register</h3>
-              {!! Form::open(['route' => 'users.register', 'method' => 'POST']) !!}
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Join the Banter club!</h2>
+          </div>
+          <div class="col-sm-6 col-md-6">
+              <h3>Create an account</h3>
+          {!! Form::open(['route' => 'users.register', 'method' => 'POST']) !!}
+              <div class="form-group">
+                  {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'username*','required']) !!}
+              </div>
+              <p><small>*Between 1-16 characters, can contain letters and numbers, and must begin with a letter.</small></p>
 
-                  <div class="form-group">
-                      {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'username','required']) !!}
-                  </div>
+              <div class="form-group">
+                  {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'e-mail**','required']) !!}
+              </div>
+              <p><small>**Needed to activate your account!</small></p>
+              <div class="form-group">
+                  {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'password','required']) !!}
+                  </br>
+                  {!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'confirm password','required']) !!}
+              </div>
 
-                  <div class="form-group">
-                      {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'e-mail','required']) !!}
-                  </div>
-
-                  <div class="form-group">
-                      {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'password','required']) !!}
-                      </br>
-                      {!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 're-enter password','required']) !!}
-                  </div>
-
-                  <div class="form-group">
-                      {!! Form::submit('Create Account', ['class' => 'btn btn-primary']) !!}
-                  </div>
-              {!! Form::close() !!}
+              <div class="form-group">
+                  {!! Form::submit('Create Account', ['class' => 'btn btn-primary btn-block']) !!}
+              </div>
+          {!! Form::close() !!}
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <h3>A quick read</h3>
+            <h4>Please do:</h4>
+            <ul>
+              <li>Have fun.</li>
+              <li>Share interesting images or screenshots.</li>
+              <li>Invite your friends to join.</li>
+            </ul>
+            <h4>Please don't:</h4>
+            <ul>
+              <li>Spam.</li>
+              <li>Post illegal stuff.</li>
+              <li>Post obscene content.</li>
+              <li>Be overtly impolite towards other people.</li>
+            </li>
+          </div>
         </div>
       </div>
       <div class="modal-footer">

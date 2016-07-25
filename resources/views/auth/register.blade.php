@@ -23,7 +23,7 @@
             </div>
 
             <div class="form-group">
-                {!! Form::submit('Create Account', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Create Account!', ['class' => 'btn btn-primary']) !!}
             </div>
         </div>
     </div>

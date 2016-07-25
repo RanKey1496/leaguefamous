@@ -29,13 +29,16 @@
 
                 <div class="form-group">
                     {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Enter Password','required']) !!}
-                    <div class="help-block text-right"><a href="{{route('users.password.email')}}">Forget the password?</a></div>
+                    <div class="help-block text-center"><a href="{{route('users.password.email')}}">Forget your password?</a></div>
                 </div>
 
                 <div class="form-group">
                     {!! Form::submit('Sign in', ['class' => 'btn btn-primary btn-block']) !!}
                 </div>
               {!! Form::close() !!}
+              <div class="col-md-12">
+                <button class="btn btn-default btn-block" data-toggle="modal" data-target="#registrationModal">Create Account</button>
+              </div>
             </div>
          </div>
          <div class="row">
@@ -43,7 +46,6 @@
              <!--
              <a href="{{route('users.register')}}">Register New User</a>
              -->
-             <a href="#" data-toggle="modal" data-target="#registrationModal">Create New Account</a>
            </div>
          </div>
       </li>
