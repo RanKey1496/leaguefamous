@@ -69,11 +69,17 @@ class CommentController extends Controller
     public function content($commentId){
         $comment = new Comment();
         $content = $comment->content($commentId);
+        $content = (object)$content;
         $contentReplys = $comment->contentReplys($commentId);
-        foreach ($contentReplys as $key) {
-            $key->created_at = strtotime($key->created_at);
+        $maxDate = 0;
+        foreach ($contentReplys as $contentReply) {
+            $contentReply->created_at = strtotime($contentReply->created_at);
+            unset($contentReply->body);
+            if($maxDate <= $contentReply->created_at){
+                $maxDate = $contentReply->created_at;
+            }
         }
-        dd($contentReplys);
+        return Response::json(array('main' => $content, 'replys' => $contentReplys, 'lastUpdate' => $maxDate));
     }
 
     public function contentAfterTime($commentId, $afterTime){

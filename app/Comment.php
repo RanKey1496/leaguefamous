@@ -35,7 +35,7 @@ class Comment
     }
 
     public function content($commentId){
-        return DB::select("SELECT * FROM comments WHERE id=? AND deleted_at IS NULL", [$commentId]);
+        return DB::select("SELECT id,body,user_id,created_at,updated_at FROM comments WHERE id=? AND deleted_at IS NULL", [$commentId]);
     }
 
     public function contentReplys($commentId){
