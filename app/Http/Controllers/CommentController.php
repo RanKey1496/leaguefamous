@@ -69,7 +69,6 @@ class CommentController extends Controller
     public function content($commentId){
         $comment = new Comment();
         $content = $comment->content($commentId);
-        $content = (object)$content;
         $contentReplys = $comment->contentReplys($commentId);
         $maxDate = 0;
         foreach ($contentReplys as $contentReply) {
@@ -83,6 +82,6 @@ class CommentController extends Controller
     }
 
     public function contentAfterTime($commentId, $afterTime){
-        dd($afterTime);
+        
     }
 }
