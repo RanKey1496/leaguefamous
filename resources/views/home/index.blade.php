@@ -9,33 +9,35 @@
 	<div class="grid">
 		@foreach($summoners as $summoner)
 			<div class="grid-item">
-				<a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}">
-					<div class="grid-panel">
-						<div class="grid-header">
-							<span class="grid-popularity">{{ $summoner->rank }}</span>
-							<span class="grid-region">{{ $summoner->region }}</span>
-						</div>
+				<div class="grid-panel">
+					<div class="grid-header">
+						<span class="grid-popularity">{{ $summoner->rank }}</span>
+						<span class="grid-region">{{ $summoner->region }}</span>
+					</div>
+					<a href="{{ url('/') }}/{{ $summoner->region }}/{{ $summoner->playerName }}" class="grid-body">
 						<div class="grid-name">{{ $summoner->playerName }}</div>
 						<img src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/{{ $summoner->profileIconId }}.png" class="grid-avatar">
 						<div class="grid-division">{{ $summoner->tier }} {{ $summoner->division }}</div>
-						<div class="grid-footer">
-							<div class="grid-comments">
-								<span class="glyphicon glyphicon-comment"></span>
-								{{ $summoner->comments }}
-							</div>
-							<div class="grid-likes">
-								@if(!Auth::guest())
-									@if(!$summoner->liked)
-										<span id="{{ $summoner->playerId }}_{{ $summoner->region }}" class="glyphicon glyphicon-heart text-primary ajax-like"></span>
-									@else
-										<span id="{{ $summoner->playerId }}_{{ $summoner->region }}" class="glyphicon glyphicon-heart text-danger ajax-like"></span>
-									@endif
+					</a>
+					<div class="grid-footer">
+						<div class="grid-comments">
+							<span class="glyphicon glyphicon-comment"></span>
+							{{ $summoner->comments }}
+						</div>
+						<div class="grid-likes">
+							@if(!Auth::guest())
+								@if(!$summoner->liked)
+									<span id="{{ $summoner->playerId }}_{{ $summoner->region }}" class="glyphicon glyphicon-heart text-primary ajax-like"></span>
+								@else
+									<span id="{{ $summoner->playerId }}_{{ $summoner->region }}" class="glyphicon glyphicon-heart text-danger ajax-like"></span>
 								@endif
-								<span>{{ $summoner->likes }}</span>
-							</div>
+							@else
+								<a href="{{ route('users.login') }}" class="glyphicon glyphicon-heart heart-unliked"></a>
+							@endif
+							<span>{{ $summoner->likes }}</span>
 						</div>
 					</div>
-				</a>
+				</div>
 			</div>
 		@endforeach
 	</div>
