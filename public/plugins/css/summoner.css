@@ -187,7 +187,6 @@ h6.summoner-data{
 	margin-right:20px;
 }
 
-
 .comment-reply{
   display:flex;
   justify-content:center;
@@ -222,11 +221,16 @@ h6.summoner-data{
   width:100%;
 }
 
-.grid-wrapper{
-	margin-left:-15px;
-	margin-right:-15px;
+.load-more-comments{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border:1px rgba(0,0,0,0.5) solid;
 }
 
+.load-more-comments a:hover{
+  text-decoration:none;
+}
 
 /* Modal Comment */
 

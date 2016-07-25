@@ -18,11 +18,10 @@
 			</div>
 		</div>
 	</div>
-	<div class="section section-brown image-cropper">
+	<div class="section image-cropper">
 			<div class="container">
 				<div class="row">
 						<div class="col-md-12">
-							<h4>Upload new profile image!</h4>
 							<div class="demo croppie-container"></div>
 							<form id="uploadImg" method="POST" action="{{ route('users.update.profile') }}">
 							    <label class="btn btn-default btn-file">

@@ -32,7 +32,6 @@
 		@endif
 	</div>
 <!--End Summoner Data-->
-		<div class="grid-wrapper">
 			<div class="comment-grid">
 				<div class="comment-tile">
 					<div class="summoner-tile">
@@ -157,13 +156,17 @@
 						</div>
 						@endif
 					@endforeach
+					<div class="comment-tile">
+						<div class="comment-panel">
+							<a href="#"><div class="load-more-comments">Load More Comments</div></a>
+						</div>
+					</div>
 				@else
 				<div class="comment-tile">
 					<h2 class="howsad">{{ $summoner[0]->playerName }} has no comments yet. How sad!</h2>
 				</div>
 				@endif
 			</div>
-		</div>
 	@if($comments)
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
