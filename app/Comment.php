@@ -39,6 +39,6 @@ class Comment
     }
 
     public function contentReplys($commentId){
-        return DB::select("SELECT * FROM comments WHERE parentId=? AND deleted_at IS NULL", [$commentId]);
+        return DB::select("SELECT id,body,user_id,created_at,updated_at FROM comments WHERE parentId=? AND deleted_at IS NULL", [$commentId]);
     }
 }
