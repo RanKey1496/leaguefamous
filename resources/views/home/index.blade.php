@@ -135,9 +135,6 @@
 	</div>
 -->
 
-<div class="text-center">
-	{!! $summoners->render() !!}
-</div>
 	<script type="text/javascript">
 
 		$(document).ready(function($) {

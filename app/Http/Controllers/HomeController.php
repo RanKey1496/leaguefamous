@@ -10,12 +10,15 @@ use App\Like;
 use Auth;
 use App\Comment;
 use App\Rank;
+use DB;
 
 class HomeController extends Controller
 {
     public function home()
     {
-		$summoners = Summoner::orderBy('tier', 'ASC')->paginate(20);
+		//$summoners = Summoner::orderBy('tier', 'ASC')->paginate(20);
+		//$summoners = new Summoner();
+		$summoners = DB::select("SELECT s.* FROM summoners s LEFT JOIN rank r ON s.playerId = r.summoner_id AND s.region = r.summoner_region ORDER BY r.points DESC");
 		$like = new Like();
 		$comment = new Comment();
 		$rank = new Rank();

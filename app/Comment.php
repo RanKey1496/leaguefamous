@@ -33,4 +33,12 @@ class Comment
     public function cntreplys($id){
         return DB::select("SELECT COUNT(*) AS cont FROM comments WHERE parentId=? AND deleted_at IS NULL", [$id]);
     }
+
+    public function content($commentId){
+        return DB::select("SELECT * FROM comments WHERE id=? AND deleted_at IS NULL", [$commentId]);
+    }
+
+    public function contentReplys($commentId){
+        return DB::select("SELECT * FROM comments WHERE parentId=? AND deleted_at IS NULL", [$commentId]);
+    }
 }

@@ -144,6 +144,14 @@ Route::get('/comment/search/{commentId}', [
 		'uses'	=>	'CommentController@index',
 		'as'	=>	'comments.index']);
 
+Route::get('/comment/content/{commentId}', [
+		'uses'	=>	'CommentController@content',
+		'as'	=>	'comments.content']);
+
+Route::get('/comment/content/{commentId}/{afterTime}', [
+		'uses'	=>	'CommentController@contentAfterTime',
+		'as'	=>	'comments.contentaftertime']);
+
 //Like Routes
 Route::post('/like', [
 	'uses' => 'LikeController@like', 

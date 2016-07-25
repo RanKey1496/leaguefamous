@@ -17,7 +17,7 @@ use Response;
 class CommentController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth', ['except' => ['index']]);
+        $this->middleware('auth', ['except' => ['index', 'content', 'contentAfterTime']]);
     }
 
     public function store(Request $request)
@@ -64,5 +64,19 @@ class CommentController extends Controller
         }
         //dd($commentsReply);
         return View('comment.index')->with('comment', $comment)->with('commentReplys', $commentsReply);
+    }
+
+    public function content($commentId){
+        $comment = new Comment();
+        $content = $comment->content($commentId);
+        $contentReplys = $comment->contentReplys($commentId);
+        foreach ($contentReplys as $key) {
+            $key->created_at = strtotime($key->created_at);
+        }
+        dd($contentReplys);
+    }
+
+    public function contentAfterTime($commentId, $afterTime){
+        dd($afterTime);
     }
 }
