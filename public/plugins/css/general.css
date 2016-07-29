@@ -24,23 +24,6 @@ footer {
 	display:inline-block;
 }
 
-.table td, th {
-   text-align: center;
-}
-
-.left{
-	float: left;
-}
-
-.right{
-	float: right;
-}
-
-.center{
-	width:250px;
-	margin:0 auto;
-}
-
 /* flexnav */
 
 #flexnav{
@@ -311,20 +294,20 @@ footer {
 /* The GRID */
 
 .grid-item{
-	padding:5px;
+	padding:2px;
 	width:180px;
 	height:180px;
 }
 
 .grid-panel{
-	background-color:rgba(255,255,255,0.5);
+	background-color:rgba(255,255,255,0.6);
 	height:100%;
-	padding:5px;
+	padding:8px;
 	display:flex;
 	flex-direction:column;
 	justify-content:space-between;
 	align-items:center;
-	border:10px white solid;
+	border:2px white solid;
 	transition:0.5s;
 }
 
