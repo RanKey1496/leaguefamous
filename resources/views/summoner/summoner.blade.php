@@ -207,21 +207,29 @@
 	</div>
 	@endif
 
+	<script>
+
+	var homeUrl = "{{ url('/') }}/";
+
+	</script>
+
 @if($comments)
 	<script id="tplModal" type="text/x-handlebars-template">
-		@{{#main}}
+		@{{#comment}}
 			<div class="comment-header">
 					<div><img class="img-responsive img-no-padding comment-profile-md" src="{{ url('/') }}/{{ $comment->icon }}"></div>
-					<div class="comment-username">Name #@{{user_id}}</div>
-					<div class="timestamp">time: @{{created_at}}</div>
+					<div class="comment-username">@{{username}}</div>
+					<div class="timestamp">@{{created_at}}</div>
 			</div>
 			<div class="modal-comment-body">@{{body}}</div>
-		@{{/main}}
 
-		@{{#each replys}}
-			<div>@{{body}}</div>
-		@{{/each}}
-
+			@{{#each replies}}
+				<div>
+					<img class="img-responsive comment-profile-sm" src="@{{profileImage}}") />
+					<div>@{{body}}</div>
+				</div>
+			@{{/each}}
+		@{{/comment}}
 	</script>
 @endif
 
