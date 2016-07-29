@@ -93,8 +93,14 @@ class CommentController extends Controller
     public function SummonerComments($region, $summonerName){
         $summoner = Summoner::where('region','=',$region)->where('playerName','=',$summonerName)->get(['playerId']);
         $comment = new Comment();
-        $content = $comment->getComments($region, $summoner[0]->playerId);
-        dd($content);
+        $content = $comment->getCommentsv2($summoner[0]->playerId, $region);
+        foreach ($content as $contenido) {
+            $data = User::where('id','=',$contenido->user_id)->get(['username', 'profileImage']);
+            $contenido->username = $data[0]->username;
+            $contenido->profileImage = route('home') .'/'. $data[0]->profileImage;
+            $contenido->created_at = strtotime($contenido->created_at);
+            $contenido->updated_at = strtotime($contenido->updated_at);
+        }
         return Response::json(array('comments' => $content));
     }
 }
