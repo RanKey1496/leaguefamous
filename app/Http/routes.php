@@ -152,9 +152,9 @@ Route::get('/comment/content/{commentId}', [
 		'uses'	=>	'CommentController@content',
 		'as'	=>	'comments.content']);
 
-Route::get('/comment/content/{commentId}/{afterTime}', [
-		'uses'	=>	'CommentController@contentAfterTime',
-		'as'	=>	'comments.contentaftertime']);
+Route::get('/comment/{region}/{summonerName}', [
+		'uses'	=>	'CommentController@SummonerComments',
+		'as'	=>	'comments.summonercomments']);
 
 //Like Routes
 Route::post('/like', [
