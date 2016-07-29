@@ -6,11 +6,10 @@
 	<link rel="stylesheet" href="{{ asset('plugins\css\general.css')}}">
 	<link rel="stylesheet" href="{{ asset('plugins\css\theme.css')}}">
 	<link rel="stylesheet" href="{{ asset('plugins\css\croppie.css')}}">
-	<link href="https://fonts.googleapis.com/css?family=Asap|Dosis|Varela+Round" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Asap|Dosis|Varela+Round|Titillium+Web" rel="stylesheet">
 	<script src="{{ asset('plugins/jquery/js/jquery-2.1.4.js') }}"></script>
-  <script src="https://fb.me/react-15.2.1.min.js"></script>
-  <script src="https://fb.me/react-dom-15.2.1.min.js"></script>
 	<script src="{{ asset('plugins/bootstrap/js/bootstrap.js') }}"></script>
+	<script src="{{ asset('plugins/js/handlebars.min-latest.js') }}"></script>
 	<script src="{{ asset('plugins/js/salvattore.min.js') }}"></script>
 	<script src="{{ asset('plugins/js/croppie.js') }}"></script>
 	<script src="{{ asset('plugins/js/packery.pkgd.min.js') }}"></script>
@@ -36,6 +35,9 @@
 	<section>
 		@yield('content')
 	</section>
+
+	<script src="{{ asset('plugins/js/handlebars.min-latest.js') }}"></script>
+
 	<!--End Page Container-->
 	<div class="section">
 		<div class="container">

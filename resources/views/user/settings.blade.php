@@ -3,6 +3,7 @@
 @section('title', 'Edit profile')
 
 @section('content')
+	<div class="nav-spacer"></div>
 	<div class="section section-dark">
 		<div class="container">
 			<div class="row">

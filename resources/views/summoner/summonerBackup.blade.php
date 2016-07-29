@@ -211,36 +211,33 @@
 
 <div class="section">
 	<p>
-		{"comment":{
 		@if($comments)
-		  @foreach($comments as $comment)
-		    @if($comment->parentId == NULL)
-		    "{{ $comment->id }}":{
-		      "id":"{{ $comment->id }}",
-		      "body":"Hello!",
-		      "user_id":"1",
-		      "user_name":"{{ $comment->username }}",
-		      "user_image":"{{ $comment->icon }}",
-		      "created_at":"{{ $comment->created_at }}",
-		      "comment_replies":"{{ $comment-> cntreplys }}",
-		      "comment_likes":"{{ $summoner[0]->likes }}",
-		      "replies": {
-		        "reply": [
-		        @foreach($comment->replys as $commentReply)
-		          @if($commentReply->parentId == $comment->id)
-		          {
-		            "body":"Hi there!",
-		            "user_image":"{{ $comment->icon }}"
-		          },
-		          @endif
-		        @endforeach
-		        ]
-		      }
-		    },
-		    @endif
-		  @endforeach
-		@endif
-		}}
+  @foreach($comments as $comment)
+    @if($comment->parentId == NULL)
+    {
+      "main":{
+        "body":"{{ $comment->body }}",
+        "user_id":"1",
+        "user_name":"{{ $comment->username }}",
+        "user_image":"{{ $comment->icon }}",
+        "created_at":"{{ $comment->created_at }}",
+        "comment_replies":"{{ $comment-> cntreplys }}",
+        "comment_likes":"{{ $summoner[0]->likes }}"
+        },
+      "replies":[
+        @foreach($comment->replys as $commentReply)
+          @if($commentReply->parentId == $comment->id)
+          {
+            "body":"{{ $commentReply->body }}",
+            "user_image":"{{ $comment->icon }}"
+          }
+          @endif
+        @endforeach
+      ]
+    }
+    @endif
+  @endforeach
+@endif
 	</p>
 </div>
 

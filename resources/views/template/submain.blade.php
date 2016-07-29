@@ -10,6 +10,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Asap|Dosis|Varela+Round|Titillium+Web" rel="stylesheet">
 	<script src="{{ asset('plugins/jquery/js/jquery-2.1.4.js') }}"></script>
 	<script src="{{ asset('plugins/bootstrap/js/bootstrap.js') }}"></script>
+	<script src="{{ asset('plugins/js/handlebars.min-latest.js') }}"></script>
 	<script src="{{ asset('plugins/js/packery.pkgd.min.js') }}"></script>
 	<script src="{{ asset('plugins/js/croppie.js') }}"></script>
 	<script src="{{ asset('js/general.js')}}"></script>

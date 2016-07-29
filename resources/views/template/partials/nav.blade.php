@@ -125,7 +125,7 @@
               <li>Spam.</li>
               <li>Post illegal stuff.</li>
               <li>Post obscene content.</li>
-              <li>Be overtly impolite towards other people.</li>
+              <li>Bully other people.</li>
             </li>
           </div>
         </div>
