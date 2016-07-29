@@ -20,6 +20,10 @@ Route::get('/home', [
 		'uses'	=>	'HomeController@home',
 		'as'	=>	'home']);
 
+Route::get('/index', [
+		'uses'	=>	'HomeController@index',
+		'as'	=>	'index']);
+
 //Registrar cuenta
 Route::get('/register', [
 		'uses'	=>	'Auth\AuthController@getRegister',
