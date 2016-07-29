@@ -74,15 +74,14 @@ class CommentController extends Controller
         foreach ($content as $content) {
             $data = User::where('id','=',$content->user_id)->get(['username', 'profileImage']);
             $content->username = $data[0]->username;
-            $path = public_path().'/';
-            $content->profileImage = $path . $data[0]->profileImage;
+            $content->profileImage = route('home') .'/'. $data[0]->profileImage;
             $content->replies = $contentReplys;
             $content->created_at = strtotime($content->created_at);
             $content->updated_at = strtotime($content->updated_at);
             foreach ($content->replies as $contentReply) {
                 $datas = User::where('id','=',$contentReply->user_id)->get(['username', 'profileImage']);
                 $contentReply->username = $datas[0]->username;
-                $contentReply->profileImage = $path . $datas[0]->profileImage;
+                $contentReply->profileImage = route('home') .'/'. $datas[0]->profileImage;
                 $contentReply->created_at = strtotime($contentReply->created_at);
                 $contentReply->updated_at = strtotime($contentReply->updated_at);
             }
