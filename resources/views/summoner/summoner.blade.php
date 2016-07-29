@@ -153,13 +153,11 @@
 			@endforeach
 		@else
 		<div class="comment-tile">
-			<h2 class="howsad">{{ $summoner[0]->playerName }} has no comments yet. How sad!</h2>
+			<h2 class="howsad">{{ $summoner[0]->playerName }} has no comments yet.</h2>
 		</div>
 		@endif
 	</div>
 	<a href="#" class="load-more-link"><div class="load-more-comments">Load More</div></a>
-
-	<button onClick="openModal(9)">Comment 9</button>
 	<div class="section">
 		<div id="derekData"></div>
 	</div>
@@ -209,41 +207,7 @@
 	</div>
 	@endif
 
-<div class="section">
-	<p>
-		{"comment":{
-		@if($comments)
-		  @foreach($comments as $comment)
-		    @if($comment->parentId == NULL)
-		    "{{ $comment->id }}":{
-		      "id":"{{ $comment->id }}",
-		      "body":"Hello!",
-		      "user_id":"1",
-		      "user_name":"{{ $comment->username }}",
-		      "user_image":"{{ $comment->icon }}",
-		      "created_at":"{{ $comment->created_at }}",
-		      "comment_replies":"{{ $comment-> cntreplys }}",
-		      "comment_likes":"{{ $summoner[0]->likes }}",
-		      "replies": {
-		        "reply": [
-		        @foreach($comment->replys as $commentReply)
-		          @if($commentReply->parentId == $comment->id)
-		          {
-		            "body":"Hi there!",
-		            "user_image":"{{ $comment->icon }}"
-		          },
-		          @endif
-		        @endforeach
-		        ]
-		      }
-		    },
-		    @endif
-		  @endforeach
-		@endif
-		}}
-	</p>
-</div>
-
+@if($comments)
 	<script id="tplModal" type="text/x-handlebars-template">
 		@{{#main}}
 			<div class="comment-header">
@@ -259,6 +223,7 @@
 		@{{/each}}
 
 	</script>
+@endif
 
 	<script>
 	var boomerang = function (url, tplId, anchor) {
