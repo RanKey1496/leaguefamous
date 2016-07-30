@@ -14,7 +14,7 @@
 //Home routes
 Route::get('/', [
 		'uses'	=>	'HomeController@home',
-		'as'	=>	'home']);
+		'as'	=>	'path']);
 
 Route::get('/home', [
 		'uses'	=>	'HomeController@home',
@@ -124,7 +124,7 @@ Route::get('/all', [
 		'as'	=>	'summoners.all']);
 
 Route::post('executeSearch', [
-		'uses' => 'SearchController@search', 
+		'uses' => 'SearchController@search',
 		'as'	=> 'executeSearch']);
 
 Route::get('search', function(){
@@ -158,5 +158,5 @@ Route::get('/comment/{region}/{summonerName}', [
 
 //Like Routes
 Route::post('/like', [
-	'uses' => 'LikeController@like', 
+	'uses' => 'LikeController@like',
 	'as' => 'summoners.like']);

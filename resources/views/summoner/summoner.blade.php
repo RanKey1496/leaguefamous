@@ -157,11 +157,7 @@
 		</div>
 		@endif
 	</div>
-	<a href="#" class="load-more-link"><div class="load-more-comments">Load More</div></a>
-	<div class="section">
-		<div id="derekData"></div>
-	</div>
-	<div id="quoteData"></div>
+	<a class="load-more-link append-button"><div class="load-more-comments">Load More</div></a>
 
 <!-- Modal -->
 
@@ -231,9 +227,58 @@
 			@{{/each}}
 		@{{/comment}}
 	</script>
+
+	<script id="tplComments2" type="text/x-handlebars-template">
+		@{{#each comments}}
+			<div class="comment-tile" style="width: @{{customWidth}}%">
+				<div class="comment-panel">
+					<div class="comment-header">
+							<img class="img-responsive img-circle img-no-padding comment-profile-md" src="@{{profileImage}}">
+							<div class="comment-username">@{{username}}</div>
+							<div class="timestamp">@{{created_at}}</div>
+					</div>
+					<div class="comment-body">
+						@{{body}}
+					</div>
+				</div>
+			</div>
+		@{{/each}}
+	</script>
+
+	<script id="tplComments" type="text/x-handlebars-template">
+		@{{#each comments}}
+			<div class="comment-tile" style="width: @{{customWidth}}%">
+				<div class="comment-panel">
+					<div class="comment-header">
+							<img class="img-responsive img-circle img-no-padding comment-profile-md" src="@{{profileImage}}">
+							<div class="comment-username">@{{username}}</div>
+							<div class="timestamp">@{{created_at}}</div>
+					</div>
+					<div class="comment-body">
+						@{{body}}
+					</div>
+				</div>
+			</div>
+		@{{/each}}
+	</script>
 @endif
 
 	<script>
+/*	var boomerang = function (url, tplId, anchor) {
+		$.getJSON(url, function(data) {
+			var template = $(tplId).html();
+			var stone = Handlebars.compile(template)(data);
+			$(anchor).html(stone);
+		});
+	};
+*/
+
+	Handlebars.registerHelper("customWidth", function(){
+		var roundDown = Math.floor(window.innerWidth / 300);
+		var percentWidth = Math.floor(1 / roundDown * 1000) / 10;
+		return new Handlebars.SafeString(percentWidth);
+	});
+
 	var boomerang = function (url, tplId, anchor) {
 		$.getJSON(url, function(data) {
 			var template = $(tplId).html();
@@ -246,9 +291,11 @@
 		boomerang('{{ url('/') }}/comment/content/' + commentId, '#tplModal', '.modal-body');
 	};
 
-	</script>
+	var loadComments = function (region,summonerName) {
+		boomerang('{{ url('/') }}/comment/' + region + '/' + summonerName, '#tplComments', '.comment-grid');
+	}
 
-	<script type="text/javascript">
+// loadComments("{{ $summoner[0]->region }}","{{ $summoner[0]->playerName }}")
 
 /* Comment Remove and Open Button */
 
@@ -296,16 +343,44 @@
 
 			$(window).resize(function(){
 				gridWidth();
+			})
+
+			$('.append-button').on( 'click', function() {
+
+				var url = "{{ url('/') }}/comment/" + "{{ $summoner[0]->region }}" + "/" + "{{ $summoner[0]->playerName }}"
+
+				$.getJSON( url , function(data) {
+					var template = $('#tplComments').html();
+					var stone = Handlebars.compile(template)(data);
+					var $items = $(stone);
+				  $('.comment-grid').append( $items )
+					.packery( 'appended', $items );
+					})
+				});
+
+			$(window).scroll( function() {
+
+				var url = "{{ url('/') }}/comment/" + "{{ $summoner[0]->region }}" + "/" + "{{ $summoner[0]->playerName }}"
+				if($(window).scrollTop() == $(document).height() - $(window).height()) {
+					$.getJSON( url , function(data) {
+						var template = $('#tplComments').html();
+						var stone = Handlebars.compile(template)(data);
+						var $items = $(stone);
+					  $('.comment-grid').append( $items )
+						.packery( 'appended', $items );
+						})
+					}
 			});
+
+			  // append items to grid
 
 			$(window).load(function(){
 				$('.comment-grid').packery({
 					itemSelector: '.comment-tile',
 					gutter:0
-				}).packery();
-			});
-		});
-
+				}).packery()
+			})
+		})
 /*
 		$(function() {
 			$('.make-reply-a').click(function(e){

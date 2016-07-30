@@ -24,13 +24,13 @@ class CommentController extends Controller
     public function store(Request $request)
     {
     	DB::insert("INSERT INTO comments (user_id, summoner_id, summoner_region, body) VALUES(?,?,?,?)", [$request->user()->id, $request->input('summonerId'), $request->input('region'), $request->input('body')]);
-    	return redirect()->back();     
+    	return redirect()->back();
     }
 
     public function storeReply(Request $request)
     {
         DB::insert("INSERT INTO comments (parentId, user_id, summoner_id, summoner_region, body) VALUES(?,?,?,?,?)", [$request->input('commentId'), $request->user()->id, $request->input('summonerId'), $request->input('region'), $request->input('body')]);
-        return redirect()->back();     
+        return redirect()->back();
     }
 
     public function destroy(Request $request){
@@ -74,19 +74,19 @@ class CommentController extends Controller
         foreach ($content as $content) {
             $data = User::where('id','=',$content->user_id)->get(['username', 'profileImage']);
             $content->username = $data[0]->username;
-            $content->profileImage = route('home') .'/'. $data[0]->profileImage;
+            $content->profileImage = route('path') .'/'. $data[0]->profileImage;
             $content->replies = $contentReplys;
             $content->created_at = strtotime($content->created_at);
             $content->updated_at = strtotime($content->updated_at);
             foreach ($content->replies as $contentReply) {
                 $datas = User::where('id','=',$contentReply->user_id)->get(['username', 'profileImage']);
                 $contentReply->username = $datas[0]->username;
-                $contentReply->profileImage = route('home') .'/'. $datas[0]->profileImage;
+                $contentReply->profileImage = route('path') .'/'. $datas[0]->profileImage;
                 $contentReply->created_at = strtotime($contentReply->created_at);
                 $contentReply->updated_at = strtotime($contentReply->updated_at);
             }
         }
-        
+
         return Response::json(array('comment' => $content));
     }
 
@@ -97,7 +97,7 @@ class CommentController extends Controller
         foreach ($content as $contenido) {
             $data = User::where('id','=',$contenido->user_id)->get(['username', 'profileImage']);
             $contenido->username = $data[0]->username;
-            $contenido->profileImage = route('home') .'/'. $data[0]->profileImage;
+            $contenido->profileImage = route('path') .'/'. $data[0]->profileImage;
             $contenido->created_at = strtotime($contenido->created_at);
             $contenido->updated_at = strtotime($contenido->updated_at);
         }
