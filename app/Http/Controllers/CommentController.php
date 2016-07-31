@@ -18,7 +18,7 @@ use App\Summoner;
 class CommentController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth', ['except' => ['index', 'content', 'SummonerComments']]);
+        $this->middleware('auth', ['except' => ['index', 'content', 'SummonerComments', 'Recent']]);
     }
 
     public function store(Request $request)
@@ -102,5 +102,11 @@ class CommentController extends Controller
             $contenido->updated_at = strtotime($contenido->updated_at);
         }
         return Response::json(array('comments' => $content));
+    }
+
+    public function Recent(){
+        $comment = new Comment();
+        $content = $comment->recent();
+        dd($content);
     }
 }

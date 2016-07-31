@@ -18,6 +18,9 @@ class Comment
         return DB::select("SELECT id,body,user_id,created_at,updated_at FROM comments WHERE summoner_id = ? AND summoner_region = ? AND deleted_at IS NULL AND parentId IS NULL ORDER BY created_at DESC", [$summonerId, $region]);
     }
 
+    public function recent(){
+        return DB::select("SELECT * FROM comments WHERE created_at IN (SELECT MAX(created_at) FROM comments WHERE deleted_at IS NULL AND parentId IS NULL GROUP BY summoner_id, summoner_region)");
+    }
 
     public function getComment($user_id, $id) { 
         return DB::select("SELECT * FROM comments WHERE user_id=? AND id=? AND deleted_at IS NULL", [$user_id, $id]);

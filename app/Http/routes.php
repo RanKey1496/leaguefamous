@@ -156,6 +156,10 @@ Route::get('/comment/{region}/{summonerName}', [
 		'uses'	=>	'CommentController@SummonerComments',
 		'as'	=>	'comments.summonercomments']);
 
+Route::get('/recent', [
+		'uses'	=>	'CommentController@Recent',
+		'as'	=>	'comments.recent']);
+
 //Like Routes
 Route::post('/like', [
 	'uses' => 'LikeController@like',
