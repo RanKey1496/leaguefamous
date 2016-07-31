@@ -213,17 +213,34 @@
 	<script id="tplModal" type="text/x-handlebars-template">
 		@{{#comment}}
 			<div class="comment-header">
-					<div><img class="img-responsive img-no-padding comment-profile-md" src="{{ url('/') }}/{{ $comment->icon }}"></div>
+					<div><img class="img-responsive img-no-padding comment-profile-lg" src="{{ url('/') }}/{{ $comment->icon }}"></div>
 					<div class="comment-username">@{{username}}</div>
 					<div class="timestamp">@{{created_at}}</div>
 			</div>
 			<div class="modal-comment-body">@{{body}}</div>
 
+			<div class="modal-reply-area">
+				<form method="post" action="{{ route('comments.storeReply') }}">
+					<div class="form-group">
+						<label for="reply">Leave a reply:</label>
+						<textarea class="form-control" rows="3" required="required" name="body" id="reply"></textarea>
+					</div>
+					<div class="form-bottom">
+											<input type="hidden" name="_token" value="{{ csrf_token() }}">
+											<input type="hidden" name="commentId" value="@{{id}}">
+											<input type="hidden" name="summonerId" value="{{ $summoner[0]->playerId }}">
+											<input type="hidden" name="region" value="{{ $summoner[0]->region }}">
+						<input type="submit" name='post_comment' class="btn btn-default" value="Save"/>
+						<div id="charNum">Characters left: 300</div>
+					</div>
+				</form>
+			</div>
 			@{{#each replies}}
-				<div>
+				<div class="modal-reply-header">
 					<img class="img-responsive comment-profile-sm" src="@{{profileImage}}") />
-					<div>@{{body}}</div>
+					<div>@{{username}}</div>
 				</div>
+				<div class="modal-reply-body">@{{body}}</div>
 			@{{/each}}
 		@{{/comment}}
 	</script>
@@ -345,31 +362,19 @@
 				gridWidth();
 			})
 
-			$('.append-button').on( 'click', function() {
-
+			var loadMore = function () {
 				var url = "{{ url('/') }}/comment/" + "{{ $summoner[0]->region }}" + "/" + "{{ $summoner[0]->playerName }}"
-
 				$.getJSON( url , function(data) {
 					var template = $('#tplComments').html();
 					var stone = Handlebars.compile(template)(data);
 					var $items = $(stone);
-				  $('.comment-grid').append( $items )
-					.packery( 'appended', $items );
-					})
-				});
+					$('.comment-grid').append( $items )
+					.packery( 'appended', $items ).packery();
+				})
+			}
 
-			$(window).scroll( function() {
-
-				var url = "{{ url('/') }}/comment/" + "{{ $summoner[0]->region }}" + "/" + "{{ $summoner[0]->playerName }}"
-				if($(window).scrollTop() == $(document).height() - $(window).height()) {
-					$.getJSON( url , function(data) {
-						var template = $('#tplComments').html();
-						var stone = Handlebars.compile(template)(data);
-						var $items = $(stone);
-					  $('.comment-grid').append( $items )
-						.packery( 'appended', $items );
-						})
-					}
+			$('.append-button').on( 'click', function() {
+				loadMore();
 			});
 
 			  // append items to grid

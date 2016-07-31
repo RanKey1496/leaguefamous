@@ -22,14 +22,14 @@
 	<div class="section image-cropper">
 			<div class="container">
 				<div class="row">
-						<div class="col-md-12">
+						<div class="col-md-12 croppie-area">
 							<div class="demo croppie-container"></div>
 							<form id="uploadImg" method="POST" action="{{ route('users.update.profile') }}">
-							    <label class="btn btn-default btn-file">
-			    				Browse <input type="file" style="display: none;" id="imgInp" value="Choose a file" accept="image/*">
+						    <label class="btn btn-default btn-file">
+		    					Browse <input type="file" style="display: none;" id="imgInp" value="Choose a file" accept="image/*">
 								</label>
+								<a class="btn btn-primary ajax-post" style="">Save</a>
 							</form>
-							<a href="#" class="btn btn-primary ajax-post" style="">Save</a>
 							<script>
 
 								function readURL(input) {
@@ -38,49 +38,55 @@
 								        var reader = new FileReader();
 
 								        reader.onload = function (e) {
-											$uploadCrop.croppie('bind', {
-							            		url: e.target.result
-							            	});
-							            	$('.upload-demo').addClass('ready');
+
+													$uploadCrop.croppie('bind', {
+							          		url: e.target.result
+							          	});
+
+							          	$('.upload-demo').addClass('ready');
 								        }
 
 								        reader.readAsDataURL(input.files[0]);
 								    }
 
 								    $uploadCrop = $('.demo').croppie({
+										enableExif: true,
 										viewport: {
-											width: 150,
-											height: 150,
+											width: 128,
+											height: 128,
 											type: 'circle'
 										},
 										boundary: {
-											width: 160,
-											height: 160
+											width: 200,
+											height: 200
 										},
 										exif: true
 									});
 
-									$('.ajax-post').click(function(e) {
+									$('.ajax-post').click(function() {
 										var image = '';
 										$uploadCrop.croppie('result', {
 											type: 'canvas',
 											size: 'viewport'}).then(function (resp) {
 											$image = resp;
-										});
+										}).then(
+											function() {
 
-										e.preventDefault();
-										$.post('{{ route('users.update.avatar') }}', {
-											"image" : $image
-										}, function(response) {
-											if(response.result != null && response.result == '1'){
-												if(response.isUpdated == '1'){
-													location.reload();
-												}
-											}else{
-												alert("Server Error");
+
+												$.post('{{ route('users.update.avatar') }}', {
+													"image" : $image
+													}, function(response) {
+														if(response.result != null && response.result == '1'){
+														if(response.isUpdated == '1'){
+														location.reload();
+														}
+													}else{
+														alert("Server Error");
+													}
+													}, "json").always(function() {
+								          });
 											}
-										}, "json").always(function() {
-						                    });
+										);
 										return false;
 									});
 								}

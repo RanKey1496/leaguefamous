@@ -13,18 +13,18 @@
 				<span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-					<li><a href="#">NA</a></li>
-					<li><a href="#">LAN</a></li>
-					<li><a href="#">LAS</a></li>
-					<li><a href="#">BR</a></li>
-					<li role="separator" class="divider"></li>
-					<li><a href="#">EUW</a></li>
-					<li><a href="#">EUNE</a></li>
-					<li><a href="#">RU</a></li>
-					<li><a href="#">TR</a></li>
-					<li role="separator" class="divider"></li>
-					<li><a href="#">KR</a></li>
-					<li><a href="#">OCE</a></li>
+          <li><a>NA</a></li>
+          <li><a>LAN</a></li>
+          <li><a>LAS</a></li>
+          <li><a>BR</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a>EUW</a></li>
+          <li><a>EUNE</a></li>
+          <li><a>RU</a></li>
+          <li><a>TR</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a>KR</a></li>
+          <li><a>OCE</a></li>
 				</ul>
 			</div>
 			<input id="search-submit" type="submit" value="Search">
@@ -60,18 +60,18 @@
 					<span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-						<li><a href="#">NA</a></li>
-						<li><a href="#">LAN</a></li>
-						<li><a href="#">LAS</a></li>
-						<li><a href="#">BR</a></li>
+						<li><a>NA</a></li>
+						<li><a>LAN</a></li>
+						<li><a>LAS</a></li>
+						<li><a>BR</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="#">EUW</a></li>
-						<li><a href="#">EUNE</a></li>
-						<li><a href="#">RU</a></li>
-						<li><a href="#">TR</a></li>
+						<li><a>EUW</a></li>
+						<li><a>EUNE</a></li>
+						<li><a>RU</a></li>
+						<li><a>TR</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="#">KR</a></li>
-						<li><a href="#">OCE</a></li>
+						<li><a>KR</a></li>
+						<li><a>OCE</a></li>
 					</ul>
 				</div>
 			</form>
