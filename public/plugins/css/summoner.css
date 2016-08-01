@@ -105,7 +105,7 @@ h6.summoner-data{
 	color:#777777;
 	padding:20px;
 	margin:10px;
-  border:10px white solid;
+  border:2px white solid;
 }
 
 .comment-panel{
@@ -190,13 +190,21 @@ h6.summoner-data{
 
 .comment-profile-sm{
 	width:32px;
-	margin:10px;
 }
 
 .comment-reply{
   display:flex;
   justify-content:center;
+  align-items:center;
 	margin:20px;
+}
+
+.reply-body{
+	margin-left:10px;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  width:100%;
 }
 
 .comment-expand{
@@ -217,14 +225,6 @@ h6.summoner-data{
 
 .comment-form{
 	height:10em;
-}
-
-.reply-body{
-	margin-top:10px;
-  overflow:hidden;
-  white-space:nowrap;
-  text-overflow:ellipsis;
-  width:100%;
 }
 
 .load-more-comments{
@@ -258,8 +258,9 @@ h6.summoner-data{
 .modal-comment-body{
   margin-top:15px;
   margin-bottom:15px;
+  font-family:'Titillium Web';
   font-size: 1.5em;
-  line-height:2em;
+  line-height:1.5em;
   text-align:center;
 }
 

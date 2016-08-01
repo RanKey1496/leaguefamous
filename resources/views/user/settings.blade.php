@@ -49,6 +49,8 @@
 								        reader.readAsDataURL(input.files[0]);
 								    }
 
+										$('.demo').croppie('destroy');
+
 								    $uploadCrop = $('.demo').croppie({
 										enableExif: true,
 										viewport: {
