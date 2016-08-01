@@ -245,23 +245,6 @@
 		@{{/comment}}
 	</script>
 
-	<script id="tplComments2" type="text/x-handlebars-template">
-		@{{#each comments}}
-			<div class="comment-tile" style="width: @{{customWidth}}%">
-				<div class="comment-panel">
-					<div class="comment-header">
-							<img class="img-responsive img-circle img-no-padding comment-profile-md" src="@{{profileImage}}">
-							<div class="comment-username">@{{username}}</div>
-							<div class="timestamp">@{{created_at}}</div>
-					</div>
-					<div class="comment-body">
-						@{{body}}
-					</div>
-				</div>
-			</div>
-		@{{/each}}
-	</script>
-
 	<script id="tplComments" type="text/x-handlebars-template">
 		@{{#each comments}}
 			<div class="comment-tile" style="width: @{{customWidth}}%">

@@ -232,63 +232,59 @@ footer {
 	transition:0s;
 }
 
-.avatar{
-	width:56px;
+.heart-unliked a:hover{
+	color:#cccccc;
 }
 
-.list-plate-wrapper{
-	padding:0;
+/* RECENT */
+
+.recent-panel{
+	background-color:white;
+	margin:2px;
+	padding:15px;
 }
 
-.list-plate-outer{
-	padding:5px 5px 0;
+.recent-header{
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
 }
 
-.list-plate-main{
+.recent-user-info{
 	display:flex;
 	flex-direction:column;
-	padding-left:15px;
-	flex:1;
-	color:#444;
+	justify-content:center;
+	flex-grow:1;
+	margin-left:15px;
 }
 
-.list-plate-main:hover, .list-plate-main:active * , .list-plate-main:active {
-	text-decoration:none;
+.recent-summoner-info{
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:flex-end;
+	flex-grow:1;
+	margin-right:15px;
 }
 
-.list-plate-name{
-	font-size:1.25em;
+.recent-profile-img{
+	width:32px;
 }
 
-.list-plate-popularity{
-	background-color:rgba(0,0,0,0.15);
-	border-radius:0.57em;
-	color:white;
-	padding:0 5px;
-	margin-left:5px;
+.recent-summoner-img{
+	width:32px;
 }
 
-.list-plate-division{
+.recent-region{
 	text-transform:uppercase;
 }
 
-.list-plate-button-outer{
-	width:60px;
-	padding-right:15px;
-}
-
-.list-plate-button{
-	text-align:right;
-	display:block;
-	color:#949ba2;
-}
-
-.list-plate-button a , span{
-	text-decoration:none;
-}
-
-.heart-unliked a:hover{
-	color:#cccccc;
+.recent-body{
+	font-family:'Titillium Web';
+	font-size:1.5em;
+	line-height:1.5em;
+	text-align:center;
+	margin:20px;
 }
 
 /* The GRID */
