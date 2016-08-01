@@ -107,6 +107,16 @@ class CommentController extends Controller
     public function Recent(){
         $comment = new Comment();
         $content = $comment->recent();
-        dd($content);
+        foreach ($content as $contenido) {
+            $data = User::where('id','=',$contenido->user_id)->get(['username', 'profileImage']);
+            $summoner = Summoner::where('region','=',$contenido->summoner_region)->where('playerId','=',$contenido->summoner_id)->get(['playerName', 'profileIconId']);
+            $contenido->summonerName = $summoner[0]->playerName;
+            $contenido->profileIconId = $summoner[0]->profileIconId;
+            $contenido->username = $data[0]->username;
+            $contenido->profileImage = route('path') .'/'. $data[0]->profileImage;
+            $contenido->created_at = strtotime($contenido->created_at);
+            $contenido->updated_at = strtotime($contenido->updated_at);
+        }
+        return Response::json(array('comments' => $content));
     }
 }
