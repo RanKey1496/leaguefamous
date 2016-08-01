@@ -19,7 +19,7 @@ class Comment
     }
 
     public function recent(){
-        return DB::select("SELECT id,body,user_id,created_at,updated_at, summoner_id, summoner_region FROM comments WHERE created_at IN (SELECT MAX(created_at) FROM comments WHERE deleted_at IS NULL AND parentId IS NULL GROUP BY summoner_id, summoner_region)");
+        return DB::select("SELECT id,body,user_id,created_at,updated_at, summoner_id, summoner_region FROM comments WHERE created_at IN (SELECT MAX(created_at) FROM comments WHERE deleted_at IS NULL AND parentId IS NULL GROUP BY summoner_id, summoner_region) ORDER BY created_at DESC LIMIT 10");
     }
 
     public function getComment($user_id, $id) { 
