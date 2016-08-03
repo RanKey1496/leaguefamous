@@ -223,10 +223,10 @@ h6.summoner-data{
 	transition:0.2s;
 }
 
-.comment-form:focus{
-  height:4em;
-  word-wrap: break-word;
-  word-break: break-all;
+.comment-form{
+  height:1em;
+  font-size:1.25em;
+  font-family:'titillium web','open sans',Helvetica,Arial;
 }
 
 .load-more-comments{

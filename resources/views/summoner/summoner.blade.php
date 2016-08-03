@@ -169,8 +169,8 @@
 							<span class="glyphicon glyphicon-comment"></span>
 							69
 					</span>
-					<span id="@{{id}}" class="comment-likes ajax-like">
-							<span  class="glyphicon glyphicon-heart"></span>
+					<span class="comment-likes" onClick="ajaxLike('@{{id}}')">
+							<span class="glyphicon glyphicon-heart"></span>
 							6
 					</span>
 				</div>
@@ -210,6 +210,27 @@ var loadComments = function (region,summonerName) {
 
 // loadComments("{{ $summoner[0]->region }}","{{ $summoner[0]->playerName }}")
 
+
+var ajaxLike = function(id) {
+					alert(id);
+					$.post('{{ route('comments.like') }}', {
+							"commentId" : $(this).attr("id")
+					}, function(response) {
+							if(response.result != null && response.result == '1'){
+									if(response.isunlike=='1'){
+											alert("Unlike");
+									}else{
+										alert("Like");
+									}
+							}else{
+									alert("Server Error");
+							}
+					}, "json").always(function() {
+							//l.stop();
+					});
+			return false;
+};
+
 // Comment Remove and Open Button
 
 $(function() {
@@ -238,26 +259,6 @@ $(function() {
 		$('#commentModalBody').load( commentsearch + id );
 		return this;
 	});
-
-	$('.ajax-like').click(function(e) {
-            var id=$(this).attr("id");
-            $.post('{{ route('comments.like') }}', {
-                "commentId" : $(this).attr("id")
-            }, function(response) {
-                if(response.result != null && response.result == '1'){
-                    if(response.isunlike=='1'){
-                        alert("Unlike");
-                    }else{
-                    	alert("Like");
-                    }
-                }else{
-                    alert("Server Error");
-                }
-            }, "json").always(function() {
-                //l.stop();
-            });
-        return false;
-    });
 
 });
 
