@@ -32,7 +32,6 @@
 	<!--Sidebar-->
 	@include('template.partials.sidebar')
 	<!--End Sidebar-->
-
 	<div class="section">
 		<div class="container">
 			<div class="row">
@@ -42,6 +41,5 @@
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>

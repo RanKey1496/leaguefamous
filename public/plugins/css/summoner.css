@@ -223,8 +223,10 @@ h6.summoner-data{
 	transition:0.2s;
 }
 
-.comment-form{
-	height:10em;
+.comment-form:focus{
+  height:4em;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .load-more-comments{

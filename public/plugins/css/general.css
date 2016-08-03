@@ -240,29 +240,31 @@ footer {
 
 .recent-panel{
 	background-color:white;
-	margin:2px;
+	margin-bottom:4px;
 	padding:15px;
 }
 
 .recent-header{
 	display:flex;
-	justify-content:space-between;
 	align-items:center;
+}
+
+.recent-footer{
+	display:flex;
+	align-items:center;
+	justify-content:flex-end;
 }
 
 .recent-user-info{
 	display:flex;
-	flex-direction:column;
-	justify-content:center;
 	flex-grow:1;
 	margin-left:15px;
 }
 
 .recent-summoner-info{
 	display:flex;
-	flex-direction:column;
-	justify-content:center;
-	align-items:flex-end;
+	justify-content:flex-end;;
+	align-items:center;
 	flex-grow:1;
 	margin-right:15px;
 }
@@ -290,7 +292,8 @@ footer {
 /* The GRID */
 
 .grid-item{
-	padding:2px;
+	padding-right:4px;
+	padding-bottom:4px;
 	width:180px;
 	height:180px;
 }
