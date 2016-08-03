@@ -6,6 +6,8 @@ use DB;
 
 class Like
 {
+    //Like Summoners
+
 	public function find($id) { 
         return DB::select('SELECT * FROM likes WHERE id  = ?', [$id]);
     }
@@ -32,5 +34,30 @@ class Like
 
     public function likes($summonerId, $region){
         return DB::select("SELECT COUNT(*) AS cont FROM likes WHERE summoner_id=? AND summoner_region=? AND deleted_at IS NULL", [$summonerId, $region]);
+    }
+
+    // Like Comments
+    public function cLike($commentId, $user_id){
+        return DB::select("SELECT * FROM like_comments WHERE comment_id = ? AND user_id = ? AND deleted_at IS NULL", [$commentId, $user_id]);
+    }
+
+    public function cLiked($commentId, $user_id) { 
+        return DB::update("UPDATE like_comments SET deleted_at=NOW() WHERE comment_id = ? AND user_id=?", [$commentId, $user_id]);
+    }
+
+    public function cLikes($commentId){
+        return DB::select("SELECT COUNT(*) AS cont FROM like_comments WHERE comment_id=?AND deleted_at IS NULL", [$commentId]);
+    }
+
+    public function getcLiked($commentId, $user_id) { 
+        return DB::select("SELECT * FROM like_comments WHERE comment_id = ? AND user_id=? AND deleted_at IS NOT NULL", [$commentId, $user_id]);
+    }
+
+    public function updatecSave($commentId, $user_id) {
+        return DB::insert("UPDATE like_comments SET deleted_at = NULL WHERE comment_id = ? AND user_id=?", [$commentId, $user_id]);
+    }
+
+    public function csave($commentId, $user_id) {
+        return DB::insert("INSERT INTO like_comments (comment_id, user_id) VALUES (?,?)", [$commentId, $user_id]);
     }
 }

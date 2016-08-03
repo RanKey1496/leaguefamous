@@ -164,3 +164,8 @@ Route::get('/recent', [
 Route::post('/like', [
 	'uses' => 'LikeController@like',
 	'as' => 'summoners.like']);
+
+Route::post('/commentLike', [
+	'uses' => 'LikeController@commentLike',
+	'as' => 'comments.like']);
+

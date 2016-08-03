@@ -48,6 +48,31 @@ class LikeController extends Controller
         }        
     }
 
+    public function commentLike(Request $request){
+        if(Input::has("commentId")){
+
+            $like = new Like();
+            $likes = $like->cLike($commentId, Auth::user()->id);
+
+            if(count($likes) > 0){
+                $likes = $like->cLiked($commentId, Auth::user()->id);
+                $likes = $like->cLikes($commentId);
+                return Response::json(array('result'=>'1','isunlike'=>'0','cnt'=>$likes[0]->cont));
+            }else{
+                $likes = $like->getcLiked($commentId, Auth::user()->id);
+                if(count($likes) > 0){
+                    $like->updatecSave($commentId, Auth::user()->id);
+                } else {
+                    $like->csave($commentId, Auth::user()->id);
+                }
+                $likes = $like->cLikes($commentId);
+                return Response::json(array('result'=>'1','isunlike'=>'1','cnt'=>$likes[0]->cont));
+            }
+        }else{
+            return Response::json(array('result' => '0'));
+        }        
+    }
+
     public function unlike(){
         if(Input::has("summonerId_region")){
 
