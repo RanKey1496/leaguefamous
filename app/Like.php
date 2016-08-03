@@ -46,7 +46,7 @@ class Like
     }
 
     public function cLikes($commentId){
-        return DB::select("SELECT COUNT(*) AS cont FROM like_comments WHERE comment_id=?AND deleted_at IS NULL", [$commentId]);
+        return DB::select("SELECT COUNT(*) AS cont FROM like_comments WHERE comment_id=? AND deleted_at IS NULL", [$commentId]);
     }
 
     public function getcLiked($commentId, $user_id) { 

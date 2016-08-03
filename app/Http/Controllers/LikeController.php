@@ -51,8 +51,10 @@ class LikeController extends Controller
     public function commentLike(Request $request){
         if(Input::has("commentId")){
 
+            $commentId = Input::get('commentId');
+
             $like = new Like();
-            $likes = $like->cLike($commentId, Auth::user()->id);
+            $likes = $like->cLike($commentId, Auth::user()->id);           
 
             if(count($likes) > 0){
                 $likes = $like->cLiked($commentId, Auth::user()->id);

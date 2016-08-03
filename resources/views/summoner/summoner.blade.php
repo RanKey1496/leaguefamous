@@ -212,18 +212,17 @@ var loadComments = function (region,summonerName) {
 
 
 var ajaxLike = function(id) {
-					alert(id);
 					$.post('{{ route('comments.like') }}', {
-							"commentId" : $(this).attr("id")
+							"commentId" : id
 					}, function(response) {
 							if(response.result != null && response.result == '1'){
 									if(response.isunlike=='1'){
-											alert("Unlike");
+										alert("Unlike");
 									}else{
 										alert("Like");
 									}
 							}else{
-									alert("Server Error");
+									alert(response.result);
 							}
 					}, "json").always(function() {
 							//l.stop();
