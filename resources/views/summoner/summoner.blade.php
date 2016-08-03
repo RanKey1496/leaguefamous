@@ -169,9 +169,9 @@
 							<span class="glyphicon glyphicon-comment"></span>
 							69
 					</span>
-					<span class="comment-likes">
-							<span id="@{{id}}" class="glyphicon glyphicon-heart"></span>
-							69
+					<span id="@{{id}}" class="comment-likes ajax-like">
+							<span  class="glyphicon glyphicon-heart"></span>
+							6
 					</span>
 				</div>
 
@@ -238,6 +238,26 @@ $(function() {
 		$('#commentModalBody').load( commentsearch + id );
 		return this;
 	});
+
+	$('.ajax-like').click(function(e) {
+            var id=$(this).attr("id");
+            $.post('{{ route('comments.like') }}', {
+                "commentId" : $(this).attr("id")
+            }, function(response) {
+                if(response.result != null && response.result == '1'){
+                    if(response.isunlike=='1'){
+                        alert("Unlike");
+                    }else{
+                    	alert("Like");
+                    }
+                }else{
+                    alert("Server Error");
+                }
+            }, "json").always(function() {
+                //l.stop();
+            });
+        return false;
+    });
 
 });
 
