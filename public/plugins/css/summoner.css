@@ -76,6 +76,12 @@ h6.summoner-data{
 	font-size:1.2em;
 }
 
+.howsad{
+	color:#bbbbbb;
+	margin:20px;
+	font-family:'Titillium Web',Helvetica,Arial;
+}
+
 /* commenting */
 
 .write-comment-box{

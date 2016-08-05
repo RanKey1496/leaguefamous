@@ -167,11 +167,11 @@
 				<div class="comment-footer">
 					<span class="comment-replies">
 							<span class="glyphicon glyphicon-comment"></span>
-							69
+							@{{comments}}
 					</span>
 					<span class="comment-likes" onClick="ajaxLike('@{{id}}')">
 							<span class="glyphicon glyphicon-heart"></span>
-							6
+							@{{likes}}
 					</span>
 				</div>
 

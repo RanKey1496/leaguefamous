@@ -218,20 +218,6 @@ footer {
 
 /* home page */
 
-
-.list-plate-inner{
-	background-color:rgba(255,255,255,0.5);
-	display:flex;
-	align-items:center;
-	margin:5px 0 0;
-	transition:0.5s;
-}
-
-.list-plate-inner:hover{
-	background-color:rgba(255,255,255,1);
-	transition:0s;
-}
-
 .heart-unliked a:hover{
 	color:#cccccc;
 }
@@ -239,7 +225,7 @@ footer {
 /* RECENT */
 
 .recent-panel{
-	background-color:white;
+	background-color:rgba(255,255,255,0.6);
 	margin-bottom:4px;
 	padding:15px;
 }
@@ -283,7 +269,7 @@ footer {
 
 .recent-body{
 	font-family:'Titillium Web';
-	font-size:1.5em;
+	font-size:1.3em;
 	line-height:1.5em;
 	text-align:center;
 	margin:20px;
@@ -306,7 +292,6 @@ footer {
 	flex-direction:column;
 	justify-content:space-between;
 	align-items:center;
-	border:2px white solid;
 	transition:0.5s;
 }
 
@@ -364,12 +349,6 @@ footer {
 	flex-direction:column;
 	justify-content:center;
 	flex-grow:1;
-}
-
-.howsad{
-	color:#bbbbbb;
-	margin:20px;
-	font-family:'Titillium Web',Helvetica,Arial;
 }
 
 /* */
