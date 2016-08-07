@@ -6,7 +6,7 @@
 <!--End Summoner Data-->
 	<div class="comment-grid">
 		<div class="comment-tile stamped">
-			<div class="summoner-tile">
+			<div class="summoner-tile panel-dark">
 				<div class="row">
 					<div class="col-md-12">
 							<!-- SIDEBAR USERPIC -->
@@ -75,8 +75,8 @@
 <!-- Modal -->
 
 <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
+  <div class="modal-dialog">
+    <div class="modal-content panel-dark">
       <div id="commentModalBody" class="modal-body">
       </div>
       <div class="modal-footer">
@@ -89,15 +89,16 @@
 <form method="post" action="{{ route('comments.store') }}">
 	<div class="modal fade" id="writeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
-	    <div class="modal-content">
+	    <div class="modal-content panel-dark">
 	      <div class="modal-body">
+
 					@if(!Auth::guest())
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<input type="hidden" name="summonerId" value="{{ $summoner[0]->playerId }}">
 							<input type="hidden" name="region" value="{{ $summoner[0]->region }}">
 							<div class="form-group">
 								<label>Write a comment</label>
-								<input id="commentField" required="required" placeholder="Say something original..." name="body" class="form-control comment-form" onkeyup="countChar(this)"></input>
+								<textarea id="commentField" required="required" placeholder="Say something..." name="body" class="form-control comment-form" onkeyup="countChar(this)"></textarea>
 							</div>
 							<div class="form-bottom">
 								<div id="charNum">Characters left: 300</div>
@@ -154,7 +155,7 @@
 <script id="tplComments" type="text/x-handlebars-template">
 	@{{#each comments}}
 		<div class="comment-tile" style="width: @{{customWidth}}%">
-			<div class="comment-panel">
+			<div class="comment-panel panel-bg">
 				<div class="comment-header">
 						<img class="img-responsive img-circle img-no-padding comment-profile-md" src="@{{profileImage}}">
 						<div class="comment-username">@{{username}}</div>
@@ -191,6 +192,10 @@ Handlebars.registerHelper("customWidth", function(){
 	var percentWidth = Math.floor(1 / roundDown * 1000) / 10;
 	return new Handlebars.SafeString(percentWidth);
 });
+
+Handlebars.registerHelper("urlStart"), function(){
+	return homeUrl;
+}
 
 var boomerang = function (url, tplId, anchor) {
 	$.getJSON(url, function(data) {

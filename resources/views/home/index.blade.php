@@ -10,7 +10,7 @@
 				<div class="grid">
 					@foreach($summoners as $summoner)
 						<div class="grid-item">
-							<div class="grid-panel">
+							<div class="grid-panel panel-bg">
 								<div class="grid-header">
 									<span class="grid-popularity">{{ $summoner->rank }}</span>
 									<span class="grid-region">{{ $summoner->region }}</span>
@@ -64,7 +64,7 @@
 		@{{#each comments}}
 		<div class="row">
 			<div class="col-md-12">
-				<div class="recent-panel">
+				<div class="recent-panel panel-bg">
 					<div class="recent-header">
 							<img class="img-responsive img-circle img-no-padding recent-profile-img" src="@{{profileImage}}">
 							<div class="recent-user-info">
@@ -74,12 +74,15 @@
 					<div class="recent-body">
 						@{{body}}
 					</div>
-					<div class="recent-footer">
-						<div class="recent-summoner-info">
-							@{{summonerName}} &bull;&nbsp;<span class="recent-region">@{{summoner_region}}</span>
+					<a href="@{{urlStart}}/@{{summoner_region}}/@{{summonerName}}">
+						<div class="recent-footer">
+								<div class="recent-summoner-info">
+									@{{summonerName}} &bull;&nbsp;<span class="recent-region">@{{summoner_region}}</span>
+								</div>
+								<img class="recent-summoner-img" src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/@{{profileIconId}}.png" />
+
 						</div>
-						<img class="recent-summoner-img" src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/@{{profileIconId}}.png" />
-					</div>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -87,6 +90,12 @@
 	</script>
 
 	<script type="text/javascript">
+
+	var homeUrl = "{{ url('/') }}/";
+
+	Handlebars.registerHelper("urlStart"), function(){
+		return homeUrl;
+	}
 
 		var boomerang = function (url, tplId, anchor) {
 			$.getJSON(url, function(data) {

@@ -3,8 +3,6 @@
 /* modals */
 
 .modal-backdrop{
-  background:linear-gradient(to right, rgba(135,224,253,1) 0%,rgba(5,171,224,1) 100%);
-  background-color:#666666;
 }
 
 .modal-content{

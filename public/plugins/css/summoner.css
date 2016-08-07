@@ -77,7 +77,6 @@ h6.summoner-data{
 }
 
 .howsad{
-	color:#bbbbbb;
 	margin:20px;
 	font-family:'Titillium Web',Helvetica,Arial;
 }
@@ -107,17 +106,12 @@ h6.summoner-data{
 
 .summoner-tile{
 	position:relative;
-	background-color:rgba(255,255,255,0.5);
-	color:#777777;
 	padding:20px;
 	margin:10px;
-  border:2px white solid;
 }
 
 .comment-panel{
 	position:relative;
-	color:#777777;
-  background-color:white;
 	padding:30px;
 	margin:10px;
 }
@@ -230,7 +224,6 @@ h6.summoner-data{
 }
 
 .comment-form{
-  height:1em;
   font-size:1.25em;
   font-family:'titillium web','open sans',Helvetica,Arial;
 }
