@@ -5,6 +5,16 @@
 <div class="section">
 	<div class="container-fluid">
 		<div class="row">
+			<div class="col-md-12">
+				<h1>Welcome to website!</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h3>Recent Activity</h3>
+				<div class="recent-comments-wrapper">
+				</div>
+			</div>
 			<div class="col-md-8">
 				<h3>Top 50</h3>
 				<div class="grid">
@@ -28,9 +38,9 @@
 									<div class="grid-likes">
 										@if(!Auth::guest())
 											@if(!$summoner->liked)
-												<span id="{{ $summoner->playerId }}_{{ $summoner->region }}" class="glyphicon glyphicon-heart text-primary ajax-like"></span>
+												<span id="{{ $summoner->playerId }}_{{ $summoner->region }}" class="glyphicon glyphicon-heart ajax-like"></span>
 											@else
-												<span id="{{ $summoner->playerId }}_{{ $summoner->region }}" class="glyphicon glyphicon-heart text-danger ajax-like"></span>
+												<span id="{{ $summoner->playerId }}_{{ $summoner->region }}" class="glyphicon glyphicon-heart heart-liked ajax-like"></span>
 											@endif
 										@else
 											<a href="{{ route('users.login') }}" class="glyphicon glyphicon-heart heart-unliked"></a>
@@ -43,11 +53,6 @@
 					@endforeach
 				</div>
 			</div>
-			<div class="col-md-4">
-				<h3>Recent Activity</h3>
-				<div class="recent-comments-wrapper">
-			</div>
-		</div>
 	</div>
 <div class="section">
 </div>
@@ -122,10 +127,10 @@
                 if(response.result != null && response.result == '1'){
                     if(response.isunlike=='1'){
                         $("#likes_"+id).text(response.cnt);
-                        $("#"+id).removeClass('text-danger').addClass('text-primary');
+                        $("#"+id).removeClass('heart-liked').addClass('');
                     }else{
                         $("#likes_"+id).text(response.cnt);
-                        $("#"+id).removeClass('text-primary').addClass('text-danger');
+                        $("#"+id).removeClass('').addClass('heart-liked');
                     }
                 }else{
                     alert("Server Error");
